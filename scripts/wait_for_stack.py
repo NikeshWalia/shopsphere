@@ -53,7 +53,16 @@ def main() -> int:
     parser.add_argument("--timeout", type=float, default=DEFAULT_TIMEOUT)
     parser.add_argument("--api", default=os.getenv("API_BASE_URL", "http://localhost:8000"))
     parser.add_argument("--payment", default=os.getenv("PAYMENT_MOCK_URL", "http://localhost:9100"))
-    parser.add_argument("--ui", default=os.getenv("UI_BASE_URL", ""))
+    # No environment fallback, unlike --api and --payment above. The storefront
+    # is optional: the API/database/contract/security job deliberately never
+    # starts it. Defaulting this to UI_BASE_URL made that job wait two minutes
+    # for a service it was never going to run, and then fail - so waiting for
+    # the storefront has to be an explicit request, not an ambient one.
+    parser.add_argument(
+        "--ui",
+        default="",
+        help="Also wait for the storefront at this URL. Omit to skip it entirely.",
+    )
     args = parser.parse_args()
 
     deadline = time.monotonic() + args.timeout

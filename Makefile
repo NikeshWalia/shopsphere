@@ -74,7 +74,7 @@ frontend-install: ## Install frontend dependencies
 up: ## Build and start the whole stack
 	$(COMPOSE) up --build -d
 	@echo "Waiting for the API to become ready..."
-	@$(PY) scripts/wait_for_stack.py
+	@$(PY) scripts/wait_for_stack.py --ui http://localhost:$(or $(FRONTEND_PORT),3000)
 	@echo ""
 	@echo "  Storefront   http://localhost:3000"
 	@echo "  API docs     http://localhost:8000/docs"
