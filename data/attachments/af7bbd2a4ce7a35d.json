@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:34 GMT",
+    "server": "uvicorn",
+    "content-length": "233",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.29",
+    "x-request-id": "b6ef14fec12b4324958a18043f092f2b"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, Password must be at least 8 characters long.",
+    "details": {
+      "fields": [
+        {
+          "field": "password",
+          "message": "Value error, Password must be at least 8 characters long.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

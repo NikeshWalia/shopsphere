@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 4.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:39 GMT",
+    "server": "uvicorn",
+    "content-length": "429",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.78",
+    "x-request-id": "fcb516820a504419a383edf6ab0b3759"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 7,
+        "sku": "LAP-1007",
+        "name": "Aurora Edu 11",
+        "price": 429.0,
+        "brand": "Aurora",
+        "rating": "3.8",
+        "image_url": "https://picsum.photos/seed/lap-1007/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 62,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 3,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 3,
+    "has_next": true,
+    "has_previous": false
+  }
+}

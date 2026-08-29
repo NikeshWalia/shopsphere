@@ -1,0 +1,21 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 10.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:35 GMT",
+    "server": "uvicorn",
+    "content-length": "74",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "9.6",
+    "x-request-id": "d525b376bc9b4a2cb29e23f92f17e0e4"
+  },
+  "body": {
+    "message": "Password updated. Existing tokens remain valid until expiry."
+  }
+}

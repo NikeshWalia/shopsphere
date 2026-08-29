@@ -1,0 +1,25 @@
+{
+  "status_code": 404,
+  "elapsed_ms": 4.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:36 GMT",
+    "server": "uvicorn",
+    "content-length": "102",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.03",
+    "x-request-id": "1dfffadefa2e41118614688660929c28"
+  },
+  "body": {
+    "error": "CART_ITEM_NOT_FOUND",
+    "message": "That item is not in your cart.",
+    "details": {
+      "product_id": 77
+    }
+  }
+}

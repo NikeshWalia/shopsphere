@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 8.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:36 GMT",
+    "server": "uvicorn",
+    "content-length": "155",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.27",
+    "x-request-id": "332127daec8b454da70e7efe46dcf1f9"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "Only 3 units of 'Test Product d77b7e' are available.",
+    "details": {
+      "product_id": 74,
+      "requested": 9,
+      "available": 3
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 5.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:34 GMT",
+    "server": "uvicorn",
+    "content-length": "170",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.19",
+    "x-request-id": "69f2f827e56146199d5c0153008419a7"
+  },
+  "body": {
+    "id": 6,
+    "email": "user_208933443ab2@shopsphere.test",
+    "full_name": "Ada Lovelace",
+    "phone": null,
+    "role": "customer",
+    "is_active": true,
+    "created_at": "2026-08-29T04:55:35.091928Z"
+  }
+}

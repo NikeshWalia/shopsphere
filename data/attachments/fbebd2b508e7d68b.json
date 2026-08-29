@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 4.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:42 GMT",
+    "server": "uvicorn",
+    "content-length": "217",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.45",
+    "x-request-id": "0d0de1c954d54df882c5df672e17ddda"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "String should have at least 12 characters",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.card_number",
+          "message": "String should have at least 12 characters",
+          "type": "string_too_short"
+        }
+      ]
+    }
+  }
+}

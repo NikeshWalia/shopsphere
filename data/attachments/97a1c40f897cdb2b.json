@@ -1,0 +1,27 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 8.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:56 GMT",
+    "server": "uvicorn",
+    "content-length": "100",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.47",
+    "x-request-id": "40a1c610abf04913b6b80bffed9f1be5"
+  },
+  "body": {
+    "items": [],
+    "total": 0,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 0,
+    "has_next": false,
+    "has_previous": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?brand=NewestBrandc99b7ae750&sort=newest&page_size=10",
+  "params": {
+    "brand": "NewestBrandc99b7ae750",
+    "sort": "newest",
+    "page_size": 10
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

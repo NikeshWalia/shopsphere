@@ -1,0 +1,28 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 7.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:56:10 GMT",
+    "server": "uvicorn",
+    "content-length": "192",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "6.16",
+    "x-request-id": "7af1bc0f196041ceb8ce144b107220bb"
+  },
+  "body": {
+    "error": "INVALID_ORDER_STATE",
+    "message": "Cannot move an order from 'delivered' to 'shipped'.",
+    "details": {
+      "order_id": 81,
+      "current_status": "delivered",
+      "requested_status": "shipped",
+      "allowed": []
+    }
+  }
+}

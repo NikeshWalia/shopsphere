@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 8.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:56 GMT",
+    "server": "uvicorn",
+    "content-length": "543",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "6.85",
+    "x-request-id": "8ca839d496b546899c5ef915e0585c02"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 219,
+      "email": "user_49b33bca1f86@shopsphere.test",
+      "full_name": "Shelby Newman",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:55:57.488983Z"
+    }
+  }
+}

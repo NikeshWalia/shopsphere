@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 4.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:43 GMT",
+    "server": "uvicorn",
+    "content-length": "215",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.97",
+    "x-request-id": "0888373cdf484b1b8261478259a2a8c7"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "String should have at least 2 characters",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.card_holder",
+          "message": "String should have at least 2 characters",
+          "type": "string_too_short"
+        }
+      ]
+    }
+  }
+}

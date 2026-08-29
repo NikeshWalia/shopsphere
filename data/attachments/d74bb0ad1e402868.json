@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:53 GMT",
+    "server": "uvicorn",
+    "content-length": "543",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.87",
+    "x-request-id": "fb476fb6400042ee81cedac9b94363a9"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 177,
+      "email": "user_c0c80ce1701a@shopsphere.test",
+      "full_name": "Lindsay Young",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:55:54.279815Z"
+    }
+  }
+}

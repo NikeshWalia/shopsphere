@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:38 GMT",
+    "server": "uvicorn",
+    "content-length": "240",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "0.97",
+    "x-request-id": "a6d281c681f741d2b9600fa663e856ce"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, min_price must be less than or equal to max_price",
+    "details": {
+      "fields": [
+        {
+          "field": "query",
+          "message": "Value error, min_price must be less than or equal to max_price",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

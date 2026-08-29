@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 4.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:43 GMT",
+    "server": "uvicorn",
+    "content-length": "207",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.07",
+    "x-request-id": "f7db6c43b75446d69d544284b9af0dd1"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "String should have at least 3 characters",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.cvv",
+          "message": "String should have at least 3 characters",
+          "type": "string_too_short"
+        }
+      ]
+    }
+  }
+}

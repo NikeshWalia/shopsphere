@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 7.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:50 GMT",
+    "server": "uvicorn",
+    "content-length": "546",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "6.69",
+    "x-request-id": "9b07c8a613124b09a6c2fcfcdbf3825f"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 145,
+      "email": "user_5b2fb5ae0e33@shopsphere.test",
+      "full_name": "Elizabeth Kaiser",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:55:51.148821Z"
+    }
+  }
+}

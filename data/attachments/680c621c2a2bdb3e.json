@@ -1,0 +1,31 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 9.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:56:00 GMT",
+    "server": "uvicorn",
+    "content-length": "195",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.76",
+    "x-request-id": "f38e259b07b14b8c888f9781acbcec38"
+  },
+  "body": {
+    "id": 96,
+    "label": "Home",
+    "full_name": "Race Participant",
+    "line1": "1 Contention Street",
+    "line2": null,
+    "city": "Austin",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US",
+    "phone": null,
+    "is_default": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:37 GMT",
+    "server": "uvicorn",
+    "content-length": "444",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.68",
+    "x-request-id": "6548b272e7bc48bd9b4b0318999de29c"
+  },
+  "body": {
+    "id": 90,
+    "sku": "TST-3CA70866CF",
+    "name": "Test Product ff71ee",
+    "price": 30.0,
+    "brand": "TestBrand",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": false,
+    "in_stock": true,
+    "stock_quantity": 5,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T04:55:37.924799Z",
+    "updated_at": "2026-08-29T04:55:37.949582Z"
+  }
+}

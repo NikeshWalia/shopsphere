@@ -1,0 +1,24 @@
+{
+  "status_code": 401,
+  "elapsed_ms": 4.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:35 GMT",
+    "server": "uvicorn",
+    "www-authenticate": "Bearer",
+    "content-length": "89",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.83",
+    "x-request-id": "210d30d8ea1d4e75a3981ce9d2fa0b71"
+  },
+  "body": {
+    "error": "AUTHENTICATION_FAILED",
+    "message": "Current password is incorrect.",
+    "details": {}
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 8.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:57 GMT",
+    "server": "uvicorn",
+    "content-length": "538",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.39",
+    "x-request-id": "705824d0959c4cacb880545b80c4536c"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 257,
+      "email": "user_38f12d28392e@shopsphere.test",
+      "full_name": "Mia Cole",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:55:58.252559Z"
+    }
+  }
+}

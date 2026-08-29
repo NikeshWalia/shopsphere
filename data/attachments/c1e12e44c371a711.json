@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 1.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:34 GMT",
+    "server": "uvicorn",
+    "content-length": "186",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.13",
+    "x-request-id": "40a77887da2e4209818a7c74bf64fc4d"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, Email must be a string",
+    "details": {
+      "fields": [
+        {
+          "field": "email",
+          "message": "Value error, Email must be a string",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

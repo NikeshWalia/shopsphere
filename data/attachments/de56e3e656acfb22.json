@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 4.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:55:55 GMT",
+    "server": "uvicorn",
+    "content-length": "139",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.99",
+    "x-request-id": "f5775b1c892c4403a5aacf097b40aae1"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Field required",
+    "details": {
+      "fields": [
+        {
+          "field": "body",
+          "message": "Field required",
+          "type": "missing"
+        }
+      ]
+    }
+  }
+}
