@@ -1,0 +1,17 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 1.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:57 GMT",
+    "server": "uvicorn",
+    "content-length": "898",
+    "content-type": "text/html; charset=utf-8",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "x-response-time-ms": "0.41",
+    "x-request-id": "d735d2c6b01f4314bc2275894e49d5c5"
+  },
+  "body": null
+}

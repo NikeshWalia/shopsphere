@@ -1,0 +1,60 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 17.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:30 GMT",
+    "server": "uvicorn",
+    "content-length": "617",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "15.86",
+    "x-request-id": "13274fa550c94e71a410ee16850f06e3"
+  },
+  "body": {
+    "id": 3,
+    "items": [
+      {
+        "product_id": 65,
+        "sku": "TST-19543B108B",
+        "name": "Test Product c9ea6a",
+        "image_url": null,
+        "unit_price": 19.99,
+        "quantity": 3,
+        "line_total": 59.97,
+        "available_stock": 10,
+        "exceeds_stock": false,
+        "is_active": true
+      },
+      {
+        "product_id": 66,
+        "sku": "TST-37C5D9794A",
+        "name": "Test Product e1f971",
+        "image_url": null,
+        "unit_price": 7.45,
+        "quantity": 2,
+        "line_total": 14.9,
+        "available_stock": 10,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 5,
+    "distinct_item_count": 2,
+    "totals": {
+      "subtotal": 74.87,
+      "discount_total": 0.0,
+      "tax": 5.99,
+      "shipping_fee": 9.99,
+      "total": 90.85,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

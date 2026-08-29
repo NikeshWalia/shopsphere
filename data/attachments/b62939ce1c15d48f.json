@@ -1,0 +1,31 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 15.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:47 GMT",
+    "server": "uvicorn",
+    "content-length": "199",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "13.86",
+    "x-request-id": "acb4b60bac444a94909562a581055fef"
+  },
+  "body": {
+    "id": 57,
+    "label": "Home",
+    "full_name": "Test Customer",
+    "line1": "999 Moved Lane",
+    "line2": null,
+    "city": "Relocated",
+    "state": "TX",
+    "postal_code": "99999",
+    "country": "US",
+    "phone": "+1-555-0123",
+    "is_default": true
+  }
+}

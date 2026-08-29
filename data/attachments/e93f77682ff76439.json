@@ -1,0 +1,29 @@
+{
+  "status_code": 402,
+  "elapsed_ms": 48.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:39 GMT",
+    "server": "uvicorn",
+    "content-length": "211",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "46.66",
+    "x-request-id": "835a3677e789495ab289ec288e42ef7c"
+  },
+  "body": {
+    "error": "PAYMENT_DECLINED",
+    "message": "Insufficient funds.",
+    "details": {
+      "order_id": 20,
+      "order_number": "SS-20260829-66T5H7",
+      "order_status": "cancelled",
+      "payment_status": "failed",
+      "failure_code": "insufficient_funds"
+    }
+  }
+}

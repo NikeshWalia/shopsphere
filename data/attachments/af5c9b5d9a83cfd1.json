@@ -1,0 +1,35 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 8.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:30 GMT",
+    "server": "uvicorn",
+    "content-length": "222",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "6.49",
+    "x-request-id": "99c44fad27e0437081932a0e82269430"
+  },
+  "body": {
+    "id": null,
+    "items": [],
+    "item_count": 0,
+    "distinct_item_count": 0,
+    "totals": {
+      "subtotal": 0.0,
+      "discount_total": 0.0,
+      "tax": 0.0,
+      "shipping_fee": 0.0,
+      "total": 0.0,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": false
+  }
+}

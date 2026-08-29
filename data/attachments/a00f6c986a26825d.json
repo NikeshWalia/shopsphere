@@ -1,0 +1,19 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 1.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:58:00 GMT",
+    "server": "uvicorn",
+    "content-length": "136",
+    "content-type": "application/json",
+    "x-response-time-ms": "0.25",
+    "x-request-id": "2724acc014274884a1586adc0da375e5"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "The request contains a NUL byte, which is not valid text.",
+    "details": {
+      "location": "query string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 24.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:58:05 GMT",
+    "server": "uvicorn",
+    "content-length": "157",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "22.97",
+    "x-request-id": "c55e65bfdb1f4aca85869c8fb80db79a"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "Only 7 units of 'Test Fixture Product' are available.",
+    "details": {
+      "product_id": 231,
+      "requested": 8,
+      "available": 7
+    }
+  }
+}

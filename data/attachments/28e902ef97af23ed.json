@@ -1,0 +1,31 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:55 GMT",
+    "server": "uvicorn",
+    "content-length": "191",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.71",
+    "x-request-id": "b4b3b52f593449c091c86f66f158007f"
+  },
+  "body": {
+    "id": 68,
+    "label": "Private",
+    "full_name": "Ada Lovelace",
+    "line1": "12 Secret Way",
+    "line2": null,
+    "city": "Cambridge",
+    "state": "MA",
+    "postal_code": "02139",
+    "country": "US",
+    "phone": null,
+    "is_default": true
+  }
+}

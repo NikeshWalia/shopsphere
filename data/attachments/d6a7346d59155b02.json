@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:31 GMT",
+    "server": "uvicorn",
+    "content-length": "541",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.9",
+    "x-request-id": "02ea4e627fc54d4aada22cce0d9a3328"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 40,
+      "email": "user_b2c251cc867a@shopsphere.test",
+      "full_name": "Chelsey Walker",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T05:57:32.569780Z"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 10.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:42 GMT",
+    "server": "uvicorn",
+    "content-length": "67",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "9.1",
+    "x-request-id": "b649310dc0dc4ac9a706f1a63b6117da"
+  },
+  "body": {
+    "error": "EMPTY_CART",
+    "message": "Your cart is empty.",
+    "details": {}
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 6.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:40 GMT",
+    "server": "uvicorn",
+    "content-length": "228",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.61",
+    "x-request-id": "0d9a40869de6469c8326bfd9d1b19b90"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, Card number must contain digits only",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.card_number",
+          "message": "Value error, Card number must contain digits only",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

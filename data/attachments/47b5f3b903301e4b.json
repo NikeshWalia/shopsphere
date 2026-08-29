@@ -1,0 +1,33 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 12.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:36 GMT",
+    "server": "uvicorn",
+    "content-length": "234",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "10.39",
+    "x-request-id": "3a2d727eb99b420ba080b28e98a24dd2"
+  },
+  "body": {
+    "subtotal": 50.0,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.99,
+    "currency": "USD",
+    "promo_code": null,
+    "promo_description": null,
+    "item_count": 2,
+    "issues": [
+      "Promotion code EXPIRED20 has expired."
+    ],
+    "is_checkout_ready": false
+  }
+}

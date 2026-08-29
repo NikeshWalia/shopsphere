@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 5.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:30 GMT",
+    "server": "uvicorn",
+    "content-length": "253",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.89",
+    "x-request-id": "38cef6d07fe04d1d80b64d6bd307135b"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, New password must be different from the current password",
+    "details": {
+      "fields": [
+        {
+          "field": "body",
+          "message": "Value error, New password must be different from the current password",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

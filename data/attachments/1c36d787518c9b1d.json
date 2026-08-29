@@ -1,0 +1,25 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 140.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:44 GMT",
+    "server": "uvicorn",
+    "content-length": "125",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "139.06",
+    "x-request-id": "fbf6335d2bf74c628e3ab6116918b43d"
+  },
+  "body": {
+    "product_id": 70,
+    "sku": "TST-2E119FE5F6",
+    "name": "Test Product fe8334",
+    "quantity": 1,
+    "updated_at": "2026-08-29T05:57:45.445796Z"
+  }
+}

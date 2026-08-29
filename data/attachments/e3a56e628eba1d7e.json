@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 7.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:35 GMT",
+    "server": "uvicorn",
+    "content-length": "431",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.73",
+    "x-request-id": "b2f1e4dea23c4ef28c4d1a4f3eea96f5"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 47,
+        "sku": "HOM-5008",
+        "name": "Hearthwell Cast Iron Skillet 12in",
+        "price": 59.0,
+        "brand": "Hearthwell",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/hom-5008/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 64,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      }
+    ],
+    "total": 5,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 5,
+    "has_next": true,
+    "has_previous": false
+  }
+}

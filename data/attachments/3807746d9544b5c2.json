@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:57:34 GMT",
+    "server": "uvicorn",
+    "content-length": "452",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.57",
+    "x-request-id": "6cfa5fe1e1cd4555bc215ce05137a130"
+  },
+  "body": {
+    "id": 97,
+    "sku": "TST-5B5E3A6AEC",
+    "name": "Newer Product",
+    "price": 49.99,
+    "brand": "NewestBranda28c1f56e3",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": false,
+    "in_stock": true,
+    "stock_quantity": 25,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T05:57:35.320747Z",
+    "updated_at": "2026-08-29T05:57:35.352607Z"
+  }
+}
