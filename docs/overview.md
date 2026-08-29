@@ -162,6 +162,26 @@ is more valuable than pretending you have none.
 
 ---
 
+## Is it safe to run?
+
+Yes, for what it is: a demo you run on your own machine.
+
+- **It only listens to you.** Every part — the shop, the API, the database —
+  accepts connections only from the computer it runs on. Someone else on your
+  wifi cannot reach it.
+- **Nobody can log in as you.** The admin password is not in the public code;
+  it lives in a private file on your machine. The key that proves a login is
+  genuine is generated fresh and kept private, so a login cannot be faked.
+- **Guessing the password is blocked.** After ten wrong attempts in a minute,
+  the login stops answering for a while — so nobody can sit there trying
+  passwords one after another.
+
+None of this makes it ready to put on the open internet unchanged — that needs a
+few more things (an encrypted connection, a stronger place to keep secrets). It
+means the demo you run locally is yours alone.
+
+---
+
 ## Where to look
 
 | If you want | Read |

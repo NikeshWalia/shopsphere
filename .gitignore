@@ -54,3 +54,7 @@ npm-debug.log*
 *.swp
 .DS_Store
 Thumbs.db
+
+# Local-only Compose tweaks (e.g. IPv6 loopback publish for fast localhost
+# on WSL2). Never committed - CI and other machines use the portable base file.
+docker-compose.override.yml

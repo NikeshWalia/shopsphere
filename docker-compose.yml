@@ -29,7 +29,10 @@ services:
       # and in CI regardless of the host's locale.
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      # Bound to 127.0.0.1 by default so the database is reachable only from
+      # this machine, never from the local network. Set BIND_ADDR=0.0.0.0 to
+      # deliberately expose it (you almost never want to for Postgres).
+      - "${BIND_ADDR:-127.0.0.1}:${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
@@ -55,7 +58,10 @@ services:
       PAYMENT_MOCK_TIMEOUT_DELAY_SECONDS: ${PAYMENT_MOCK_TIMEOUT_DELAY_SECONDS:-30}
       PAYMENT_MOCK_LATENCY_MS: ${PAYMENT_MOCK_LATENCY_MS:-0}
     ports:
-      - "${PAYMENT_MOCK_PORT:-9100}:9100"
+      # The backend reaches this by service name over the internal network;
+      # the host publish exists only for the readiness probe and direct
+      # failure-simulation testing, so it too is localhost-only.
+      - "${BIND_ADDR:-127.0.0.1}:${PAYMENT_MOCK_PORT:-9100}:9100"
     restart: unless-stopped
 
   backend:
@@ -82,6 +88,9 @@ services:
       SECRET_KEY: ${SECRET_KEY:-dev-only-insecure-secret-change-me}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-60}
       BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-12}
+      RATE_LIMIT_ENABLED: ${RATE_LIMIT_ENABLED:-true}
+      RATE_LIMIT_AUTH_MAX_ATTEMPTS: ${RATE_LIMIT_AUTH_MAX_ATTEMPTS:-10}
+      RATE_LIMIT_AUTH_WINDOW_SECONDS: ${RATE_LIMIT_AUTH_WINDOW_SECONDS:-60}
       TAX_RATE: ${TAX_RATE:-0.08}
       SHIPPING_FLAT_FEE: ${SHIPPING_FLAT_FEE:-9.99}
       FREE_SHIPPING_THRESHOLD: ${FREE_SHIPPING_THRESHOLD:-100.00}
@@ -92,7 +101,7 @@ services:
       SEED_CUSTOMER_PASSWORD: ${SEED_CUSTOMER_PASSWORD:-ChangeMeCustomer1}
       SEED_ON_START: ${SEED_ON_START:-true}
     ports:
-      - "${BACKEND_PORT:-8000}:8000"
+      - "${BIND_ADDR:-127.0.0.1}:${BACKEND_PORT:-8000}:8000"
     restart: unless-stopped
 
   frontend:
@@ -104,7 +113,7 @@ services:
       backend:
         condition: service_healthy
     ports:
-      - "${FRONTEND_PORT:-3000}:80"
+      - "${BIND_ADDR:-127.0.0.1}:${FRONTEND_PORT:-3000}:80"
     restart: unless-stopped
 
 volumes:

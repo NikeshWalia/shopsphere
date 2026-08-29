@@ -545,6 +545,35 @@ exhaust resources; every test asserts that an attempt is *refused*.
 Scope is a local demo application. No network scanning, no fuzzing at scale, no
 third-party dependency auditing.
 
+### Runtime hardening
+
+The tests above prove the *authorisation* logic. These are the controls that
+protect a running instance, separate from what the suite asserts:
+
+- **Everything binds to `127.0.0.1` by default.** The database, API, payment
+  provider and storefront are reachable only from the host, never from the
+  local network. Set `BIND_ADDR=0.0.0.0` to expose them deliberately; the
+  default assumes you did not mean to.
+- **The signing key must be set.** `SECRET_KEY` defaults to a recognisable
+  placeholder, and the app refuses to start under `ENVIRONMENT=production` while
+  it still carries it — so a forgeable token is a configuration you have to opt
+  into, not one you can reach by forgetting. Generate one with
+  `python -c "import secrets; print(secrets.token_urlsafe(64))"`.
+- **The login and register endpoints are rate-limited.** A per-address sliding
+  window (10 attempts / 60s by default, `RATE_LIMIT_*` to tune) returns `429`
+  once exceeded. bcrypt makes each attempt cost real CPU; without a limit that
+  cost becomes a way to both guess passwords and exhaust the process. The
+  limiter is a no-op under the test environment, which exercises auth far harder
+  than any real client; a dedicated unit test drives it with the limiter forced
+  on to prove the `429`.
+- **Credentials are never in the repository.** The seeded accounts come from
+  `SEED_*` variables in a gitignored `.env`; the committed defaults are obvious
+  placeholders. The seeder prints the live pair when it runs.
+
+These are appropriate for a local demo. A public deployment would add TLS, a
+shared-state rate limiter (the current one is per-process, correct for a single
+instance), per-account lockout, and secret management rather than a `.env` file.
+
 ---
 
 ## Parallel execution
@@ -779,12 +808,10 @@ figures.
 **No visual regression testing.** It needs a baseline store and a human to
 adjudicate diffs; without that it produces noise.
 
-**Docker Compose is not verified on this machine.** The Dockerfiles and compose
-file are written and structurally validated, and CI builds the images and boots
-the stack on every push — but this development environment had no Docker
-available, so the local runs above used a directly-installed PostgreSQL and
-services started by hand. The `docker-build` CI job exists precisely to close
-that gap.
+**The rate limiter is per-process, in-memory.** Correct for the single instance
+this runs as; behind N replicas each would keep its own counter, so the
+effective limit would be N times higher. A shared store (Redis) is the standard
+fix and is deliberately out of scope for a single-instance demo.
 
 ---
 

@@ -29,6 +29,7 @@ from app.core.errors import AppError, InternalError, NotFoundError
 from app.core.logging import configure_logging, get_logger
 from app.core.middleware import (
     AccessLogMiddleware,
+    AuthRateLimitMiddleware,
     RejectNullBytesMiddleware,
     RequestContextMiddleware,
     SecurityHeadersMiddleware,
@@ -106,6 +107,10 @@ def create_app() -> FastAPI:
     # one added is the outermost: request context must wrap everything, since
     # the access log and error handlers rely on the correlation id it sets.
     app.add_middleware(SecurityHeadersMiddleware)
+    # Throttles the credential-guessing routes. Sits inside the access log, so a
+    # throttled attempt is still recorded, and before routing, so a 429 never
+    # reaches the login handler or its bcrypt cost. A no-op under the test env.
+    app.add_middleware(AuthRateLimitMiddleware)
     # Runs inside the access log so a rejected request is still logged, but
     # before routing so no endpoint ever sees a NUL byte.
     app.add_middleware(RejectNullBytesMiddleware)

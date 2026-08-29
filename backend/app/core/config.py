@@ -57,6 +57,17 @@ class Settings(BaseSettings):
     bcrypt_rounds: int = Field(default=12, ge=4, le=16)
     password_min_length: int = 8
 
+    # -- Rate limiting -----------------------------------------------------
+    # Brute-force protection for the credential-checking endpoints. Enabled by
+    # default; the middleware additionally makes itself a no-op under the test
+    # suites (see ``is_testing``), which exercise auth far harder than any real
+    # client and would otherwise throttle themselves. So this is on in local and
+    # production runtime - where a burst of login attempts is the thing worth
+    # stopping - and off in test/ci.
+    rate_limit_enabled: bool = True
+    rate_limit_auth_max_attempts: int = Field(default=10, ge=1)
+    rate_limit_auth_window_seconds: int = Field(default=60, ge=1)
+
     # -- CORS --------------------------------------------------------------
     cors_origins: str = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173"
 

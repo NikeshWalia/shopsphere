@@ -4,13 +4,15 @@ from __future__ import annotations
 
 import time
 import uuid
+from collections import defaultdict, deque
 from collections.abc import Awaitable, Callable
 
 from fastapi import Request, Response
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.types import ASGIApp
 
-from app.core.config import settings
+from app.core.config import get_settings, settings
 from app.core.logging import get_logger, request_id_ctx, user_id_ctx
 
 logger = get_logger("shopsphere.access")
@@ -103,6 +105,85 @@ class RejectNullBytesMiddleware(BaseHTTPMiddleware):
                 "details": {"location": location},
             },
         )
+
+
+class AuthRateLimitMiddleware(BaseHTTPMiddleware):
+    """Throttle repeated calls to the credential-checking endpoints.
+
+    Scoped deliberately narrowly: it guards only ``POST /auth/login`` and
+    ``POST /auth/register``, the two routes where an attacker can guess. Every
+    other request - browsing the catalogue, viewing an order - passes straight
+    through, so normal use is never throttled.
+
+    The window is per client address. bcrypt makes each login attempt cost real
+    CPU by design; without a limit that strength inverts into a cheap way to peg
+    the process, so the limit is what keeps a burst of guesses from either
+    succeeding or exhausting the server.
+
+    Settings read fresh per request via ``get_settings()`` so a test can enable
+    the limiter on an isolated app instance. Off whenever the process is running
+    a test suite (``is_testing``): those suites hammer auth far harder than any
+    real client and would otherwise throttle themselves.
+    """
+
+    GUARDED_PATHS = frozenset({"/api/v1/auth/login", "/api/v1/auth/register"})
+    # A ceiling on how many distinct client keys we track, so a flood of spoofed
+    # source addresses cannot grow the map without bound. Evicted oldest-first.
+    MAX_TRACKED_CLIENTS = 10_000
+
+    def __init__(self, app: ASGIApp) -> None:
+        super().__init__(app)
+        self._hits: dict[str, deque[float]] = defaultdict(deque)
+
+    async def dispatch(self, request: Request, call_next: RequestHandler) -> Response:
+        config = get_settings()
+        if (
+            not config.rate_limit_enabled
+            or config.is_testing
+            or request.method != "POST"
+            or request.url.path not in self.GUARDED_PATHS
+        ):
+            return await call_next(request)
+
+        client = request.client.host if request.client else "unknown"
+        window = float(config.rate_limit_auth_window_seconds)
+        limit = config.rate_limit_auth_max_attempts
+        now = time.monotonic()
+
+        hits = self._hits[client]
+        while hits and now - hits[0] > window:
+            hits.popleft()
+
+        if len(hits) >= limit:
+            retry_after = max(1, int(window - (now - hits[0])))
+            logger.warning(
+                "Rate-limited an auth request",
+                extra={"client": client, "path": request.url.path, "retry_after": retry_after},
+            )
+            return JSONResponse(
+                status_code=429,
+                content={
+                    "error": "RATE_LIMITED",
+                    "message": ("Too many attempts. Wait a moment before trying again."),
+                    "details": {"retry_after_seconds": retry_after},
+                },
+                headers={"Retry-After": str(retry_after)},
+            )
+
+        hits.append(now)
+        if len(self._hits) > self.MAX_TRACKED_CLIENTS:
+            self._evict_stale(now, window)
+        return await call_next(request)
+
+    def _evict_stale(self, now: float, window: float) -> None:
+        """Drop client entries whose window has fully elapsed.
+
+        Called only when the map exceeds its ceiling, so the common path stays
+        allocation-free.
+        """
+        stale = [key for key, hits in self._hits.items() if not hits or now - hits[-1] > window]
+        for key in stale:
+            del self._hits[key]
 
 
 class AccessLogMiddleware(BaseHTTPMiddleware):
