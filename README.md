@@ -29,6 +29,9 @@ defects in the application — including an oversell race that let two customers
 buy the same unit, and a single character that could 500 any endpoint. Each is
 documented below with the fix.
 
+> **New to the project?** [`docs/overview.md`](docs/overview.md) explains all of
+> it in plain English, without assuming you know the tools.
+
 ---
 
 ## Contents
