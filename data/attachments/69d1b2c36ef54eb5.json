@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?brand=NewestBrand18fe3c1766&sort=newest&page_size=10",
+  "params": {
+    "brand": "NewestBrand18fe3c1766",
+    "sort": "newest",
+    "page_size": 10
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

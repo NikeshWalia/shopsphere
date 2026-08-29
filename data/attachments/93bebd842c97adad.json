@@ -1,0 +1,27 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 3.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:19 GMT",
+    "server": "uvicorn",
+    "content-length": "176",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.77",
+    "x-request-id": "f20088a3f091478ab398a7d2899da27e"
+  },
+  "body": {
+    "id": 21,
+    "email": "user_cb06cc89c77e@shopsphere.test",
+    "full_name": "Ada King",
+    "phone": "+1-555-0199",
+    "role": "customer",
+    "is_active": true,
+    "created_at": "2026-08-29T05:22:19.679324Z"
+  }
+}

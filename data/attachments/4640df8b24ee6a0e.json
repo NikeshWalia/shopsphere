@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 3.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:35 GMT",
+    "server": "uvicorn",
+    "content-length": "529",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.91",
+    "x-request-id": "e6772578c9944f8db9ff08b543feb6e8"
+  },
+  "body": {
+    "id": 38,
+    "sku": "ACC-4011",
+    "name": "Nimbus Screen Cleaning Kit",
+    "price": 14.99,
+    "brand": "Nimbus",
+    "rating": "3.6",
+    "image_url": "https://picsum.photos/seed/acc-4011/600/600",
+    "is_active": true,
+    "in_stock": true,
+    "stock_quantity": 240,
+    "category": {
+      "id": 4,
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Cables, chargers, bags, docks and input devices."
+    },
+    "description": "Alcohol-free spray with two microfibre cloths, safe for coated laptop displays.",
+    "created_at": "2026-08-29T05:22:14.117996Z",
+    "updated_at": "2026-08-29T05:22:14.117996Z"
+  }
+}

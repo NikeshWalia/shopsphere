@@ -1,0 +1,25 @@
+{
+  "status_code": 404,
+  "elapsed_ms": 4.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:41 GMT",
+    "server": "uvicorn",
+    "content-length": "88",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.43",
+    "x-request-id": "b8f86a95902842db81ae7fbd0faa2e43"
+  },
+  "body": {
+    "error": "ADDRESS_NOT_FOUND",
+    "message": "Address not found.",
+    "details": {
+      "address_id": 70
+    }
+  }
+}

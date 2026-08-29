@@ -1,0 +1,72 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 8.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:49 GMT",
+    "server": "uvicorn",
+    "content-length": "929",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.06",
+    "x-request-id": "566c603ea1a743bda887e46165db1c6a"
+  },
+  "body": {
+    "id": 76,
+    "order_number": "SS-20260829-QB2WMN",
+    "user_id": 290,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 66.0,
+    "discount_total": 0.0,
+    "tax": 5.28,
+    "shipping_fee": 9.99,
+    "total": 81.27,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 74,
+        "product_id": 228,
+        "product_name": "Test Fixture Product",
+        "sku": "TST-07976F756E",
+        "unit_price": 33.0,
+        "quantity": 2,
+        "line_total": 66.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 75,
+        "provider_reference": "txn_44743f0fd9744cbea008",
+        "amount": 81.27,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T05:22:49.557993Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T05:22:49.546597Z",
+    "updated_at": "2026-08-29T05:22:49.557993Z"
+  }
+}

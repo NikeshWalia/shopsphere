@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 43.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:49 GMT",
+    "server": "uvicorn",
+    "content-length": "918",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "42.45",
+    "x-request-id": "b56069cd79c74e219edd9bd23f1d9f7f"
+  },
+  "body": {
+    "id": 75,
+    "order_number": "SS-20260829-X3JFZ4",
+    "user_id": 289,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 50.0,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.99,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 73,
+        "product_id": 226,
+        "product_name": "Cheap Item",
+        "sku": "TST-FE4ADD7786",
+        "unit_price": 10.0,
+        "quantity": 5,
+        "line_total": 50.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 74,
+        "provider_reference": "txn_c6190d55ac754b1a8b0d",
+        "amount": 63.99,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T05:22:49.423430Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T05:22:49.412210Z",
+    "updated_at": "2026-08-29T05:22:49.423430Z"
+  }
+}

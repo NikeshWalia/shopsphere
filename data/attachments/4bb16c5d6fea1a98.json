@@ -1,0 +1,388 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:22 GMT",
+    "server": "uvicorn",
+    "content-length": "6612",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.85",
+    "x-request-id": "461bcaff4816486db5a74a42914b2e61"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 62,
+        "sku": "BOK-7007",
+        "name": "Legacy Systems Field Guide",
+        "price": 44.0,
+        "brand": "Quillstone Press",
+        "rating": "3.8",
+        "image_url": "https://picsum.photos/seed/bok-7007/600/600",
+        "is_active": true,
+        "in_stock": false,
+        "stock_quantity": 0,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 61,
+        "sku": "BOK-7006",
+        "name": "Salt, Smoke and Time",
+        "price": 32.0,
+        "brand": "Beacon House",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/bok-7006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 61,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 60,
+        "sku": "BOK-7005",
+        "name": "The Quiet Observatory",
+        "price": 18.99,
+        "brand": "Beacon House",
+        "rating": "4.2",
+        "image_url": "https://picsum.photos/seed/bok-7005/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 140,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 59,
+        "sku": "BOK-7004",
+        "name": "Continuous Delivery in Practice",
+        "price": 47.5,
+        "brand": "Beacon House",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/bok-7004/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 33,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 58,
+        "sku": "BOK-7003",
+        "name": "Python for Working Engineers",
+        "price": 39.99,
+        "brand": "Quillstone Press",
+        "rating": "4.4",
+        "image_url": "https://picsum.photos/seed/bok-7003/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 92,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 57,
+        "sku": "BOK-7002",
+        "name": "The Pragmatic Tester",
+        "price": 42.0,
+        "brand": "Quillstone Press",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/bok-7002/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 58,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 56,
+        "sku": "BOK-7001",
+        "name": "Designing Data-Heavy Systems",
+        "price": 54.99,
+        "brand": "Quillstone Press",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/bok-7001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 46,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 55,
+        "sku": "CLO-6007",
+        "name": "Verdant Wool Beanie",
+        "price": 24.0,
+        "brand": "Verdant",
+        "rating": "3.9",
+        "image_url": "https://picsum.photos/seed/clo-6007/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 175,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 54,
+        "sku": "CLO-6006",
+        "name": "Northgate Trail Runners",
+        "price": 139.0,
+        "brand": "Northgate",
+        "rating": "4.3",
+        "image_url": "https://picsum.photos/seed/clo-6006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 36,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 53,
+        "sku": "CLO-6005",
+        "name": "Verdant Chino Trousers",
+        "price": 69.0,
+        "brand": "Verdant",
+        "rating": "4.0",
+        "image_url": "https://picsum.photos/seed/clo-6005/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 87,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 52,
+        "sku": "CLO-6004",
+        "name": "Verdant Organic Tee",
+        "price": 29.0,
+        "brand": "Verdant",
+        "rating": "4.1",
+        "image_url": "https://picsum.photos/seed/clo-6004/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 260,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 51,
+        "sku": "CLO-6003",
+        "name": "Northgate Merino Base Layer",
+        "price": 79.0,
+        "brand": "Northgate",
+        "rating": "4.4",
+        "image_url": "https://picsum.photos/seed/clo-6003/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 110,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 50,
+        "sku": "CLO-6002",
+        "name": "Northgate Down Jacket",
+        "price": 249.0,
+        "brand": "Northgate",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/clo-6002/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 49,
+        "sku": "CLO-6001",
+        "name": "Northgate Rain Shell",
+        "price": 189.0,
+        "brand": "Northgate",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/clo-6001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 43,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 48,
+        "sku": "HOM-5009",
+        "name": "Verdant Weighted Blanket 7kg",
+        "price": 99.0,
+        "brand": "Verdant",
+        "rating": "4.0",
+        "image_url": "https://picsum.photos/seed/hom-5009/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 38,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 47,
+        "sku": "HOM-5008",
+        "name": "Hearthwell Cast Iron Skillet 12in",
+        "price": 59.0,
+        "brand": "Hearthwell",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/hom-5008/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 64,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 46,
+        "sku": "HOM-5007",
+        "name": "Verdant Cordless Vacuum",
+        "price": 399.0,
+        "brand": "Verdant",
+        "rating": "4.1",
+        "image_url": "https://picsum.photos/seed/hom-5007/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 18,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 45,
+        "sku": "HOM-5006",
+        "name": "Verdant Air Purifier",
+        "price": 249.0,
+        "brand": "Verdant",
+        "rating": "4.4",
+        "image_url": "https://picsum.photos/seed/hom-5006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 22,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 44,
+        "sku": "HOM-5005",
+        "name": "Verdant Desk Lamp",
+        "price": 89.0,
+        "brand": "Verdant",
+        "rating": "4.2",
+        "image_url": "https://picsum.photos/seed/hom-5005/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 71,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 43,
+        "sku": "HOM-5004",
+        "name": "Hearthwell Stand Mixer",
+        "price": 379.0,
+        "brand": "Hearthwell",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/hom-5004/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 14,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      }
+    ],
+    "total": 62,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 4,
+    "has_next": true,
+    "has_previous": false
+  }
+}

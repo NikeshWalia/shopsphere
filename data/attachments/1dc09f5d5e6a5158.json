@@ -1,0 +1,48 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 14.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:49 GMT",
+    "server": "uvicorn",
+    "content-length": "411",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "12.98",
+    "x-request-id": "77d266e9b73e4d1a8877c4a921bd7350"
+  },
+  "body": {
+    "id": 128,
+    "items": [
+      {
+        "product_id": 226,
+        "sku": "TST-FE4ADD7786",
+        "name": "Cheap Item",
+        "image_url": null,
+        "unit_price": 10.0,
+        "quantity": 5,
+        "line_total": 50.0,
+        "available_stock": 20,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 5,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 50.0,
+      "discount_total": 0.0,
+      "tax": 4.0,
+      "shipping_fee": 9.99,
+      "total": 63.99,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

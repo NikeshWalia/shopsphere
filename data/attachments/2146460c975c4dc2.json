@@ -1,0 +1,5446 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 2.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:42 GMT",
+    "server": "uvicorn",
+    "content-length": "77069",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "x-response-time-ms": "1.23",
+    "x-request-id": "feb6d453741a4810b76eb4b8210cb0ab"
+  },
+  "body": {
+    "openapi": "3.1.0",
+    "info": {
+      "title": "ShopSphere API",
+      "description": "\nREST API for **ShopSphere**, a deliberately realistic e-commerce application built as the\nsystem under test for a quality-engineering platform.\n\n### Conventions\n\n* **Errors** always use one envelope: `{\"error\": \"CODE\", \"message\": \"...\", \"details\": {...}}`.\n  `error` is a stable machine-readable code; assert on it rather than on the message text.\n* **Money** is always a JSON number with two decimal places, never a string.\n* **Pagination** wraps collections in `{items, total, page, page_size, total_pages, has_next,\n  has_previous}`.\n* **Authentication** is a bearer JWT: `Authorization: Bearer <token>` from `/auth/login`.\n\n### Rules the API enforces server-side\n\n1. A customer can never buy more units than are in stock.\n2. A customer can never read another customer's orders or addresses.\n3. Customers cannot reach `/admin/*`.\n4. The client never supplies a price - all totals are computed from the catalogue.\n5. A failed payment never produces a paid order.\n6. Repeating a checkout with the same `Idempotency-Key` returns the original order.\n",
+      "contact": {
+        "name": "ShopSphere Quality Engineering"
+      },
+      "license": {
+        "name": "MIT"
+      },
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/health": {
+        "get": {
+          "tags": [
+            "Health"
+          ],
+          "summary": "Liveness probe",
+          "description": "Returns 200 as soon as the process can serve HTTP. Checks no dependencies.",
+          "operationId": "health_health_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HealthResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/health/ready": {
+        "get": {
+          "tags": [
+            "Health"
+          ],
+          "summary": "Readiness probe",
+          "description": "Verifies the dependencies needed to serve real traffic. Returns 503 while any of them is unavailable. Docker Compose and the CI pipeline wait on this endpoint instead of sleeping for a fixed period.",
+          "operationId": "readiness_health_ready_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ReadinessResponse"
+                  }
+                }
+              }
+            },
+            "503": {
+              "description": "A dependency is unavailable",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ReadinessResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/auth/register": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Register a customer account",
+          "description": "Creates a customer account and returns an access token so the client does not have to make a second login call. New accounts always receive the `customer` role - the admin role can only be granted by the seeder or an existing admin.",
+          "operationId": "register_api_v1_auth_register_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TokenResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/auth/login": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Exchange credentials for an access token",
+          "description": "An unknown email and a wrong password return the identical `INVALID_CREDENTIALS` response, so this endpoint cannot be used to discover which addresses are registered.",
+          "operationId": "login_api_v1_auth_login_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TokenResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/auth/logout": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Log out",
+          "description": "Access tokens are stateless and self-contained, so there is no server-side session to destroy: the client discards the token. The endpoint exists so clients have a single place to signal logout, and so the event is auditable. A token that has already been issued stays valid until it expires - see 'Known limitations'.",
+          "operationId": "logout_api_v1_auth_logout_post",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MessageResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/auth/me": {
+        "get": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Current user",
+          "operationId": "me_api_v1_auth_me_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        },
+        "patch": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Update the current user's profile",
+          "operationId": "update_me_api_v1_auth_me_patch",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateProfileRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/auth/me/password": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Change password",
+          "description": "Requires the current password; the new password must satisfy the password policy.",
+          "operationId": "change_password_api_v1_auth_me_password_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangePasswordRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MessageResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/products": {
+        "get": {
+          "tags": [
+            "Catalogue"
+          ],
+          "summary": "Search, filter and sort products",
+          "description": "All filters combine with AND. Search is case-insensitive and matches partial words across name, description, brand and SKU.\n\nSorting is restricted to a fixed set of keys and every sort carries a unique tiebreaker, so pagination is stable: page 2 never repeats or skips a row that page 1 already returned.\n\n`include_inactive` is honoured only for administrators; other callers always receive active products.",
+          "operationId": "list_products_api_v1_products_get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "q",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Free-text search term",
+                "title": "Q"
+              },
+              "description": "Free-text search term"
+            },
+            {
+              "name": "category_id",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Category Id"
+              }
+            },
+            {
+              "name": "category",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Category slug or name",
+                "title": "Category"
+              },
+              "description": "Category slug or name"
+            },
+            {
+              "name": "brand",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Brand"
+              }
+            },
+            {
+              "name": "min_price",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "maximum": 1000000.0,
+                    "minimum": 0.0
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Min Price"
+              }
+            },
+            {
+              "name": "max_price",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "maximum": 1000000.0,
+                    "minimum": 0.0
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Max Price"
+              }
+            },
+            {
+              "name": "min_rating",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "maximum": 5.0,
+                    "minimum": 0.0
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Min Rating"
+              }
+            },
+            {
+              "name": "in_stock",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "In Stock"
+              }
+            },
+            {
+              "name": "include_inactive",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "boolean",
+                "default": false,
+                "title": "Include Inactive"
+              }
+            },
+            {
+              "name": "sort",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "$ref": "#/components/schemas/ProductSort",
+                "default": "relevance"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Page_ProductSummaryResponse_"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/products/brands": {
+        "get": {
+          "tags": [
+            "Catalogue"
+          ],
+          "summary": "Brand facet",
+          "description": "Every brand with at least one active product, for populating filter controls.",
+          "operationId": "list_brands_api_v1_products_brands_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/BrandResponse"
+                    },
+                    "type": "array",
+                    "title": "Response List Brands Api V1 Products Brands Get"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/products/{product_id}": {
+        "get": {
+          "tags": [
+            "Catalogue"
+          ],
+          "summary": "Product detail",
+          "description": "Administrators additionally see deactivated products; everyone else gets 404.",
+          "operationId": "get_product_api_v1_products__product_id__get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "product_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Product Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDetailResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/categories": {
+        "get": {
+          "tags": [
+            "Catalogue"
+          ],
+          "summary": "Categories with active-product counts",
+          "operationId": "list_categories_api_v1_categories_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/CategoryWithCountResponse"
+                    },
+                    "type": "array",
+                    "title": "Response List Categories Api V1 Categories Get"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/categories/{slug}": {
+        "get": {
+          "tags": [
+            "Catalogue"
+          ],
+          "summary": "Category by slug",
+          "operationId": "get_category_api_v1_categories__slug__get",
+          "parameters": [
+            {
+              "name": "slug",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Slug"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CategoryResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/cart": {
+        "get": {
+          "tags": [
+            "Cart"
+          ],
+          "summary": "Current user's cart",
+          "description": "Prices, line totals and order totals are recomputed from the catalogue on every read, so a cart always reflects the current price and stock. Lines whose stock has fallen short, or whose product has been deactivated, are reported in `issues` and set `is_checkout_ready` to false.",
+          "operationId": "get_cart_api_v1_cart_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Cart"
+          ],
+          "summary": "Empty the cart",
+          "description": "Idempotent: emptying an already-empty cart succeeds and returns the empty cart.",
+          "operationId": "clear_cart_api_v1_cart_delete",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/cart/items": {
+        "post": {
+          "tags": [
+            "Cart"
+          ],
+          "summary": "Add a product to the cart",
+          "description": "Adding a product already in the cart increases the existing line. Availability is checked against the **combined** quantity, so repeated small additions cannot accumulate past the stock level.",
+          "operationId": "add_item_api_v1_cart_items_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddCartItemRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/cart/items/{product_id}": {
+        "patch": {
+          "tags": [
+            "Cart"
+          ],
+          "summary": "Set the quantity of a cart line",
+          "description": "Sets an absolute quantity. Use DELETE to remove a line; quantity 0 is rejected.",
+          "operationId": "update_item_api_v1_cart_items__product_id__patch",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "product_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Product Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCartItemRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Cart"
+          ],
+          "summary": "Remove a line from the cart",
+          "operationId": "remove_item_api_v1_cart_items__product_id__delete",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "product_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Product Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/addresses": {
+        "get": {
+          "tags": [
+            "Addresses"
+          ],
+          "summary": "List the current user's addresses",
+          "description": "Ordered with the default address first, then newest - the order a checkout form needs.",
+          "operationId": "list_addresses_api_v1_addresses_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/AddressResponse"
+                    },
+                    "type": "array",
+                    "title": "Response List Addresses Api V1 Addresses Get"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        },
+        "post": {
+          "tags": [
+            "Addresses"
+          ],
+          "summary": "Add an address",
+          "description": "The first address a user creates automatically becomes their default, so checkout always has one to preselect.",
+          "operationId": "create_address_api_v1_addresses_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AddressResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/addresses/{address_id}": {
+        "get": {
+          "tags": [
+            "Addresses"
+          ],
+          "summary": "Get an address",
+          "operationId": "get_address_api_v1_addresses__address_id__get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "address_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Address Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AddressResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "Addresses"
+          ],
+          "summary": "Update an address",
+          "operationId": "update_address_api_v1_addresses__address_id__patch",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "address_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Address Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUpdateRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AddressResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Addresses"
+          ],
+          "summary": "Delete an address",
+          "description": "Past orders keep their own snapshot of the shipping address, so deleting one here never changes order history. The last remaining address cannot be deleted while it is the default, to avoid leaving the account unable to check out.",
+          "operationId": "delete_address_api_v1_addresses__address_id__delete",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "address_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Address Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MessageResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/checkout/quote": {
+        "post": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Preview checkout totals",
+          "description": "Computes tax, shipping and any discount for the current cart **without** placing an order. It calls the same total-calculation code as checkout, so the preview a customer sees can never disagree with the amount they are charged.\n\nAn invalid promotion code is reported in `issues` rather than failing the request, so the basket still renders.",
+          "operationId": "quote_api_v1_checkout_quote_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuoteRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/QuoteResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/orders": {
+        "post": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Place an order (checkout)",
+          "description": "Reserves stock, creates the order, then charges the payment provider.\n\n**Idempotency.** Send an `Idempotency-Key` header. Repeating the request with the same key returns the original order instead of creating a second one, which is what makes a double-clicked 'Place order' button safe. Without the header no such protection is possible and two submissions create two orders.\n\n**Totals** are computed entirely server-side from catalogue prices; the request body carries no monetary values at all.\n\n**Failure handling.** A declined card or a provider error returns the stock and cancels the order. A provider *timeout* is different: the outcome is genuinely unknown, so the order is left `pending` with stock still reserved and a 504 is returned - it is never optimistically marked paid.",
+          "operationId": "checkout_api_v1_orders_post",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "Idempotency-Key",
+              "in": "header",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Client-generated unique key. Repeating a checkout with the same key returns the original order instead of creating a second one.",
+                "title": "Idempotency-Key"
+              },
+              "description": "Client-generated unique key. Repeating a checkout with the same key returns the original order instead of creating a second one."
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckoutRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "402": {
+              "description": "The payment was declined",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "502": {
+              "description": "The payment provider returned an error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "504": {
+              "description": "The payment provider did not respond in time",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Order history for the current user",
+          "description": "Scoped to the authenticated user; there is no way to widen it to other accounts.",
+          "operationId": "list_orders_api_v1_orders_get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/OrderStatus"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "name": "payment_status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/PaymentStatus"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Payment Status"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Page_OrderSummaryResponse_"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/orders/{order_id}": {
+        "get": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Order detail",
+          "description": "Ownership is enforced as part of the database query. Another customer's order id returns `ORDER_NOT_FOUND`, identical to an id that does not exist, so this endpoint cannot be used to discover which orders exist.",
+          "operationId": "get_order_api_v1_orders__order_id__get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "order_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Order Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/orders/{order_id}/cancel": {
+        "post": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Cancel an order",
+          "description": "Allowed while the order is pending, confirmed or processing. Cancelling returns every line's stock to the catalogue, and an order that was already paid moves to `refunded`. Shipped and delivered orders cannot be cancelled.",
+          "operationId": "cancel_order_api_v1_orders__order_id__cancel_post",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "order_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Order Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelOrderRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/products": {
+        "post": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Create a product",
+          "description": "Creates the product and its inventory row in one transaction.",
+          "operationId": "create_product_api_v1_admin_products_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCreateRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDetailResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      },
+      "/api/v1/admin/products/{product_id}": {
+        "patch": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Update a product",
+          "description": "Partial update: fields absent from the body are left unchanged.",
+          "operationId": "update_product_api_v1_admin_products__product_id__patch",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "product_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Product Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductUpdateRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDetailResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Deactivate a product",
+          "description": "Products are deactivated, never hard-deleted: `order_items` references them with ON DELETE RESTRICT because past orders must always resolve to a real product row. A deactivated product disappears from the public catalogue immediately.",
+          "operationId": "deactivate_product_api_v1_admin_products__product_id__delete",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "product_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Product Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDetailResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/products/{product_id}/stock": {
+        "put": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Set stock level",
+          "description": "Sets an absolute quantity. The inventory row is locked first, so an adjustment cannot silently overwrite a decrement from a checkout committing at the same moment.",
+          "operationId": "set_stock_api_v1_admin_products__product_id__stock_put",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "product_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Product Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StockUpdateRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InventoryResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/inventory": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Stock levels across the catalogue",
+          "description": "Supports `low_stock_threshold` to surface products that need restocking.",
+          "operationId": "list_inventory_api_v1_admin_inventory_get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "low_stock_threshold",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Low Stock Threshold"
+              }
+            },
+            {
+              "name": "search",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "SKU or name contains",
+                "title": "Search"
+              },
+              "description": "SKU or name contains"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 50,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Page_InventoryResponse_"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/orders": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "All orders",
+          "description": "Unlike `/orders`, this is not scoped to one customer. Admins only.",
+          "operationId": "list_orders_api_v1_admin_orders_get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/OrderStatus"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "name": "payment_status",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/PaymentStatus"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Payment Status"
+              }
+            },
+            {
+              "name": "search",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Order number contains",
+                "title": "Search"
+              },
+              "description": "Order number contains"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Page_OrderSummaryResponse_"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/orders/{order_id}": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Any order's detail",
+          "operationId": "get_order_api_v1_admin_orders__order_id__get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "order_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Order Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/orders/{order_id}/status": {
+        "patch": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Advance an order's status",
+          "description": "Transitions are validated against a state machine: pending to confirmed to processing to shipped to delivered, with cancellation allowed up to (but not including) shipped. An illegal transition returns 409 listing what *is* allowed. Moving an order to `cancelled` restores its stock.",
+          "operationId": "update_order_status_api_v1_admin_orders__order_id__status_patch",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "order_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "Order Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderStatusUpdateRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "The request body or query failed validation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/users": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "List users",
+          "operationId": "list_users_api_v1_admin_users_get",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "search",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Search"
+              }
+            },
+            {
+              "name": "role",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Role"
+              }
+            },
+            {
+              "name": "is_active",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Is Active"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "default": 1,
+                "title": "Page"
+              }
+            },
+            {
+              "name": "page_size",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "maximum": 100,
+                "minimum": 1,
+                "default": 20,
+                "title": "Page Size"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Page_UserResponse_"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/users/{user_id}/active": {
+        "patch": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Activate or deactivate a user",
+          "description": "Deactivation takes effect on the very next request, because the user record is re-read on every authenticated call rather than trusted from the token.\n\nAn admin cannot deactivate their own account - that would be an easy way to lock the last administrator out of the system.",
+          "operationId": "set_user_active_api_v1_admin_users__user_id__active_patch",
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "is_active",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "boolean",
+                "description": "Target state",
+                "title": "Is Active"
+              },
+              "description": "Target state"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponse"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "The resource does not exist, or is not visible to this caller",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "409": {
+              "description": "The request conflicts with the current state (stock, duplicates, order state)",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/admin/stats": {
+        "get": {
+          "tags": [
+            "Admin"
+          ],
+          "summary": "Headline counts for the admin dashboard",
+          "description": "Aggregates computed in SQL rather than by loading rows into Python.",
+          "operationId": "stats_api_v1_admin_stats_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "title": "Response Stats Api V1 Admin Stats Get"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Missing, malformed or expired access token",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Authenticated, but not permitted to perform this action",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "HTTPBearer": []
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "AddCartItemRequest": {
+          "properties": {
+            "product_id": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Product Id"
+            },
+            "quantity": {
+              "type": "integer",
+              "maximum": 1000.0,
+              "minimum": 1.0,
+              "title": "Quantity"
+            }
+          },
+          "type": "object",
+          "required": [
+            "product_id",
+            "quantity"
+          ],
+          "title": "AddCartItemRequest",
+          "examples": [
+            {
+              "product_id": 12,
+              "quantity": 2
+            }
+          ]
+        },
+        "AddressCreateRequest": {
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1,
+              "title": "Label",
+              "default": "Home"
+            },
+            "full_name": {
+              "type": "string",
+              "maxLength": 120,
+              "minLength": 2,
+              "title": "Full Name"
+            },
+            "line1": {
+              "type": "string",
+              "maxLength": 160,
+              "minLength": 3,
+              "title": "Line1"
+            },
+            "line2": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 160
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line2"
+            },
+            "city": {
+              "type": "string",
+              "maxLength": 80,
+              "minLength": 1,
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "maxLength": 80,
+              "minLength": 1,
+              "title": "State"
+            },
+            "postal_code": {
+              "type": "string",
+              "maxLength": 20,
+              "minLength": 3,
+              "title": "Postal Code"
+            },
+            "country": {
+              "type": "string",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Country",
+              "default": "US"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            },
+            "is_default": {
+              "type": "boolean",
+              "title": "Is Default",
+              "default": false
+            }
+          },
+          "type": "object",
+          "required": [
+            "full_name",
+            "line1",
+            "city",
+            "state",
+            "postal_code"
+          ],
+          "title": "AddressCreateRequest",
+          "examples": [
+            {
+              "city": "Cambridge",
+              "country": "US",
+              "full_name": "Ada Lovelace",
+              "is_default": true,
+              "label": "Home",
+              "line1": "12 Analytical Way",
+              "line2": "Apt 4",
+              "phone": "+1-555-0100",
+              "postal_code": "02139",
+              "state": "MA"
+            }
+          ]
+        },
+        "AddressResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "label": {
+              "type": "string",
+              "title": "Label"
+            },
+            "full_name": {
+              "type": "string",
+              "title": "Full Name"
+            },
+            "line1": {
+              "type": "string",
+              "title": "Line1"
+            },
+            "line2": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line2"
+            },
+            "city": {
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "title": "State"
+            },
+            "postal_code": {
+              "type": "string",
+              "title": "Postal Code"
+            },
+            "country": {
+              "type": "string",
+              "title": "Country"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            },
+            "is_default": {
+              "type": "boolean",
+              "title": "Is Default"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "label",
+            "full_name",
+            "line1",
+            "line2",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+            "phone",
+            "is_default"
+          ],
+          "title": "AddressResponse"
+        },
+        "AddressUpdateRequest": {
+          "properties": {
+            "label": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 50,
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Label"
+            },
+            "full_name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 120,
+                  "minLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Full Name"
+            },
+            "line1": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 160,
+                  "minLength": 3
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line1"
+            },
+            "line2": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 160
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line2"
+            },
+            "city": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80,
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "City"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80,
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "State"
+            },
+            "postal_code": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 20,
+                  "minLength": 3
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Postal Code"
+            },
+            "country": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 2,
+                  "minLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            },
+            "is_default": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Default"
+            }
+          },
+          "type": "object",
+          "title": "AddressUpdateRequest"
+        },
+        "BrandResponse": {
+          "properties": {
+            "brand": {
+              "type": "string",
+              "title": "Brand"
+            },
+            "product_count": {
+              "type": "integer",
+              "title": "Product Count"
+            }
+          },
+          "type": "object",
+          "required": [
+            "brand",
+            "product_count"
+          ],
+          "title": "BrandResponse",
+          "description": "Facet entry used to populate the brand filter in the UI."
+        },
+        "CancelOrderRequest": {
+          "properties": {
+            "reason": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reason"
+            }
+          },
+          "type": "object",
+          "title": "CancelOrderRequest"
+        },
+        "CartItemResponse": {
+          "properties": {
+            "product_id": {
+              "type": "integer",
+              "title": "Product Id"
+            },
+            "sku": {
+              "type": "string",
+              "title": "Sku"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "image_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Image Url"
+            },
+            "unit_price": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Unit Price",
+              "description": "Current catalogue price, resolved server-side",
+              "examples": [
+                129.99
+              ]
+            },
+            "quantity": {
+              "type": "integer",
+              "title": "Quantity"
+            },
+            "line_total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Line Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "available_stock": {
+              "type": "integer",
+              "title": "Available Stock"
+            },
+            "exceeds_stock": {
+              "type": "boolean",
+              "title": "Exceeds Stock"
+            },
+            "is_active": {
+              "type": "boolean",
+              "title": "Is Active"
+            }
+          },
+          "type": "object",
+          "required": [
+            "product_id",
+            "sku",
+            "name",
+            "image_url",
+            "unit_price",
+            "quantity",
+            "line_total",
+            "available_stock",
+            "exceeds_stock",
+            "is_active"
+          ],
+          "title": "CartItemResponse"
+        },
+        "CartResponse": {
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Id",
+              "description": "Null until the cart has been persisted"
+            },
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/CartItemResponse"
+              },
+              "type": "array",
+              "title": "Items"
+            },
+            "item_count": {
+              "type": "integer",
+              "title": "Item Count",
+              "description": "Total units across all lines"
+            },
+            "distinct_item_count": {
+              "type": "integer",
+              "title": "Distinct Item Count"
+            },
+            "totals": {
+              "$ref": "#/components/schemas/CartTotals"
+            },
+            "promo_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Promo Code"
+            },
+            "issues": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Issues"
+            },
+            "is_checkout_ready": {
+              "type": "boolean",
+              "title": "Is Checkout Ready"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "items",
+            "item_count",
+            "distinct_item_count",
+            "totals",
+            "is_checkout_ready"
+          ],
+          "title": "CartResponse"
+        },
+        "CartTotals": {
+          "properties": {
+            "subtotal": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Subtotal",
+              "examples": [
+                129.99
+              ]
+            },
+            "discount_total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Discount Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "tax": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Tax",
+              "examples": [
+                129.99
+              ]
+            },
+            "shipping_fee": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Shipping Fee",
+              "examples": [
+                129.99
+              ]
+            },
+            "total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "currency": {
+              "type": "string",
+              "title": "Currency"
+            }
+          },
+          "type": "object",
+          "required": [
+            "subtotal",
+            "discount_total",
+            "tax",
+            "shipping_fee",
+            "total",
+            "currency"
+          ],
+          "title": "CartTotals"
+        },
+        "CategoryResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "slug": {
+              "type": "string",
+              "title": "Slug"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Description"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "slug"
+          ],
+          "title": "CategoryResponse"
+        },
+        "CategoryWithCountResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "slug": {
+              "type": "string",
+              "title": "Slug"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Description"
+            },
+            "product_count": {
+              "type": "integer",
+              "title": "Product Count",
+              "description": "Number of active products in this category"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "slug",
+            "product_count"
+          ],
+          "title": "CategoryWithCountResponse"
+        },
+        "ChangePasswordRequest": {
+          "properties": {
+            "current_password": "***redacted***",
+            "new_password": "***redacted***"
+          },
+          "type": "object",
+          "required": [
+            "current_password",
+            "new_password"
+          ],
+          "title": "ChangePasswordRequest"
+        },
+        "CheckoutRequest": {
+          "properties": {
+            "address_id": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Address Id"
+            },
+            "payment": {
+              "$ref": "#/components/schemas/PaymentDetails"
+            },
+            "promo_code": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Promo Code"
+            }
+          },
+          "type": "object",
+          "required": [
+            "address_id",
+            "payment"
+          ],
+          "title": "CheckoutRequest",
+          "examples": [
+            {
+              "address_id": 3,
+              "payment": {
+                "card_holder": "Ada Lovelace",
+                "card_number": "***redacted***",
+                "cvv": "***redacted***",
+                "expiry_month": 12,
+                "expiry_year": 2030
+              },
+              "promo_code": "WELCOME10"
+            }
+          ]
+        },
+        "ErrorResponse": {
+          "properties": {
+            "error": {
+              "type": "string",
+              "title": "Error",
+              "description": "Stable machine-readable error code"
+            },
+            "message": {
+              "type": "string",
+              "title": "Message",
+              "description": "Human-readable, safe to display to end users"
+            },
+            "details": {
+              "type": "object",
+              "title": "Details",
+              "description": "Structured context; never contains internals"
+            }
+          },
+          "type": "object",
+          "required": [
+            "error",
+            "message"
+          ],
+          "title": "ErrorResponse",
+          "description": "The single response envelope used for every non-2xx status.",
+          "examples": [
+            {
+              "details": {
+                "available": 2,
+                "product_id": 7,
+                "requested": 5
+              },
+              "error": "INSUFFICIENT_INVENTORY",
+              "message": "Only 2 units of 'Aurora 14 Ultrabook' are available"
+            }
+          ]
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "HealthResponse": {
+          "properties": {
+            "status": {
+              "type": "string",
+              "title": "Status"
+            },
+            "service": {
+              "type": "string",
+              "title": "Service"
+            },
+            "version": {
+              "type": "string",
+              "title": "Version"
+            },
+            "environment": {
+              "type": "string",
+              "title": "Environment"
+            }
+          },
+          "type": "object",
+          "required": [
+            "status",
+            "service",
+            "version",
+            "environment"
+          ],
+          "title": "HealthResponse"
+        },
+        "InventoryResponse": {
+          "properties": {
+            "product_id": {
+              "type": "integer",
+              "title": "Product Id"
+            },
+            "sku": {
+              "type": "string",
+              "title": "Sku"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "quantity": {
+              "type": "integer",
+              "title": "Quantity"
+            },
+            "updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Updated At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "product_id",
+            "sku",
+            "name",
+            "quantity",
+            "updated_at"
+          ],
+          "title": "InventoryResponse"
+        },
+        "LoginRequest": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email",
+              "examples": [
+                "ada@example.com"
+              ]
+            },
+            "password": "***redacted***"
+          },
+          "type": "object",
+          "required": [
+            "email",
+            "password"
+          ],
+          "title": "LoginRequest",
+          "examples": [
+            {
+              "email": "ada@example.com",
+              "password": "***redacted***"
+            }
+          ]
+        },
+        "MessageResponse": {
+          "properties": {
+            "message": {
+              "type": "string",
+              "title": "Message"
+            }
+          },
+          "type": "object",
+          "required": [
+            "message"
+          ],
+          "title": "MessageResponse",
+          "description": "Acknowledgement body for operations with nothing meaningful to return."
+        },
+        "OrderItemResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "product_id": {
+              "type": "integer",
+              "title": "Product Id"
+            },
+            "product_name": {
+              "type": "string",
+              "title": "Product Name"
+            },
+            "sku": {
+              "type": "string",
+              "title": "Sku"
+            },
+            "unit_price": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Unit Price",
+              "examples": [
+                129.99
+              ]
+            },
+            "quantity": {
+              "type": "integer",
+              "title": "Quantity"
+            },
+            "line_total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Line Total",
+              "examples": [
+                129.99
+              ]
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "product_id",
+            "product_name",
+            "sku",
+            "unit_price",
+            "quantity",
+            "line_total"
+          ],
+          "title": "OrderItemResponse"
+        },
+        "OrderResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "order_number": {
+              "type": "string",
+              "title": "Order Number"
+            },
+            "user_id": {
+              "type": "integer",
+              "title": "User Id"
+            },
+            "status": {
+              "$ref": "#/components/schemas/OrderStatus"
+            },
+            "payment_status": {
+              "$ref": "#/components/schemas/PaymentStatus"
+            },
+            "subtotal": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Subtotal",
+              "examples": [
+                129.99
+              ]
+            },
+            "discount_total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Discount Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "tax": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Tax",
+              "examples": [
+                129.99
+              ]
+            },
+            "shipping_fee": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Shipping Fee",
+              "examples": [
+                129.99
+              ]
+            },
+            "total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "currency": {
+              "type": "string",
+              "title": "Currency"
+            },
+            "promo_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Promo Code"
+            },
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/OrderItemResponse"
+              },
+              "type": "array",
+              "title": "Items"
+            },
+            "payments": {
+              "items": {
+                "$ref": "#/components/schemas/PaymentResponse"
+              },
+              "type": "array",
+              "title": "Payments"
+            },
+            "shipping_address": {
+              "$ref": "#/components/schemas/ShippingAddressSnapshot"
+            },
+            "cancelled_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cancelled Reason"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            },
+            "updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Updated At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "order_number",
+            "user_id",
+            "status",
+            "payment_status",
+            "subtotal",
+            "discount_total",
+            "tax",
+            "shipping_fee",
+            "total",
+            "currency",
+            "promo_code",
+            "items",
+            "payments",
+            "shipping_address",
+            "cancelled_reason",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "OrderResponse"
+        },
+        "OrderStatus": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "confirmed",
+            "processing",
+            "shipped",
+            "delivered",
+            "cancelled"
+          ],
+          "title": "OrderStatus"
+        },
+        "OrderStatusUpdateRequest": {
+          "properties": {
+            "status": {
+              "$ref": "#/components/schemas/OrderStatus"
+            }
+          },
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "title": "OrderStatusUpdateRequest",
+          "examples": [
+            {
+              "status": "shipped"
+            }
+          ]
+        },
+        "OrderSummaryResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "order_number": {
+              "type": "string",
+              "title": "Order Number"
+            },
+            "status": {
+              "$ref": "#/components/schemas/OrderStatus"
+            },
+            "payment_status": {
+              "$ref": "#/components/schemas/PaymentStatus"
+            },
+            "total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "currency": {
+              "type": "string",
+              "title": "Currency"
+            },
+            "item_count": {
+              "type": "integer",
+              "title": "Item Count"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "order_number",
+            "status",
+            "payment_status",
+            "total",
+            "currency",
+            "item_count",
+            "created_at"
+          ],
+          "title": "OrderSummaryResponse",
+          "description": "Order-history row: enough to render a list without the full item detail."
+        },
+        "Page_InventoryResponse_": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/InventoryResponse"
+              },
+              "type": "array",
+              "title": "Items"
+            },
+            "total": {
+              "type": "integer",
+              "title": "Total",
+              "description": "Total number of matching records"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page"
+            },
+            "page_size": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page Size"
+            },
+            "total_pages": {
+              "type": "integer",
+              "minimum": 0.0,
+              "title": "Total Pages"
+            },
+            "has_next": {
+              "type": "boolean",
+              "title": "Has Next"
+            },
+            "has_previous": {
+              "type": "boolean",
+              "title": "Has Previous"
+            }
+          },
+          "type": "object",
+          "required": [
+            "items",
+            "total",
+            "page",
+            "page_size",
+            "total_pages",
+            "has_next",
+            "has_previous"
+          ],
+          "title": "Page[InventoryResponse]"
+        },
+        "Page_OrderSummaryResponse_": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/OrderSummaryResponse"
+              },
+              "type": "array",
+              "title": "Items"
+            },
+            "total": {
+              "type": "integer",
+              "title": "Total",
+              "description": "Total number of matching records"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page"
+            },
+            "page_size": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page Size"
+            },
+            "total_pages": {
+              "type": "integer",
+              "minimum": 0.0,
+              "title": "Total Pages"
+            },
+            "has_next": {
+              "type": "boolean",
+              "title": "Has Next"
+            },
+            "has_previous": {
+              "type": "boolean",
+              "title": "Has Previous"
+            }
+          },
+          "type": "object",
+          "required": [
+            "items",
+            "total",
+            "page",
+            "page_size",
+            "total_pages",
+            "has_next",
+            "has_previous"
+          ],
+          "title": "Page[OrderSummaryResponse]"
+        },
+        "Page_ProductSummaryResponse_": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/ProductSummaryResponse"
+              },
+              "type": "array",
+              "title": "Items"
+            },
+            "total": {
+              "type": "integer",
+              "title": "Total",
+              "description": "Total number of matching records"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page"
+            },
+            "page_size": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page Size"
+            },
+            "total_pages": {
+              "type": "integer",
+              "minimum": 0.0,
+              "title": "Total Pages"
+            },
+            "has_next": {
+              "type": "boolean",
+              "title": "Has Next"
+            },
+            "has_previous": {
+              "type": "boolean",
+              "title": "Has Previous"
+            }
+          },
+          "type": "object",
+          "required": [
+            "items",
+            "total",
+            "page",
+            "page_size",
+            "total_pages",
+            "has_next",
+            "has_previous"
+          ],
+          "title": "Page[ProductSummaryResponse]"
+        },
+        "Page_UserResponse_": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/UserResponse"
+              },
+              "type": "array",
+              "title": "Items"
+            },
+            "total": {
+              "type": "integer",
+              "title": "Total",
+              "description": "Total number of matching records"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page"
+            },
+            "page_size": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Page Size"
+            },
+            "total_pages": {
+              "type": "integer",
+              "minimum": 0.0,
+              "title": "Total Pages"
+            },
+            "has_next": {
+              "type": "boolean",
+              "title": "Has Next"
+            },
+            "has_previous": {
+              "type": "boolean",
+              "title": "Has Previous"
+            }
+          },
+          "type": "object",
+          "required": [
+            "items",
+            "total",
+            "page",
+            "page_size",
+            "total_pages",
+            "has_next",
+            "has_previous"
+          ],
+          "title": "Page[UserResponse]"
+        },
+        "PaymentDetails": {
+          "properties": {
+            "card_number": "***redacted***",
+            "card_holder": {
+              "type": "string",
+              "maxLength": 120,
+              "minLength": 2,
+              "title": "Card Holder"
+            },
+            "expiry_month": {
+              "type": "integer",
+              "maximum": 12.0,
+              "minimum": 1.0,
+              "title": "Expiry Month"
+            },
+            "expiry_year": {
+              "type": "integer",
+              "maximum": 2100.0,
+              "minimum": 2000.0,
+              "title": "Expiry Year"
+            },
+            "cvv": "***redacted***"
+          },
+          "type": "object",
+          "required": [
+            "card_number",
+            "card_holder",
+            "expiry_month",
+            "expiry_year",
+            "cvv"
+          ],
+          "title": "PaymentDetails",
+          "description": "Card details submitted at checkout.\n\nNothing here is persisted beyond the last four digits and the brand. The\ncard number is passed straight to the mock provider and dropped.\n\nThe number also selects the outcome (see docs/failure-simulation.md), which\nis how a test picks \"declined\" or \"timeout\" without mutating global state -\ncritical for running the suite in parallel.",
+          "examples": [
+            {
+              "card_holder": "Ada Lovelace",
+              "card_number": "***redacted***",
+              "cvv": "***redacted***",
+              "expiry_month": 12,
+              "expiry_year": 2030
+            }
+          ]
+        },
+        "PaymentResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "provider_reference": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Provider Reference"
+            },
+            "amount": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Amount",
+              "examples": [
+                129.99
+              ]
+            },
+            "currency": {
+              "type": "string",
+              "title": "Currency"
+            },
+            "status": {
+              "$ref": "#/components/schemas/PaymentStatus"
+            },
+            "method": {
+              "type": "string",
+              "title": "Method"
+            },
+            "card_last4": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Card Last4"
+            },
+            "card_brand": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Card Brand"
+            },
+            "failure_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Failure Code"
+            },
+            "failure_message": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Failure Message"
+            },
+            "attempt": {
+              "type": "integer",
+              "title": "Attempt"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "provider_reference",
+            "amount",
+            "currency",
+            "status",
+            "method",
+            "card_last4",
+            "card_brand",
+            "failure_code",
+            "failure_message",
+            "attempt",
+            "created_at"
+          ],
+          "title": "PaymentResponse"
+        },
+        "PaymentStatus": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "paid",
+            "failed",
+            "refunded"
+          ],
+          "title": "PaymentStatus"
+        },
+        "ProductCreateRequest": {
+          "properties": {
+            "sku": {
+              "type": "string",
+              "maxLength": 40,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "title": "Sku"
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 160,
+              "minLength": 2,
+              "title": "Name"
+            },
+            "description": {
+              "type": "string",
+              "maxLength": 4000,
+              "title": "Description",
+              "default": ""
+            },
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "maximum": 1000000.0,
+                  "minimum": 0.0
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Price"
+            },
+            "category_id": {
+              "type": "integer",
+              "minimum": 1.0,
+              "title": "Category Id"
+            },
+            "brand": {
+              "type": "string",
+              "maxLength": 80,
+              "minLength": 1,
+              "title": "Brand"
+            },
+            "rating": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "maximum": 5.0,
+                  "minimum": 0.0
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Rating",
+              "default": "0"
+            },
+            "image_url": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Image Url"
+            },
+            "stock_quantity": {
+              "type": "integer",
+              "maximum": 1000000.0,
+              "minimum": 0.0,
+              "title": "Stock Quantity",
+              "default": 0
+            },
+            "is_active": {
+              "type": "boolean",
+              "title": "Is Active",
+              "default": true
+            }
+          },
+          "type": "object",
+          "required": [
+            "sku",
+            "name",
+            "price",
+            "category_id",
+            "brand"
+          ],
+          "title": "ProductCreateRequest",
+          "examples": [
+            {
+              "brand": "Nimbus",
+              "category_id": 1,
+              "description": "Over-ear headphones with 40h battery life.",
+              "image_url": "https://picsum.photos/seed/elec-9001/600/600",
+              "name": "Nimbus Noise-Cancelling Headphones",
+              "price": 249.99,
+              "rating": 4.5,
+              "sku": "ELEC-9001",
+              "stock_quantity": 40
+            }
+          ]
+        },
+        "ProductDetailResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "sku": {
+              "type": "string",
+              "title": "Sku"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "price": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Price",
+              "examples": [
+                129.99
+              ]
+            },
+            "brand": {
+              "type": "string",
+              "title": "Brand"
+            },
+            "rating": {
+              "type": "string",
+              "title": "Rating"
+            },
+            "image_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Image Url"
+            },
+            "is_active": {
+              "type": "boolean",
+              "title": "Is Active"
+            },
+            "in_stock": {
+              "type": "boolean",
+              "title": "In Stock"
+            },
+            "stock_quantity": {
+              "type": "integer",
+              "title": "Stock Quantity"
+            },
+            "category": {
+              "$ref": "#/components/schemas/CategoryResponse"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            },
+            "updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Updated At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "sku",
+            "name",
+            "price",
+            "brand",
+            "rating",
+            "is_active",
+            "in_stock",
+            "stock_quantity",
+            "category",
+            "description",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "ProductDetailResponse"
+        },
+        "ProductSort": {
+          "type": "string",
+          "enum": [
+            "price_asc",
+            "price_desc",
+            "rating_desc",
+            "newest",
+            "name_asc",
+            "relevance"
+          ],
+          "title": "ProductSort",
+          "description": "Whitelisted sort keys.\n\nUser-supplied sort input is mapped through this enum before it reaches the\nquery builder, so a request can never inject an arbitrary ORDER BY clause."
+        },
+        "ProductSummaryResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "sku": {
+              "type": "string",
+              "title": "Sku"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "price": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Price",
+              "examples": [
+                129.99
+              ]
+            },
+            "brand": {
+              "type": "string",
+              "title": "Brand"
+            },
+            "rating": {
+              "type": "string",
+              "title": "Rating"
+            },
+            "image_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Image Url"
+            },
+            "is_active": {
+              "type": "boolean",
+              "title": "Is Active"
+            },
+            "in_stock": {
+              "type": "boolean",
+              "title": "In Stock"
+            },
+            "stock_quantity": {
+              "type": "integer",
+              "title": "Stock Quantity"
+            },
+            "category": {
+              "$ref": "#/components/schemas/CategoryResponse"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "sku",
+            "name",
+            "price",
+            "brand",
+            "rating",
+            "is_active",
+            "in_stock",
+            "stock_quantity",
+            "category"
+          ],
+          "title": "ProductSummaryResponse",
+          "description": "Fields needed to render a product card in a listing."
+        },
+        "ProductUpdateRequest": {
+          "properties": {
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 160,
+                  "minLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 4000
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Description"
+            },
+            "price": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "maximum": 1000000.0,
+                  "minimum": 0.0
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Price"
+            },
+            "category_id": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1.0
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category Id"
+            },
+            "brand": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80,
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Brand"
+            },
+            "rating": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "maximum": 5.0,
+                  "minimum": 0.0
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Rating"
+            },
+            "image_url": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Image Url"
+            },
+            "is_active": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Active"
+            }
+          },
+          "type": "object",
+          "title": "ProductUpdateRequest",
+          "description": "Partial update. Every field optional; omitted fields are left untouched."
+        },
+        "QuoteRequest": {
+          "properties": {
+            "promo_code": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Promo Code"
+            }
+          },
+          "type": "object",
+          "title": "QuoteRequest",
+          "description": "Preview totals before committing to a purchase.\n\nLets the checkout UI display tax, shipping and discount without the client\never calculating them - the same service computes the quote and the order."
+        },
+        "QuoteResponse": {
+          "properties": {
+            "subtotal": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Subtotal",
+              "examples": [
+                129.99
+              ]
+            },
+            "discount_total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Discount Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "tax": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Tax",
+              "examples": [
+                129.99
+              ]
+            },
+            "shipping_fee": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Shipping Fee",
+              "examples": [
+                129.99
+              ]
+            },
+            "total": {
+              "type": "number",
+              "format": "decimal",
+              "title": "Total",
+              "examples": [
+                129.99
+              ]
+            },
+            "currency": {
+              "type": "string",
+              "title": "Currency"
+            },
+            "promo_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Promo Code"
+            },
+            "promo_description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Promo Description"
+            },
+            "item_count": {
+              "type": "integer",
+              "title": "Item Count"
+            },
+            "issues": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Issues"
+            },
+            "is_checkout_ready": {
+              "type": "boolean",
+              "title": "Is Checkout Ready"
+            }
+          },
+          "type": "object",
+          "required": [
+            "subtotal",
+            "discount_total",
+            "tax",
+            "shipping_fee",
+            "total",
+            "currency",
+            "promo_code",
+            "item_count",
+            "is_checkout_ready"
+          ],
+          "title": "QuoteResponse"
+        },
+        "ReadinessResponse": {
+          "properties": {
+            "status": {
+              "type": "string",
+              "title": "Status"
+            },
+            "checks": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object",
+              "title": "Checks"
+            }
+          },
+          "type": "object",
+          "required": [
+            "status",
+            "checks"
+          ],
+          "title": "ReadinessResponse",
+          "description": "Dependency-aware readiness.\n\n``/health`` says the process is alive; ``/health/ready`` says it can\nactually serve traffic. Docker Compose and CI wait on the latter, which is\nwhat removes the need for arbitrary sleeps during startup."
+        },
+        "RegisterRequest": {
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email",
+              "examples": [
+                "ada@example.com"
+              ]
+            },
+            "password": "***redacted***",
+            "password_confirm": "***redacted***",
+            "full_name": {
+              "type": "string",
+              "maxLength": 120,
+              "minLength": 2,
+              "title": "Full Name"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            }
+          },
+          "type": "object",
+          "required": [
+            "email",
+            "password",
+            "password_confirm",
+            "full_name"
+          ],
+          "title": "RegisterRequest",
+          "examples": [
+            {
+              "email": "ada@example.com",
+              "full_name": "Ada Lovelace",
+              "password": "***redacted***",
+              "password_confirm": "***redacted***",
+              "phone": "+1-555-0100"
+            }
+          ]
+        },
+        "ShippingAddressSnapshot": {
+          "properties": {
+            "full_name": {
+              "type": "string",
+              "title": "Full Name"
+            },
+            "line1": {
+              "type": "string",
+              "title": "Line1"
+            },
+            "line2": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line2"
+            },
+            "city": {
+              "type": "string",
+              "title": "City"
+            },
+            "state": {
+              "type": "string",
+              "title": "State"
+            },
+            "postal_code": {
+              "type": "string",
+              "title": "Postal Code"
+            },
+            "country": {
+              "type": "string",
+              "title": "Country"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            }
+          },
+          "type": "object",
+          "required": [
+            "full_name",
+            "line1",
+            "line2",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+            "phone"
+          ],
+          "title": "ShippingAddressSnapshot"
+        },
+        "StockUpdateRequest": {
+          "properties": {
+            "quantity": {
+              "type": "integer",
+              "maximum": 1000000.0,
+              "minimum": 0.0,
+              "title": "Quantity",
+              "description": "Absolute stock level to set"
+            }
+          },
+          "type": "object",
+          "required": [
+            "quantity"
+          ],
+          "title": "StockUpdateRequest",
+          "examples": [
+            {
+              "quantity": 25
+            }
+          ]
+        },
+        "TokenResponse": {
+          "properties": {
+            "access_token": "***redacted***",
+            "token_type": {
+              "type": "string",
+              "title": "Token Type",
+              "default": "bearer"
+            },
+            "expires_in": {
+              "type": "integer",
+              "title": "Expires In",
+              "description": "Token lifetime in seconds"
+            },
+            "user": {
+              "$ref": "#/components/schemas/UserResponse"
+            }
+          },
+          "type": "object",
+          "required": [
+            "access_token",
+            "expires_in",
+            "user"
+          ],
+          "title": "TokenResponse",
+          "examples": [
+            {
+              "access_token": "***redacted***",
+              "expires_in": 3600,
+              "token_type": "bearer",
+              "user": {
+                "email": "ada@example.com",
+                "full_name": "Ada Lovelace",
+                "id": 1,
+                "is_active": true,
+                "role": "customer"
+              }
+            }
+          ]
+        },
+        "UpdateCartItemRequest": {
+          "properties": {
+            "quantity": {
+              "type": "integer",
+              "maximum": 1000.0,
+              "minimum": 1.0,
+              "title": "Quantity"
+            }
+          },
+          "type": "object",
+          "required": [
+            "quantity"
+          ],
+          "title": "UpdateCartItemRequest",
+          "examples": [
+            {
+              "quantity": 3
+            }
+          ]
+        },
+        "UpdateProfileRequest": {
+          "properties": {
+            "full_name": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 120,
+                  "minLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Full Name"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 32
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            }
+          },
+          "type": "object",
+          "title": "UpdateProfileRequest"
+        },
+        "UserResponse": {
+          "properties": {
+            "id": {
+              "type": "integer",
+              "title": "Id"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "title": "Email",
+              "examples": [
+                "ada@example.com"
+              ]
+            },
+            "full_name": {
+              "type": "string",
+              "title": "Full Name"
+            },
+            "phone": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Phone"
+            },
+            "role": {
+              "type": "string",
+              "title": "Role"
+            },
+            "is_active": {
+              "type": "boolean",
+              "title": "Is Active"
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "title": "Created At"
+            }
+          },
+          "type": "object",
+          "required": [
+            "id",
+            "email",
+            "full_name",
+            "role",
+            "is_active",
+            "created_at"
+          ],
+          "title": "UserResponse"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      },
+      "securitySchemes": {
+        "HTTPBearer": {
+          "type": "http",
+          "description": "JWT access token",
+          "scheme": "bearer"
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Health",
+        "description": "Liveness and readiness probes."
+      },
+      {
+        "name": "Authentication",
+        "description": "Registration, login and profile management."
+      },
+      {
+        "name": "Catalogue",
+        "description": "Public product search, filtering, sorting and browsing."
+      },
+      {
+        "name": "Cart",
+        "description": "Cart contents. Always priced server-side."
+      },
+      {
+        "name": "Addresses",
+        "description": "Shipping addresses, scoped to the authenticated user."
+      },
+      {
+        "name": "Orders",
+        "description": "Checkout, order history and cancellation."
+      },
+      {
+        "name": "Admin",
+        "description": "Administrator-only catalogue, inventory, order and user management."
+      }
+    ]
+  }
+}

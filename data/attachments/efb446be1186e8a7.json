@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 4.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:29 GMT",
+    "server": "uvicorn",
+    "content-length": "204",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.59",
+    "x-request-id": "8be3f825c0ec45939eadf1a1d4b1c775"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, CVV must contain digits only",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.cvv",
+          "message": "Value error, CVV must contain digits only",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

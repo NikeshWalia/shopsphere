@@ -1,0 +1,118 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:42 GMT",
+    "server": "uvicorn",
+    "content-length": "1726",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.31",
+    "x-request-id": "f6484d2097da4d1fb408aeae0bca0e6f"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 216,
+        "sku": "TST-F3D86E823D",
+        "name": "Test Product 2371da",
+        "price": 49.99,
+        "brand": "TestBrand",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 4,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 62,
+        "sku": "BOK-7007",
+        "name": "Legacy Systems Field Guide",
+        "price": 44.0,
+        "brand": "Quillstone Press",
+        "rating": "3.8",
+        "image_url": "https://picsum.photos/seed/bok-7007/600/600",
+        "is_active": true,
+        "in_stock": false,
+        "stock_quantity": 0,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 61,
+        "sku": "BOK-7006",
+        "name": "Salt, Smoke and Time",
+        "price": 32.0,
+        "brand": "Beacon House",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/bok-7006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 61,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 60,
+        "sku": "BOK-7005",
+        "name": "The Quiet Observatory",
+        "price": 18.99,
+        "brand": "Beacon House",
+        "rating": "4.2",
+        "image_url": "https://picsum.photos/seed/bok-7005/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 140,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 59,
+        "sku": "BOK-7004",
+        "name": "Continuous Delivery in Practice",
+        "price": 47.5,
+        "brand": "Beacon House",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/bok-7004/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 33,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      }
+    ],
+    "total": 63,
+    "page": 1,
+    "page_size": 5,
+    "total_pages": 13,
+    "has_next": true,
+    "has_previous": false
+  }
+}

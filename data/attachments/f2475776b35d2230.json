@@ -1,0 +1,26 @@
+{
+  "status_code": 403,
+  "elapsed_ms": 4.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:39 GMT",
+    "server": "uvicorn",
+    "content-length": "147",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.4",
+    "x-request-id": "3c2d35935159415f81d3b5c0b2d19174"
+  },
+  "body": {
+    "error": "PERMISSION_DENIED",
+    "message": "This endpoint is restricted to administrators.",
+    "details": {
+      "required_role": "admin",
+      "your_role": "customer"
+    }
+  }
+}

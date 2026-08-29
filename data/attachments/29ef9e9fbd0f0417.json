@@ -1,0 +1,31 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 9.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:44 GMT",
+    "server": "uvicorn",
+    "content-length": "229",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.31",
+    "x-request-id": "5acb7d9e9c774da8a4154ae4e2f505c5"
+  },
+  "body": {
+    "id": 80,
+    "label": "Home",
+    "full_name": "'; SELECT pg_sleep(5); --",
+    "line1": "'; SELECT pg_sleep(5); --",
+    "line2": null,
+    "city": "'; SELECT pg_sleep(5); --",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US",
+    "phone": null,
+    "is_default": true
+  }
+}

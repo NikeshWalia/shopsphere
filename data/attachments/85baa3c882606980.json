@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:19 GMT",
+    "server": "uvicorn",
+    "content-length": "284",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.47",
+    "x-request-id": "d92d9ef0addc43288b024b421b7b62b3"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, The email address contains invalid characters before the @-sign: SPACE.",
+    "details": {
+      "fields": [
+        {
+          "field": "email",
+          "message": "Value error, The email address contains invalid characters before the @-sign: SPACE.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

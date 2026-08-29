@@ -1,0 +1,21 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 4.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 05:22:19 GMT",
+    "server": "uvicorn",
+    "content-length": "89",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.29",
+    "x-request-id": "37fbad9a4ccd4083a8cba52281fdb51c"
+  },
+  "body": {
+    "message": "Signed out. Discard the access token for user_60e1fd4b9332@shopsphere.test."
+  }
+}
