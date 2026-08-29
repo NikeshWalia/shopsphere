@@ -1,0 +1,26 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 9.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:38:11 GMT",
+    "server": "uvicorn",
+    "content-length": "151",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.35",
+    "x-request-id": "65b0318092924d85bbcc6a90c18017d4"
+  },
+  "body": {
+    "error": "INVALID_ORDER_STATE",
+    "message": "An order with status 'delivered' can no longer be cancelled.",
+    "details": {
+      "order_id": 81,
+      "status": "delivered"
+    }
+  }
+}

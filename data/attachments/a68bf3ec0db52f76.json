@@ -1,0 +1,24 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 4.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:32 GMT",
+    "server": "uvicorn",
+    "content-length": "114",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.42",
+    "x-request-id": "7364307ce3854ec2a233c1c8bc850b9d"
+  },
+  "body": {
+    "id": 1,
+    "name": "Laptops",
+    "slug": "laptops",
+    "description": "Ultrabooks, creator machines and portable workstations."
+  }
+}

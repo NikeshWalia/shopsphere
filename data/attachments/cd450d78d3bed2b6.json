@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:37 GMT",
+    "server": "uvicorn",
+    "content-length": "540",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.98",
+    "x-request-id": "454b42c204f04da19f4a683cf10cf6b9"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 87,
+      "email": "user_79018c5d779d@shopsphere.test",
+      "full_name": "Valerie Clark",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T07:37:38.394461Z"
+    }
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 13.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:38:02 GMT",
+    "server": "uvicorn",
+    "content-length": "6397",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "12.52",
+    "x-request-id": "56946b07a0a44a778e7353e2cdcb885f"
+  },
+  "body": {
+    "items": [
+      {
+        "product_id": 8,
+        "sku": "LAP-1008",
+        "name": "Kestrel Titan Gaming 15",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "product_id": 27,
+        "sku": "ELE-3012",
+        "name": "Corvid Drone Scout",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "product_id": 62,
+        "sku": "BOK-7007",
+        "name": "Legacy Systems Field Guide",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "product_id": 88,
+        "sku": "TST-3C3B1BF794",
+        "name": "Test Product 552654",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:37:30.980217Z"
+      },
+      {
+        "product_id": 219,
+        "sku": "TST-69A2E367BB",
+        "name": "Contested Widget",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:38:00.442600Z"
+      },
+      {
+        "product_id": 220,
+        "sku": "TST-5A4250B339",
+        "name": "The Last One",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:38:00.795463Z"
+      },
+      {
+        "product_id": 230,
+        "sku": "TST-72D381601D",
+        "name": "Test Fixture Product",
+        "quantity": 0,
+        "updated_at": "2026-08-29T07:38:02.705927Z"
+      },
+      {
+        "product_id": 126,
+        "sku": "TST-9627E9C2D6",
+        "name": "Test Product 26ba1a",
+        "quantity": 1,
+        "updated_at": "2026-08-29T07:37:33.660916Z"
+      },
+      {
+        "product_id": 171,
+        "sku": "TST-212C51D407",
+        "name": "Test Product 03d131",
+        "quantity": 1,
+        "updated_at": "2026-08-29T07:37:40.656747Z"
+      },
+      {
+        "product_id": 190,
+        "sku": "TST-6590A2752A",
+        "name": "Test Product bbf2da",
+        "quantity": 2,
+        "updated_at": "2026-08-29T07:37:45.001970Z"
+      },
+      {
+        "product_id": 67,
+        "sku": "TST-4E857B9733",
+        "name": "Test Product 6272f6",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:28.928625Z"
+      },
+      {
+        "product_id": 68,
+        "sku": "TST-BBD2A0B61D",
+        "name": "Test Product 922128",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:29.028021Z"
+      },
+      {
+        "product_id": 69,
+        "sku": "TST-2B572B4F1F",
+        "name": "Test Product 2ffffa",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:29.127064Z"
+      },
+      {
+        "product_id": 72,
+        "sku": "TST-DDF9AFCB3C",
+        "name": "Test Product e19f49",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:29.464469Z"
+      },
+      {
+        "product_id": 74,
+        "sku": "TST-39FF4A1B9D",
+        "name": "Test Product 35b903",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:29.697769Z"
+      },
+      {
+        "product_id": 87,
+        "sku": "TST-B03DBD5EE8",
+        "name": "Test Product 35be71",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:30.890942Z"
+      },
+      {
+        "product_id": 189,
+        "sku": "TST-BA799067ED",
+        "name": "Test Product b594d1",
+        "quantity": 3,
+        "updated_at": "2026-08-29T07:37:44.827861Z"
+      },
+      {
+        "product_id": 15,
+        "sku": "PHN-2007",
+        "name": "Lumen Fold X",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "product_id": 70,
+        "sku": "TST-E13DF190A1",
+        "name": "Test Product 362dbe",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:29.224381Z"
+      },
+      {
+        "product_id": 143,
+        "sku": "TST-F156B11DFB",
+        "name": "Test Product d1f459",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:36.200623Z"
+      },
+      {
+        "product_id": 144,
+        "sku": "TST-D3EBA22709",
+        "name": "Test Product b4c745",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:36.362851Z"
+      },
+      {
+        "product_id": 184,
+        "sku": "TST-78322717F4",
+        "name": "Test Product 69affa",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:43.982641Z"
+      },
+      {
+        "product_id": 188,
+        "sku": "TST-C3E5E20740",
+        "name": "Test Product 0eb4b6",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:44.660043Z"
+      },
+      {
+        "product_id": 193,
+        "sku": "TST-3C94DCE6E4",
+        "name": "Test Product af6d6b",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:47.050699Z"
+      },
+      {
+        "product_id": 206,
+        "sku": "TST-2D5151B469",
+        "name": "Test Product f8af02",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:48.565230Z"
+      },
+      {
+        "product_id": 207,
+        "sku": "TST-480E59F313",
+        "name": "Test Product 108df9",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:48.727029Z"
+      },
+      {
+        "product_id": 208,
+        "sku": "TST-5429575F05",
+        "name": "Test Product 75ae9c",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:48.883322Z"
+      },
+      {
+        "product_id": 209,
+        "sku": "TST-0C33D04827",
+        "name": "Test Product 087012",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:49.038876Z"
+      },
+      {
+        "product_id": 210,
+        "sku": "TST-41D75E42E4",
+        "name": "Test Product 694015",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:49.190473Z"
+      },
+      {
+        "product_id": 211,
+        "sku": "TST-E82B7AA989",
+        "name": "Test Product 997079",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:52.414263Z"
+      },
+      {
+        "product_id": 212,
+        "sku": "TST-7601F5641C",
+        "name": "Test Product a7d79b",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:52.882060Z"
+      },
+      {
+        "product_id": 213,
+        "sku": "TST-BF357F7AE3",
+        "name": "Test Product f7afa1",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:53.086183Z"
+      },
+      {
+        "product_id": 215,
+        "sku": "TST-0D9D874A68",
+        "name": "Test Product 6a0b30",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:53.426693Z"
+      },
+      {
+        "product_id": 216,
+        "sku": "TST-A8F827BFB5",
+        "name": "Test Product cd3669",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:53.990002Z"
+      },
+      {
+        "product_id": 217,
+        "sku": "TST-C2C21BD2BB",
+        "name": "Test Product c4196c",
+        "quantity": 4,
+        "updated_at": "2026-08-29T07:37:54.230976Z"
+      },
+      {
+        "product_id": 63,
+        "sku": "BOK-7008",
+        "name": "Discontinued Style Manual",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "product_id": 64,
+        "sku": "TST-98FB1D525D",
+        "name": "Test Product 8152f9",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:28.651586Z"
+      },
+      {
+        "product_id": 75,
+        "sku": "TST-469E411289",
+        "name": "Test Product e37dc4",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:29.816615Z"
+      },
+      {
+        "product_id": 76,
+        "sku": "TST-EE1B2A8E71",
+        "name": "Test Product daceb7",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:29.830470Z"
+      },
+      {
+        "product_id": 77,
+        "sku": "TST-A1186FDD21",
+        "name": "Test Product 285c90",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:29.978997Z"
+      },
+      {
+        "product_id": 78,
+        "sku": "TST-02ECD933F3",
+        "name": "Test Product a943d3",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:30.066222Z"
+      },
+      {
+        "product_id": 89,
+        "sku": "TST-99BA9C6813",
+        "name": "Test Product a297f6",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:31.114782Z"
+      },
+      {
+        "product_id": 90,
+        "sku": "TST-27F01F381F",
+        "name": "Test Product 93a29e",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:31.208756Z"
+      },
+      {
+        "product_id": 91,
+        "sku": "TST-D9FC7ED54E",
+        "name": "Test Product 1d9b01",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:31.474573Z"
+      },
+      {
+        "product_id": 92,
+        "sku": "TST-2EDD4B052D",
+        "name": "Test Product 0c7cc1",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:31.487171Z"
+      },
+      {
+        "product_id": 125,
+        "sku": "TST-2DE921538D",
+        "name": "Test Product dd6df5",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:33.589403Z"
+      },
+      {
+        "product_id": 129,
+        "sku": "TST-35D1432996",
+        "name": "Test Product 5f3d2c",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:34.105459Z"
+      },
+      {
+        "product_id": 145,
+        "sku": "TST-1492016D99",
+        "name": "Test Product 3bf37a",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:36.531466Z"
+      },
+      {
+        "product_id": 146,
+        "sku": "TST-264D47399A",
+        "name": "Test Product 691332",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:36.686602Z"
+      },
+      {
+        "product_id": 147,
+        "sku": "TST-FBF4C2A0C7",
+        "name": "Test Product 8d385c",
+        "quantity": 5,
+        "updated_at": "2026-08-29T07:37:36.844997Z"
+      }
+    ],
+    "total": 231,
+    "page": 1,
+    "page_size": 50,
+    "total_pages": 5,
+    "has_next": true,
+    "has_previous": false
+  }
+}

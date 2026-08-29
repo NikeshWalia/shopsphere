@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 18.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:28 GMT",
+    "server": "uvicorn",
+    "content-length": "418",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "16.61",
+    "x-request-id": "bccf65017eee4db8b0a0f8861afc9b3a"
+  },
+  "body": {
+    "id": 5,
+    "items": [
+      {
+        "product_id": 68,
+        "sku": "TST-BBD2A0B61D",
+        "name": "Test Product 922128",
+        "image_url": null,
+        "unit_price": 100.0,
+        "quantity": 1,
+        "line_total": 100.0,
+        "available_stock": 3,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 1,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 100.0,
+      "discount_total": 0.0,
+      "tax": 8.0,
+      "shipping_fee": 0.0,
+      "total": 108.0,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

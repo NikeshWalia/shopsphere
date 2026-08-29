@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:38:00 GMT",
+    "server": "uvicorn",
+    "content-length": "546",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.89",
+    "x-request-id": "b2fde44ad5474b4da3d301ccd4cb32a5"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 276,
+      "email": "race_142d66cdf2fa@shopsphere.test",
+      "full_name": "Race Participant",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T07:38:00.059363Z"
+    }
+  }
+}

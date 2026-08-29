@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:57 GMT",
+    "server": "uvicorn",
+    "content-length": "259",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.5",
+    "x-request-id": "872c0c1ee1f64e12889cbbd666f05b7c"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be a valid integer, unable to parse string as an integer",
+    "details": {
+      "fields": [
+        {
+          "field": "product_id",
+          "message": "Input should be a valid integer, unable to parse string as an integer",
+          "type": "int_parsing"
+        }
+      ]
+    }
+  }
+}

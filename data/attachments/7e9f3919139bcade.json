@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:32 GMT",
+    "server": "uvicorn",
+    "content-length": "420",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.8",
+    "x-request-id": "e652687243e84ebfa49d29013a09785e"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 15,
+        "sku": "PHN-2007",
+        "name": "Lumen Fold X",
+        "price": 1499.0,
+        "brand": "Lumen",
+        "rating": "3.9",
+        "image_url": "https://picsum.photos/seed/phn-2007/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 4,
+        "category": {
+          "id": 2,
+          "name": "Phones",
+          "slug": "phones",
+          "description": "Smartphones across the budget and flagship range."
+        }
+      }
+    ],
+    "total": 7,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 7,
+    "has_next": true,
+    "has_previous": false
+  }
+}

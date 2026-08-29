@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:31 GMT",
+    "server": "uvicorn",
+    "content-length": "294",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.4",
+    "x-request-id": "9febff887d3c4ba6999bb99637c56dd9"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be 'price_asc', 'price_desc', 'rating_desc', 'newest', 'name_asc' or 'relevance'",
+    "details": {
+      "fields": [
+        {
+          "field": "sort",
+          "message": "Input should be 'price_asc', 'price_desc', 'rating_desc', 'newest', 'name_asc' or 'relevance'",
+          "type": "enum"
+        }
+      ]
+    }
+  }
+}

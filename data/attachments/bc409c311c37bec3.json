@@ -1,0 +1,208 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 11.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:51 GMT",
+    "server": "uvicorn",
+    "content-length": "3458",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "10.19",
+    "x-request-id": "c3c2d02883294d3db4fadae3161ac553"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 1,
+        "email": "admin@shopsphere.test",
+        "full_name": "Sam Rivera",
+        "phone": null,
+        "role": "admin",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "id": 2,
+        "email": "customer@shopsphere.test",
+        "full_name": "Demo Customer",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "id": 3,
+        "email": "ben@shopsphere.test",
+        "full_name": "Ben Okonkwo",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "id": 4,
+        "email": "carla@shopsphere.test",
+        "full_name": "Carla Mendes",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "id": 5,
+        "email": "dev@shopsphere.test",
+        "full_name": "Dev Sharma",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:22.854640Z"
+      },
+      {
+        "id": 6,
+        "email": "user_ce308b6a3a01@shopsphere.test",
+        "full_name": "Ada Lovelace",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.549418Z"
+      },
+      {
+        "id": 7,
+        "email": "user_fa778dec82a7@shopsphere.test",
+        "full_name": "Would-be Admin",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.583233Z"
+      },
+      {
+        "id": 8,
+        "email": "user_b42f4b781866@shopsphere.test",
+        "full_name": "Test User",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.597814Z"
+      },
+      {
+        "id": 9,
+        "email": "user_f71275f8b60b@shopsphere.test",
+        "full_name": "Test User",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.611679Z"
+      },
+      {
+        "id": 10,
+        "email": "mixed_aa77315ade@shopsphere.test",
+        "full_name": "Test User",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.631653Z"
+      },
+      {
+        "id": 11,
+        "email": "user_722370900a89@shopsphere.test",
+        "full_name": "Ada Lovelace",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.777988Z"
+      },
+      {
+        "id": 12,
+        "email": "user_8e451fa9ee34@shopsphere.test",
+        "full_name": "Kenneth Ramirez",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.791693Z"
+      },
+      {
+        "id": 13,
+        "email": "user_b9027ef6e806@shopsphere.test",
+        "full_name": "Angela Rhodes",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.818844Z"
+      },
+      {
+        "id": 14,
+        "email": "user_5f5fc078f8e2@shopsphere.test",
+        "full_name": "Amanda Jones",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.839696Z"
+      },
+      {
+        "id": 15,
+        "email": "user_190b3d9fb410@shopsphere.test",
+        "full_name": "Evan Soto",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.866168Z"
+      },
+      {
+        "id": 16,
+        "email": "user_6543623fadc0@shopsphere.test",
+        "full_name": "Dorothy Jimenez",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.922012Z"
+      },
+      {
+        "id": 17,
+        "email": "user_8b771c326566@shopsphere.test",
+        "full_name": "Kevin Diaz",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:27.994092Z"
+      },
+      {
+        "id": 18,
+        "email": "user_ae139999ce15@shopsphere.test",
+        "full_name": "Ashley Gutierrez",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:28.220892Z"
+      },
+      {
+        "id": 19,
+        "email": "user_d0e19e8b33f5@shopsphere.test",
+        "full_name": "Joseph Smith",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:28.238522Z"
+      },
+      {
+        "id": 20,
+        "email": "user_083dbfe203af@shopsphere.test",
+        "full_name": "Erin Ruiz",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T07:37:28.255568Z"
+      }
+    ],
+    "total": 175,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 9,
+    "has_next": true,
+    "has_previous": false
+  }
+}

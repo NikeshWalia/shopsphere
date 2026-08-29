@@ -1,0 +1,36 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 5.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:58 GMT",
+    "server": "uvicorn",
+    "content-length": "245",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.27",
+    "x-request-id": "e7dd1785df13411b86eafd577a8897e6"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be a valid integer",
+    "details": {
+      "fields": [
+        {
+          "field": "product_id",
+          "message": "Input should be a valid integer",
+          "type": "int_type"
+        },
+        {
+          "field": "quantity",
+          "message": "Field required",
+          "type": "missing"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status_code": 404,
+  "elapsed_ms": 3.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:32 GMT",
+    "server": "uvicorn",
+    "content-length": "91",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.81",
+    "x-request-id": "54c62c8932af479b92c90bb446425ba9"
+  },
+  "body": {
+    "error": "NOT_FOUND",
+    "message": "Category not found.",
+    "details": {
+      "slug": "no-such-category"
+    }
+  }
+}

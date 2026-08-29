@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:56 GMT",
+    "server": "uvicorn",
+    "content-length": "541",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "9.0",
+    "x-request-id": "ede9af9c4c87496583b224a0599d9f40"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 231,
+      "email": "user_f8479cc855da@shopsphere.test",
+      "full_name": "Jared Smith",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T07:37:56.282106Z"
+    }
+  }
+}

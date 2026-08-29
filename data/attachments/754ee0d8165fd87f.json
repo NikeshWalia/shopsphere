@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 128.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:38:00 GMT",
+    "server": "uvicorn",
+    "content-length": "923",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "125.42",
+    "x-request-id": "c92e40950516422b8aa44a369f0eb8bc"
+  },
+  "body": {
+    "id": 66,
+    "order_number": "SS-20260829-MAGEZ3",
+    "user_id": 284,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 30.0,
+    "discount_total": 0.0,
+    "tax": 2.4,
+    "shipping_fee": 9.99,
+    "total": 42.39,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 68,
+        "product_id": 221,
+        "product_name": "Double Click Widget",
+        "sku": "TST-92D1FA9814",
+        "unit_price": 15.0,
+        "quantity": 2,
+        "line_total": 30.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 69,
+        "provider_reference": "txn_1174052572ac472eb6fa",
+        "amount": 42.39,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T07:38:00.998398Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Race Participant",
+      "line1": "1 Contention Street",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": null
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T07:38:00.962065Z",
+    "updated_at": "2026-08-29T07:38:00.998398Z"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:54 GMT",
+    "server": "uvicorn",
+    "content-length": "196",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.35",
+    "x-request-id": "ba96a00ab6ac4b6280d7fcc7fc2d4885"
+  },
+  "body": {
+    "products_total": 216,
+    "products_active": 63,
+    "out_of_stock": 4,
+    "users_total": 204,
+    "orders_total": 60,
+    "orders_by_status": {
+      "cancelled": 18,
+      "delivered": 1,
+      "confirmed": 39,
+      "shipped": 2
+    },
+    "paid_revenue": 3976.59
+  }
+}

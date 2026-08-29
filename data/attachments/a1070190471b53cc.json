@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 5.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:29 GMT",
+    "server": "uvicorn",
+    "content-length": "207",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.29",
+    "x-request-id": "5657ff2e0ea14f369308e455e901e791"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be less than or equal to 1000",
+    "details": {
+      "fields": [
+        {
+          "field": "quantity",
+          "message": "Input should be less than or equal to 1000",
+          "type": "less_than_equal"
+        }
+      ]
+    }
+  }
+}

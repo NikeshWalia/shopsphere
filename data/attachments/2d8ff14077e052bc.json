@@ -1,0 +1,24 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 2.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:55 GMT",
+    "server": "uvicorn",
+    "content-length": "79",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "0.99",
+    "x-request-id": "abab4db6919e4b5da84c5972568e0e8b"
+  },
+  "body": {
+    "status": "ok",
+    "service": "ShopSphere API",
+    "version": "1.0.0",
+    "environment": "ci"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 9.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:41 GMT",
+    "server": "uvicorn",
+    "content-length": "151",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.33",
+    "x-request-id": "552d80fd6e5947a2a5a3e0692e0bccaf"
+  },
+  "body": {
+    "error": "INVALID_ORDER_STATE",
+    "message": "An order with status 'cancelled' can no longer be cancelled.",
+    "details": {
+      "order_id": 39,
+      "status": "cancelled"
+    }
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:31 GMT",
+    "server": "uvicorn",
+    "content-length": "8541",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.91",
+    "x-request-id": "4e900b5e6a54459391cf6706fb78df83"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 61,
+        "sku": "BOK-7006",
+        "name": "Salt, Smoke and Time",
+        "price": 32.0,
+        "brand": "Beacon House",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/bok-7006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 61,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 59,
+        "sku": "BOK-7004",
+        "name": "Continuous Delivery in Practice",
+        "price": 47.5,
+        "brand": "Beacon House",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/bok-7004/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 33,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 57,
+        "sku": "BOK-7002",
+        "name": "The Pragmatic Tester",
+        "price": 42.0,
+        "brand": "Quillstone Press",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/bok-7002/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 58,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 56,
+        "sku": "BOK-7001",
+        "name": "Designing Data-Heavy Systems",
+        "price": 54.99,
+        "brand": "Quillstone Press",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/bok-7001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 46,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      },
+      {
+        "id": 50,
+        "sku": "CLO-6002",
+        "name": "Northgate Down Jacket",
+        "price": 249.0,
+        "brand": "Northgate",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/clo-6002/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 49,
+        "sku": "CLO-6001",
+        "name": "Northgate Rain Shell",
+        "price": 189.0,
+        "brand": "Northgate",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/clo-6001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 43,
+        "category": {
+          "id": 6,
+          "name": "Clothing",
+          "slug": "clothing",
+          "description": "Everyday apparel and outerwear."
+        }
+      },
+      {
+        "id": 47,
+        "sku": "HOM-5008",
+        "name": "Hearthwell Cast Iron Skillet 12in",
+        "price": 59.0,
+        "brand": "Hearthwell",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/hom-5008/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 64,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 43,
+        "sku": "HOM-5004",
+        "name": "Hearthwell Stand Mixer",
+        "price": 379.0,
+        "brand": "Hearthwell",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/hom-5004/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 14,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 40,
+        "sku": "HOM-5001",
+        "name": "Hearthwell Espresso Machine",
+        "price": 649.0,
+        "brand": "Hearthwell",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/hom-5001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 9,
+        "category": {
+          "id": 5,
+          "name": "Home",
+          "slug": "home",
+          "description": "Kitchen, lighting and small appliances."
+        }
+      },
+      {
+        "id": 36,
+        "sku": "ACC-4009",
+        "name": "Corvid Tripod Carbon",
+        "price": 229.0,
+        "brand": "Corvid",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/acc-4009/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 13,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      },
+      {
+        "id": 35,
+        "sku": "ACC-4008",
+        "name": "Nimbus Monitor Arm",
+        "price": 109.0,
+        "brand": "Nimbus",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/acc-4008/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 34,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      },
+      {
+        "id": 33,
+        "sku": "ACC-4006",
+        "name": "Sonaris Mechanical Keyboard 75",
+        "price": 159.0,
+        "brand": "Sonaris",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/acc-4006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 29,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      },
+      {
+        "id": 30,
+        "sku": "ACC-4003",
+        "name": "Corvid Laptop Backpack 20L",
+        "price": 119.0,
+        "brand": "Corvid",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/acc-4003/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 47,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      },
+      {
+        "id": 28,
+        "sku": "ACC-4001",
+        "name": "Nimbus 100W USB-C Charger",
+        "price": 59.99,
+        "brand": "Nimbus",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/acc-4001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 200,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      },
+      {
+        "id": 26,
+        "sku": "ELE-3011",
+        "name": "Sonaris Turntable Classic",
+        "price": 449.0,
+        "brand": "Sonaris",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/ele-3011/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 7,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      },
+      {
+        "id": 25,
+        "sku": "ELE-3010",
+        "name": "Nimbus Mesh Wi-Fi 6 (3-pack)",
+        "price": 299.0,
+        "brand": "Nimbus",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/ele-3010/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 19,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      },
+      {
+        "id": 23,
+        "sku": "ELE-3008",
+        "name": "Corvid Mirrorless M200",
+        "price": 1299.0,
+        "brand": "Corvid",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/ele-3008/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 8,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      },
+      {
+        "id": 20,
+        "sku": "ELE-3005",
+        "name": "Vertex Watch Series 5",
+        "price": 399.0,
+        "brand": "Vertex",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/ele-3005/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 37,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      },
+      {
+        "id": 18,
+        "sku": "ELE-3003",
+        "name": "Sonaris Studio Monitor Pair",
+        "price": 399.0,
+        "brand": "Sonaris",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/ele-3003/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 12,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      },
+      {
+        "id": 16,
+        "sku": "ELE-3001",
+        "name": "Nimbus Noise-Cancelling Headphones",
+        "price": 249.99,
+        "brand": "Nimbus",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/ele-3001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 55,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      },
+      {
+        "id": 10,
+        "sku": "PHN-2002",
+        "name": "Vertex 12",
+        "price": 849.0,
+        "brand": "Vertex",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/phn-2002/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 48,
+        "category": {
+          "id": 2,
+          "name": "Phones",
+          "slug": "phones",
+          "description": "Smartphones across the budget and flagship range."
+        }
+      },
+      {
+        "id": 9,
+        "sku": "PHN-2001",
+        "name": "Vertex 12 Pro",
+        "price": 1099.0,
+        "brand": "Vertex",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/phn-2001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 33,
+        "category": {
+          "id": 2,
+          "name": "Phones",
+          "slug": "phones",
+          "description": "Smartphones across the budget and flagship range."
+        }
+      },
+      {
+        "id": 8,
+        "sku": "LAP-1008",
+        "name": "Kestrel Titan Gaming 15",
+        "price": 1749.0,
+        "brand": "Kestrel",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/lap-1008/600/600",
+        "is_active": true,
+        "in_stock": false,
+        "stock_quantity": 0,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 2,
+        "sku": "LAP-1002",
+        "name": "Aurora 16 Creator Pro",
+        "price": 2199.0,
+        "brand": "Aurora",
+        "rating": "4.8",
+        "image_url": "https://picsum.photos/seed/lap-1002/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 11,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 1,
+        "sku": "LAP-1001",
+        "name": "Aurora 14 Ultrabook",
+        "price": 1249.0,
+        "brand": "Aurora",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/lap-1001/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 24,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 25,
+    "page": 1,
+    "page_size": 100,
+    "total_pages": 1,
+    "has_next": false,
+    "has_previous": false
+  }
+}

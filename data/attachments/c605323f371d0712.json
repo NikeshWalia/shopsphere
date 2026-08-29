@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:31 GMT",
+    "server": "uvicorn",
+    "content-length": "456",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.3",
+    "x-request-id": "bfbb24a67b534c74b71f8a614f64e97a"
+  },
+  "body": {
+    "id": 94,
+    "sku": "TST-79048D5DEF",
+    "name": "Test Product c8665d",
+    "price": 49.99,
+    "brand": "SlugBrandc1bd5459c5",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": false,
+    "in_stock": true,
+    "stock_quantity": 25,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T07:37:32.102107Z",
+    "updated_at": "2026-08-29T07:37:32.157326Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 18.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:54 GMT",
+    "server": "uvicorn",
+    "content-length": "422",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "16.63",
+    "x-request-id": "90c769bf44154cf484c91db5eb19c6ef"
+  },
+  "body": {
+    "id": 109,
+    "items": [
+      {
+        "product_id": 217,
+        "sku": "TST-C2C21BD2BB",
+        "name": "Test Product c4196c",
+        "image_url": null,
+        "unit_price": 49.99,
+        "quantity": 1,
+        "line_total": 49.99,
+        "available_stock": 5,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 1,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 49.99,
+      "discount_total": 0.0,
+      "tax": 4.0,
+      "shipping_fee": 9.99,
+      "total": 63.98,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

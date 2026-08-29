@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 18.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:28 GMT",
+    "server": "uvicorn",
+    "content-length": "417",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "16.33",
+    "x-request-id": "d5c1499cd0f14d7da1bcbbd8314aa3e8"
+  },
+  "body": {
+    "id": 8,
+    "items": [
+      {
+        "product_id": 71,
+        "sku": "TST-7075C10FDC",
+        "name": "Test Product c00dd4",
+        "image_url": null,
+        "unit_price": 10.0,
+        "quantity": 5,
+        "line_total": 50.0,
+        "available_stock": 20,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 5,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 50.0,
+      "discount_total": 0.0,
+      "tax": 4.0,
+      "shipping_fee": 9.99,
+      "total": 63.99,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

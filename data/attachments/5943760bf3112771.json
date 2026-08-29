@@ -1,0 +1,27 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:53 GMT",
+    "server": "uvicorn",
+    "content-length": "170",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.91",
+    "x-request-id": "0c8869b757494e9e8a376a2c57efdad0"
+  },
+  "body": {
+    "id": 202,
+    "email": "user_d318d4f0802e@shopsphere.test",
+    "full_name": "Brian Hart",
+    "phone": null,
+    "role": "customer",
+    "is_active": true,
+    "created_at": "2026-08-29T07:37:53.525354Z"
+  }
+}

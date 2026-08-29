@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 3.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:26 GMT",
+    "server": "uvicorn",
+    "content-length": "226",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.87",
+    "x-request-id": "76c3d74afa354653bf51334072b67888"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, An email address cannot end with a period.",
+    "details": {
+      "fields": [
+        {
+          "field": "email",
+          "message": "Value error, An email address cannot end with a period.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

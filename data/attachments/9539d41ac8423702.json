@@ -1,0 +1,39 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 14.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:31 GMT",
+    "server": "uvicorn",
+    "content-length": "451",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "12.12",
+    "x-request-id": "3f27ae87d053454c8f43103a8906363f"
+  },
+  "body": {
+    "id": 96,
+    "sku": "TST-C2CE6F4D05",
+    "name": "Older Product",
+    "price": 49.99,
+    "brand": "NewestBrand37fa077d97",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": true,
+    "in_stock": true,
+    "stock_quantity": 25,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T07:37:32.580305Z",
+    "updated_at": "2026-08-29T07:37:32.580305Z"
+  }
+}

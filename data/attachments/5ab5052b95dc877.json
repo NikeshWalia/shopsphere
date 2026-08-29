@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 7.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:32 GMT",
+    "server": "uvicorn",
+    "content-length": "441",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.98",
+    "x-request-id": "470bc0ebd90943cc863b8adf20956bf8"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 8,
+        "sku": "LAP-1008",
+        "name": "Kestrel Titan Gaming 15",
+        "price": 1749.0,
+        "brand": "Kestrel",
+        "rating": "4.5",
+        "image_url": "https://picsum.photos/seed/lap-1008/600/600",
+        "is_active": true,
+        "in_stock": false,
+        "stock_quantity": 0,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 8,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 8,
+    "has_next": true,
+    "has_previous": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status_code": 401,
+  "elapsed_ms": 6.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:54 GMT",
+    "server": "uvicorn",
+    "www-authenticate": "Bearer",
+    "content-length": "85",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.05",
+    "x-request-id": "34b11c23f2004c27a04a275fc28d99ad"
+  },
+  "body": {
+    "error": "INVALID_CREDENTIALS",
+    "message": "Incorrect email or password.",
+    "details": {}
+  }
+}

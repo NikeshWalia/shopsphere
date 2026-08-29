@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 5.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:37 GMT",
+    "server": "uvicorn",
+    "content-length": "227",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.57",
+    "x-request-id": "939e1b7e4fb34ca3bd66c77a37705966"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be greater than or equal to 2000",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.expiry_year",
+          "message": "Input should be greater than or equal to 2000",
+          "type": "greater_than_equal"
+        }
+      ]
+    }
+  }
+}

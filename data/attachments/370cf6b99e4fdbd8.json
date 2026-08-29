@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 11.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:28 GMT",
+    "server": "uvicorn",
+    "content-length": "155",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "9.69",
+    "x-request-id": "37e3391d1e684a55ac8f9061be58f899"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "Only 3 units of 'Test Product e19f49' are available.",
+    "details": {
+      "product_id": 72,
+      "requested": 4,
+      "available": 3
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 07:37:32 GMT",
+    "server": "uvicorn",
+    "content-length": "438",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.91",
+    "x-request-id": "6241f059df4d49f7a1679891914891c5"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 36,
+        "sku": "ACC-4009",
+        "name": "Corvid Tripod Carbon",
+        "price": 229.0,
+        "brand": "Corvid",
+        "rating": "4.6",
+        "image_url": "https://picsum.photos/seed/acc-4009/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 13,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      }
+    ],
+    "total": 6,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 6,
+    "has_next": true,
+    "has_previous": false
+  }
+}
