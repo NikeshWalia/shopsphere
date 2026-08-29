@@ -53,7 +53,7 @@ ADMIN_EMAIL: str = (
     os.getenv("PERF_ADMIN_EMAIL") or os.getenv("TEST_ADMIN_EMAIL") or "admin@shopsphere.test"
 )
 ADMIN_PASSWORD: str = (
-    os.getenv("PERF_ADMIN_PASSWORD") or os.getenv("TEST_ADMIN_PASSWORD") or "AdminPass123!"
+    os.getenv("PERF_ADMIN_PASSWORD") or os.getenv("TEST_ADMIN_PASSWORD") or "ChangeMeAdmin1"
 )
 
 # Load users register themselves rather than sharing a seeded account: a shared

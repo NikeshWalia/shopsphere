@@ -741,7 +741,8 @@ PROMOTIONS: tuple[dict[str, object], ...] = (
 
 # Demo customer accounts. Passwords come from configuration, never from here.
 CUSTOMERS: tuple[tuple[str, str], ...] = (
-    ("alice@shopsphere.test", "Alice Nakamura"),
+    # Address overridden by SEED_CUSTOMER_EMAIL; the name is only cosmetic.
+    ("customer@shopsphere.test", "Demo Customer"),
     ("ben@shopsphere.test", "Ben Okonkwo"),
     ("carla@shopsphere.test", "Carla Mendes"),
     ("dev@shopsphere.test", "Dev Sharma"),

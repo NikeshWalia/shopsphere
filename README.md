@@ -78,12 +78,21 @@ healthcheck and every dependency waits on it, so there is nothing to sleep for.
 | API docs (Swagger) | <http://localhost:8000/docs> |
 | Payment provider | <http://localhost:9100/docs> |
 
-**Demo accounts** (created by the seeder, configurable in `.env`):
+**Demo accounts.** The seeder prints the admin and customer credentials when it
+runs, so they are never published here. Defaults live in `.env.example` and are
+placeholders — set your own before first seed:
 
-| Role | Email | Password |
-| --- | --- | --- |
-| Admin | `admin@shopsphere.test` | `AdminPass123!` |
-| Customer | `alice@shopsphere.test` | `CustomerPass123!` |
+```bash
+SEED_ADMIN_EMAIL=you@example.test
+SEED_ADMIN_PASSWORD=<something only you know>
+SEED_CUSTOMER_EMAIL=customer@example.test
+SEED_CUSTOMER_PASSWORD=<something only you know>
+```
+
+`.env` is gitignored. Keeping real credentials out of the repository is the
+point: a password committed once stays in the git history even after it is
+edited out, and anything published alongside a public repo should be assumed
+compromised. The seeder is the only place the pair is ever displayed.
 
 ### Running the services directly
 

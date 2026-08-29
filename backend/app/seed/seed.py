@@ -125,7 +125,11 @@ def seed_users(db: Session, roles: dict[str, Role]) -> tuple[User, list[User]]:
     )
 
     customers: list[User] = []
-    for email, full_name in CUSTOMERS:
+    # The first entry is the account published in the README, so its address
+    # comes from configuration. The rest are fixed: they exist to give orders
+    # and reviews plausible variety, and nothing documents them.
+    demo_customers = ((settings.seed_customer_email, CUSTOMERS[0][1]), *CUSTOMERS[1:])
+    for email, full_name in demo_customers:
         user, _ = _upsert_user(
             db,
             email=email,
@@ -463,7 +467,7 @@ def run(*, do_reset: bool = False) -> None:
     log("\nDemo accounts")
     log("-" * 34)
     log(f"  admin     {settings.seed_admin_email} / {settings.seed_admin_password}")
-    log(f"  customer  {CUSTOMERS[0][0]} / {settings.seed_customer_password}")
+    log(f"  customer  {settings.seed_customer_email} / {settings.seed_customer_password}")
     log("\nSeed complete.")
 
 

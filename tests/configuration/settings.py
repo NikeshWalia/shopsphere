@@ -71,13 +71,13 @@ class TestSettings:
         default_factory=lambda: _env("TEST_ADMIN_EMAIL", "admin@shopsphere.test")
     )
     admin_password: str = field(
-        default_factory=lambda: _env("TEST_ADMIN_PASSWORD", "AdminPass123!")
+        default_factory=lambda: _env("TEST_ADMIN_PASSWORD", "ChangeMeAdmin1")
     )
     customer_email: str = field(
-        default_factory=lambda: _env("TEST_CUSTOMER_EMAIL", "alice@shopsphere.test")
+        default_factory=lambda: _env("TEST_CUSTOMER_EMAIL", "customer@shopsphere.test")
     )
     customer_password: str = field(
-        default_factory=lambda: _env("TEST_CUSTOMER_PASSWORD", "CustomerPass123!")
+        default_factory=lambda: _env("TEST_CUSTOMER_PASSWORD", "ChangeMeCustomer1")
     )
 
     # Must match the backend's SECRET_KEY. Security tests mint expired and

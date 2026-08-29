@@ -83,11 +83,15 @@ class Settings(BaseSettings):
 
     # -- Seed data ---------------------------------------------------------
     seed_admin_email: str = "admin@shopsphere.test"
+    # The customer address is configurable for the same reason the admin one
+    # is: both are published in the README, so both have to be changeable
+    # without editing seed data.
+    seed_customer_email: str = "customer@shopsphere.test"
     # Demo credentials for the seeded accounts, published in the README so a
     # newcomer can sign in. Overridden by SEED_* environment variables, and the
     # production guard above refuses to start with the placeholder SECRET_KEY.
-    seed_admin_password: str = "AdminPass123!"  # noqa: S105
-    seed_customer_password: str = "CustomerPass123!"  # noqa: S105
+    seed_admin_password: str = "ChangeMeAdmin1"  # noqa: S105
+    seed_customer_password: str = "ChangeMeCustomer1"  # noqa: S105
 
     @field_validator("tax_rate")
     @classmethod
