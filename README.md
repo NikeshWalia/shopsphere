@@ -101,6 +101,17 @@ make frontend &             # :5173
 
 `make help` lists every target.
 
+On Windows, `scripts/local-stack.ps1` does all of the above in one command:
+
+```powershell
+.\scripts\local-stack.ps1 start     # starts all four services, waits for each
+.\scripts\local-stack.ps1 status    # what is up right now
+.\scripts\local-stack.ps1 stop      # clean shutdown, database flushed to disk
+```
+
+It expects PostgreSQL under `~/shopsphere-data`; set `SHOPSPHERE_DATA` if
+yours lives elsewhere.
+
 ---
 
 ## Architecture
