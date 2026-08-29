@@ -87,7 +87,7 @@ Putting everything in the browser is the beginner's mistake.
 
 ## The bugs this found
 
-Five real bugs were found in this application by these tests, and all five were
+Six real bugs were found in this application by these tests, and all six were
 fixed. This is the evidence that the testing does something. A test suite that
 never catches anything is decoration.
 
@@ -111,6 +111,18 @@ database actually returned.
 This is worth understanding properly, because it is a bug that looks impossible
 until you know the cause. The safety measure was present and functioning. The
 data was still wrong.
+
+### A container said it was broken while working fine
+
+Docker checks whether a service is alive by asking it a question every few
+seconds. The shop's web server kept answering visitors correctly but kept
+failing that check, so Docker reported it as broken.
+
+The web server was listening on the older style of network address. The
+health check was asking on the newer style. On the automated build machines
+the two happened to line up, so it passed there for weeks; on a Windows
+laptop they did not. Same code, different result - which is exactly why
+running software somewhere new is itself a form of testing.
 
 **The other four:** a specific invalid character crashed the server instead of
 being rejected politely; a malformed stored password could crash the login

@@ -24,7 +24,7 @@ authorisation, and a payment provider that can genuinely fail. Around it sits a
 test platform of **916 tests** across seven layers, from pure unit tests of the
 pricing rules to full browser journeys.
 
-**It was built so it could be broken.** Along the way the suite found five real
+**It was built so it could be broken.** Along the way the suite found six real
 defects in the application — including an oversell race that let two customers
 buy the same unit, and a single character that could 500 any endpoint. Each is
 documented below with the fix.
@@ -357,6 +357,29 @@ Plus a race where several simultaneous "add to cart" clicks from a new customer
 produced 500s, because each tried to create the one-per-user cart row.
 
 ---
+
+### 6. A healthy container reported itself unhealthy *(environment-dependent)*
+
+**Found by** running the stack on Docker Desktop for Windows — not by CI, which
+had passed this image on every push.
+
+The storefront container served traffic perfectly while Docker marked it
+`unhealthy`. nginx binds `0.0.0.0:80`, which is IPv4 only. The healthcheck asked
+for `http://localhost/healthz`, and on this host `localhost` resolves to `::1`
+first — so the probe got connection-refused from an address nginx was never
+listening on. `127.0.0.1` worked; `localhost` did not.
+
+CI missed it because its runners resolve `localhost` to IPv4 first. The image
+was identical; only the resolver ordering differed.
+
+```dockerfile
+CMD wget -qO- http://127.0.0.1/healthz || exit 1   # ← was http://localhost/healthz
+```
+
+Nothing depended on the frontend's health status, so no service failed to start
+— but `docker compose up --wait` would have hung, and a real orchestrator would
+have restart-looped a container that was working the whole time.
+
 
 ## Running the tests
 
