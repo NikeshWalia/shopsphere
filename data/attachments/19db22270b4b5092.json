@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?brand=Corvid&page_size=1",
+  "params": {
+    "brand": "Corvid",
+    "page_size": 1
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

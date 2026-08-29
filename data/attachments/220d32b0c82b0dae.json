@@ -1,0 +1,17 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?page=1&page_size=100&category=laptops&min_price=800&max_price=2000&min_rating=4.0&in_stock=true",
+  "params": {
+    "page": 1,
+    "page_size": 100,
+    "category": "laptops",
+    "min_price": 800,
+    "max_price": 2000,
+    "min_rating": 4.0,
+    "in_stock": true
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

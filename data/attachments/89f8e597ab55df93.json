@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 51.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:02 GMT",
+    "server": "uvicorn",
+    "content-length": "942",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "50.03",
+    "x-request-id": "c84efbe47918430a909fe51a0f1de674"
+  },
+  "body": {
+    "id": 49,
+    "order_number": "SS-20260829-RKW6NQ",
+    "user_id": 131,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 149.97,
+    "discount_total": 15.0,
+    "tax": 10.8,
+    "shipping_fee": 0.0,
+    "total": 145.77,
+    "currency": "USD",
+    "promo_code": "WELCOME10",
+    "items": [
+      {
+        "id": 51,
+        "product_id": 190,
+        "product_name": "Test Product 6fd404",
+        "sku": "TST-F38815FBBE",
+        "unit_price": 49.99,
+        "quantity": 3,
+        "line_total": 149.97
+      }
+    ],
+    "payments": [
+      {
+        "id": 52,
+        "provider_reference": "txn_e5883ac5514149f9ab92",
+        "amount": 145.77,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T04:47:03.375097Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T04:47:03.362427Z",
+    "updated_at": "2026-08-29T04:47:03.375097Z"
+  }
+}

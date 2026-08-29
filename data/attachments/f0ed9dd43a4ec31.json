@@ -1,0 +1,14 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?page=1&page_size=100&min_price=0.0&max_price=0.0",
+  "params": {
+    "page": 1,
+    "page_size": 100,
+    "min_price": 0.0,
+    "max_price": 0.0
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

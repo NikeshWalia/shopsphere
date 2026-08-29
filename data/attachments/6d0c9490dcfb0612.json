@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/cart/items",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "product_id": 70,
+    "quantity": 1,
+    "unit_price": 0.01,
+    "price": 0,
+    "line_total": 0,
+    "subtotal": 0,
+    "total": 0,
+    "discount_total": 999
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "PATCH",
+  "url": "http://127.0.0.1:8000/api/v1/cart/items/226",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "quantity": 3
+  }
+}

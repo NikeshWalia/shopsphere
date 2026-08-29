@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:52 GMT",
+    "server": "uvicorn",
+    "content-length": "439",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.23",
+    "x-request-id": "3e8849332d5a47d2b7554eca00ff3db2"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 39,
+        "sku": "ACC-4012",
+        "name": "Sonaris Desk Mat XL",
+        "price": 39.0,
+        "brand": "Sonaris",
+        "rating": "4.2",
+        "image_url": "https://picsum.photos/seed/acc-4012/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 96,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      }
+    ],
+    "total": 12,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 12,
+    "has_next": true,
+    "has_previous": false
+  }
+}

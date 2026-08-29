@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 45.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:06 GMT",
+    "server": "uvicorn",
+    "content-length": "930",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "44.31",
+    "x-request-id": "d7f674c586a24b0484f0f3570e11f6dd"
+  },
+  "body": {
+    "id": 55,
+    "order_number": "SS-20260829-YKF39Y",
+    "user_id": 154,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 49.99,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.98,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 57,
+        "product_id": 210,
+        "product_name": "Test Product 8d647f",
+        "sku": "TST-9F4C45498E",
+        "unit_price": 49.99,
+        "quantity": 1,
+        "line_total": 49.99
+      }
+    ],
+    "payments": [
+      {
+        "id": 58,
+        "provider_reference": "txn_b83e9bee2b2e4a3c9838",
+        "amount": 63.98,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T04:47:07.443113Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T04:47:07.431669Z",
+    "updated_at": "2026-08-29T04:47:07.443113Z"
+  }
+}

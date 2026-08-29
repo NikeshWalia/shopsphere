@@ -1,0 +1,12 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/auth/login",
+  "params": {},
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": {
+    "email": "ghost_e8d7318161ef@shopsphere.test",
+    "password": "***redacted***"
+  }
+}

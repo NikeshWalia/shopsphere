@@ -1,0 +1,14 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?brand=PageBrandbefd3ff358&sort=name_asc&page=2&page_size=4",
+  "params": {
+    "brand": "PageBrandbefd3ff358",
+    "sort": "name_asc",
+    "page": 2,
+    "page_size": 4
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

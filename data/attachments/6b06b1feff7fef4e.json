@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 42.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:54 GMT",
+    "server": "uvicorn",
+    "content-length": "932",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "41.73",
+    "x-request-id": "926029f78b69400aa38782b9a48c3075"
+  },
+  "body": {
+    "id": 14,
+    "order_number": "SS-20260829-EE9JTQ",
+    "user_id": 74,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 20.0,
+    "discount_total": 0.0,
+    "tax": 1.6,
+    "shipping_fee": 9.99,
+    "total": 31.59,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 16,
+        "product_id": 144,
+        "product_name": "Test Product 1940f1",
+        "sku": "TST-92C523D758",
+        "unit_price": 20.0,
+        "quantity": 1,
+        "line_total": 20.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 14,
+        "provider_reference": "txn_eef324220c1142bcb5e2",
+        "amount": 31.59,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "4444",
+        "card_brand": "mastercard",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T04:46:55.318525Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T04:46:55.307705Z",
+    "updated_at": "2026-08-29T04:46:55.318525Z"
+  }
+}

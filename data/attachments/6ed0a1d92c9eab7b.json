@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 17.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:11 GMT",
+    "server": "uvicorn",
+    "content-length": "422",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "16.51",
+    "x-request-id": "14082ec8439049a2bc7db787db536688"
+  },
+  "body": {
+    "id": 109,
+    "items": [
+      {
+        "product_id": 217,
+        "sku": "TST-65EA506C48",
+        "name": "Test Product ae71ee",
+        "image_url": null,
+        "unit_price": 49.99,
+        "quantity": 1,
+        "line_total": 49.99,
+        "available_stock": 5,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 1,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 49.99,
+      "discount_total": 0.0,
+      "tax": 4.0,
+      "shipping_fee": 9.99,
+      "total": 63.98,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

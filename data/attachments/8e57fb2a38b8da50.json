@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 8.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:54 GMT",
+    "server": "uvicorn",
+    "content-length": "539",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.46",
+    "x-request-id": "2b2c97b10d3d4dc2a57d60f90532e43d"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 73,
+      "email": "user_417b3a5aaae4@shopsphere.test",
+      "full_name": "Mark Rice MD",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:46:55.079474Z"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:16 GMT",
+    "server": "uvicorn",
+    "content-length": "286",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.02",
+    "x-request-id": "7a1483b31848418b8f788f85f45a16d8"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 234,
+        "email": "user_751e1b8c7047@shopsphere.test",
+        "full_name": "'; DROP TABLE products; --",
+        "phone": null,
+        "role": "customer",
+        "is_active": true,
+        "created_at": "2026-08-29T04:47:14.478650Z"
+      }
+    ],
+    "total": 1,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 1,
+    "has_next": false,
+    "has_previous": false
+  }
+}

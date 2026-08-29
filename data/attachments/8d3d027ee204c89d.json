@@ -1,0 +1,39 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 11.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:50 GMT",
+    "server": "uvicorn",
+    "content-length": "455",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "9.73",
+    "x-request-id": "726048568a59442dbd0fbe5f400b0923"
+  },
+  "body": {
+    "id": 93,
+    "sku": "TST-4DE37DB608",
+    "name": "Test Product fa15e3",
+    "price": 49.99,
+    "brand": "SlugBrandcea9c57a04",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": true,
+    "in_stock": true,
+    "stock_quantity": 25,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T04:46:51.486101Z",
+    "updated_at": "2026-08-29T04:46:51.486101Z"
+  }
+}

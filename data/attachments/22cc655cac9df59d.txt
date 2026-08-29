@@ -1,5 +1,0 @@
-INFO     httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/register "HTTP/1.1 201 Created"
-INFO     httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/register "HTTP/1.1 201 Created"
-INFO     httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:8000/api/v1/addresses "HTTP/1.1 201 Created"
-INFO     httpx:_client.py:1025 HTTP Request: PATCH http://127.0.0.1:8000/api/v1/addresses/21 "HTTP/1.1 404 Not Found"
-INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/addresses/21 "HTTP/1.1 200 OK"

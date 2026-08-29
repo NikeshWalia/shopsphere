@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 11.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:01 GMT",
+    "server": "uvicorn",
+    "content-length": "554",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "10.07",
+    "x-request-id": "c06e5f4c0eab48968c2e46b5a47d367e"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 121,
+      "email": "persist_57d7abf2099b@shopsphere.test",
+      "full_name": "Persistence Probe",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:47:02.031454Z"
+    }
+  }
+}

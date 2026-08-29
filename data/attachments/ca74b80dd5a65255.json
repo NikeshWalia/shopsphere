@@ -1,0 +1,41 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:46 GMT",
+    "server": "uvicorn",
+    "content-length": "475",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.57",
+    "x-request-id": "f48652f845df48779ad8380e706b7d8a"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, An email address must have an @-sign.",
+    "details": {
+      "fields": [
+        {
+          "field": "email",
+          "message": "Value error, An email address must have an @-sign.",
+          "type": "value_error"
+        },
+        {
+          "field": "password",
+          "message": "Value error, Password must be at least 8 characters long, contain an uppercase letter, contain a digit.",
+          "type": "value_error"
+        },
+        {
+          "field": "full_name",
+          "message": "String should have at least 2 characters",
+          "type": "string_too_short"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/products?q= "HTTP/1.1 200 OK"

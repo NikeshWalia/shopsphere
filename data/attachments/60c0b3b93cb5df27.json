@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 17.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:05 GMT",
+    "server": "uvicorn",
+    "content-length": "421",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "16.09",
+    "x-request-id": "cd7056536f8d4d0d824aa16b73ff4d82"
+  },
+  "body": {
+    "id": 95,
+    "items": [
+      {
+        "product_id": 203,
+        "sku": "TST-0C7BAA3DF4",
+        "name": "Test Product faac6c",
+        "image_url": null,
+        "unit_price": 49.99,
+        "quantity": 1,
+        "line_total": 49.99,
+        "available_stock": 5,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 1,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 49.99,
+      "discount_total": 0.0,
+      "tax": 4.0,
+      "shipping_fee": 9.99,
+      "total": 63.98,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

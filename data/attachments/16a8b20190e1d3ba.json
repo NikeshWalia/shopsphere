@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 9.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:59 GMT",
+    "server": "uvicorn",
+    "content-length": "545",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.24",
+    "x-request-id": "b35b6e462cbd49859f9a33ece3c9a514"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 119,
+      "email": "user_8376c1e800ba@shopsphere.test",
+      "full_name": "Mr. Wayne Davis",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T04:47:00.830006Z"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 14.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:29 GMT",
+    "server": "uvicorn",
+    "content-length": "928",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "13.09",
+    "x-request-id": "ab45ba4a701d458e80cde817386ab372"
+  },
+  "body": {
+    "id": 81,
+    "order_number": "SS-20260829-LKNN5J",
+    "user_id": 297,
+    "status": "delivered",
+    "payment_status": "paid",
+    "subtotal": 20.0,
+    "discount_total": 0.0,
+    "tax": 1.6,
+    "shipping_fee": 9.99,
+    "total": 31.59,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 79,
+        "product_id": 234,
+        "product_name": "Test Fixture Product",
+        "sku": "TST-34A84608C4",
+        "unit_price": 20.0,
+        "quantity": 1,
+        "line_total": 20.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 81,
+        "provider_reference": "txn_14ac508a12344ec4a96c",
+        "amount": 31.59,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T04:47:29.421352Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T04:47:29.410280Z",
+    "updated_at": "2026-08-29T04:47:29.504956Z"
+  }
+}

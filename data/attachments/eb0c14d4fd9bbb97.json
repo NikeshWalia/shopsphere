@@ -1,0 +1,25 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 4.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:46 GMT",
+    "server": "uvicorn",
+    "content-length": "155",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.95",
+    "x-request-id": "650a2ccda25742f5a45e3407cde61082"
+  },
+  "body": {
+    "error": "EMAIL_ALREADY_REGISTERED",
+    "message": "An account with this email address already exists.",
+    "details": {
+      "email": "user_4ed8316f6f34@shopsphere.test"
+    }
+  }
+}

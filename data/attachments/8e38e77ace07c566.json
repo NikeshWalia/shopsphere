@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?category=Laptops&brand=SlugBrandcea9c57a04",
+  "params": {
+    "category": "Laptops",
+    "brand": "SlugBrandcea9c57a04"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

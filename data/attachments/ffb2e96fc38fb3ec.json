@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 17.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:47:13 GMT",
+    "server": "uvicorn",
+    "content-length": "445",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "15.69",
+    "x-request-id": "94186d435f204e9896bfb30343d68a4d"
+  },
+  "body": {
+    "id": 68,
+    "sku": "TST-AFAD93863A",
+    "name": "Test Product 8f22fd",
+    "price": 49.99,
+    "brand": "TestBrand",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": false,
+    "in_stock": true,
+    "stock_quantity": 5,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T04:47:13.280968Z",
+    "updated_at": "2026-08-29T04:47:13.995679Z"
+  }
+}

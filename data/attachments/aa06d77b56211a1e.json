@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 9.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:46:49 GMT",
+    "server": "uvicorn",
+    "content-length": "141",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.11",
+    "x-request-id": "4d8dda9f13c54ac18db738b2e751c0c6"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "'Test Product dfb916' is out of stock.",
+    "details": {
+      "product_id": 88,
+      "requested": 1,
+      "available": 0
+    }
+  }
+}

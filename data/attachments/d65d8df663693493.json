@@ -1,0 +1,12 @@
+{
+  "method": "PATCH",
+  "url": "http://127.0.0.1:8000/api/v1/admin/users/202/active?is_active=true",
+  "params": {
+    "is_active": true
+  },
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": null
+}
