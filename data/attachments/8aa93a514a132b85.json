@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?category=javascript%3Aalert%281%29",
+  "params": {
+    "category": "javascript:alert(1)"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

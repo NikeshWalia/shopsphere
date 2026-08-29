@@ -1,0 +1,25 @@
+{
+  "status_code": 404,
+  "elapsed_ms": 5.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:29 GMT",
+    "server": "uvicorn",
+    "content-length": "82",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.95",
+    "x-request-id": "93b696598f164f6083f83fe6a58a7d44"
+  },
+  "body": {
+    "error": "ORDER_NOT_FOUND",
+    "message": "Order not found.",
+    "details": {
+      "order_id": 18
+    }
+  }
+}

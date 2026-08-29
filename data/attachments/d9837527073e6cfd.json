@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/addresses",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "label": "Private",
+    "full_name": "Ada Lovelace",
+    "line1": "12 Secret Way",
+    "city": "Cambridge",
+    "state": "MA",
+    "postal_code": "02139",
+    "country": "US"
+  }
+}

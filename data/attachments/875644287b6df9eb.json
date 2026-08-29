@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products/%7B%7B7%2A7%7D%7D",
+  "params": {},
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

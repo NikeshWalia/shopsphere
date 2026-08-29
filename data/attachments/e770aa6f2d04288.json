@@ -1,0 +1,14 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/auth/register",
+  "params": {},
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": {
+    "email": "persist_f04db8033624@shopsphere.test",
+    "password": "***redacted***",
+    "password_confirm": "***redacted***",
+    "full_name": "Persistence Probe"
+  }
+}

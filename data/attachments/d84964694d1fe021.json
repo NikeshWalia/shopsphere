@@ -1,0 +1,20 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/orders",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***",
+    "Idempotency-Key": "6bac872c388d43ad81396069a094ed99"
+  },
+  "body": {
+    "address_id": 51,
+    "payment": {
+      "card_number": "***redacted***",
+      "card_holder": "Race Participant",
+      "expiry_month": 12,
+      "expiry_year": 2032,
+      "cvv": "***redacted***"
+    }
+  }
+}

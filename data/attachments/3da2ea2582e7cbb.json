@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?category=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E",
+  "params": {
+    "category": "<img src=x onerror=alert(1)>"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

@@ -1,0 +1,3 @@
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/docs "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/openapi.json "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/redoc "HTTP/1.1 200 OK"

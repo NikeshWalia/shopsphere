@@ -1,0 +1,12 @@
+{
+  "method": "PUT",
+  "url": "http://127.0.0.1:8000/api/v1/admin/products/1/stock",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "quantity": 99999
+  }
+}

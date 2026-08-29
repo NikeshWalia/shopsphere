@@ -1,0 +1,16 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/addresses",
+  "params": {},
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": {
+    "full_name": "N",
+    "line1": "1 St",
+    "city": "C",
+    "state": "S",
+    "postal_code": "12345",
+    "country": "US"
+  }
+}

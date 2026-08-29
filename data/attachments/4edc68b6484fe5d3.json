@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 56.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:38 GMT",
+    "server": "uvicorn",
+    "content-length": "925",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "54.63",
+    "x-request-id": "15334caf95f24f18ab0b7d95f4982a17"
+  },
+  "body": {
+    "id": 35,
+    "order_number": "SS-20260829-3AQBPX",
+    "user_id": 172,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 120.0,
+    "discount_total": 0.0,
+    "tax": 9.6,
+    "shipping_fee": 0.0,
+    "total": 129.6,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 33,
+        "product_id": 106,
+        "product_name": "Test Fixture Product",
+        "sku": "TST-43BF194A6A",
+        "unit_price": 30.0,
+        "quantity": 4,
+        "line_total": 120.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 32,
+        "provider_reference": "txn_92071fa8622b4e79bfde",
+        "amount": 129.6,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T04:41:39.150595Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Race Participant",
+      "line1": "1 Contention Street",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": null
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T04:41:39.131406Z",
+    "updated_at": "2026-08-29T04:41:39.150595Z"
+  }
+}

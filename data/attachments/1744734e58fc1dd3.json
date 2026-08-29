@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/admin/orders?search=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E",
+  "params": {
+    "search": "<img src=x onerror=alert(1)>"
+  },
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": null
+}

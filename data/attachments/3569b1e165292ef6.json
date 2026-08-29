@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/addresses",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "label": "Home",
+    "full_name": "Test Customer",
+    "line1": "1 Integration Way",
+    "city": "Austin",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US",
+    "phone": "+1-555-0123"
+  }
+}

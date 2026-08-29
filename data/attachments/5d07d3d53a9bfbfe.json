@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 17.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:30 GMT",
+    "server": "uvicorn",
+    "content-length": "423",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "15.85",
+    "x-request-id": "a17ac7ab8f014cb2a2328dd8dc10f6c9"
+  },
+  "body": {
+    "id": 34,
+    "items": [
+      {
+        "product_id": 96,
+        "sku": "TST-653E6E0733",
+        "name": "Test Product 14cdfb",
+        "image_url": null,
+        "unit_price": 49.99,
+        "quantity": 3,
+        "line_total": 149.97,
+        "available_stock": 5,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 3,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 149.97,
+      "discount_total": 0.0,
+      "tax": 12.0,
+      "shipping_fee": 0.0,
+      "total": 161.97,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

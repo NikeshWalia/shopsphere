@@ -1,0 +1,1 @@
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/products/%27%20UNION%20SELECT%20NULL%2C%20version%28%29%20-- "HTTP/1.1 422 Unprocessable Entity"

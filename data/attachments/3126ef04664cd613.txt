@@ -1,0 +1,2 @@
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/products?in_stock=true&page_size=100&sort=price_asc "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/products/38 "HTTP/1.1 200 OK"

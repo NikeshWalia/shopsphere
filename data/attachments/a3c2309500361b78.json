@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/admin/users?search=%27%3B+SELECT+pg_sleep%285%29%3B+--",
+  "params": {
+    "search": "'; SELECT pg_sleep(5); --"
+  },
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": null
+}

@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 21.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:37 GMT",
+    "server": "uvicorn",
+    "content-length": "135",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "19.86",
+    "x-request-id": "1326ca56b56d46298050504178c95377"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "'The Last One' is out of stock.",
+    "details": {
+      "product_id": 102,
+      "requested": 1,
+      "available": 0
+    }
+  }
+}

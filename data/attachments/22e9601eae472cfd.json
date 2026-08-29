@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?q=%27+OR+%271%27%3D%271",
+  "params": {
+    "q": "' OR '1'='1"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

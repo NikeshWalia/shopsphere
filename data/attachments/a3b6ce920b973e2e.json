@@ -1,0 +1,25 @@
+{
+  "status_code": 404,
+  "elapsed_ms": 2.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:34 GMT",
+    "server": "uvicorn",
+    "content-length": "132",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "0.83",
+    "x-request-id": "63dcfe53ead14c4c8b817e0e1ced51d7"
+  },
+  "body": {
+    "error": "NOT_FOUND",
+    "message": "The requested endpoint does not exist.",
+    "details": {
+      "path": "/api/v1/products/<svg/onload=alert(1)>"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/admin/users?search=%3Cscript%3Ealert%28%27xss%27%29%3C%2Fscript%3E "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/admin/orders?search=%3Cscript%3Ealert%28%27xss%27%29%3C%2Fscript%3E "HTTP/1.1 200 OK"

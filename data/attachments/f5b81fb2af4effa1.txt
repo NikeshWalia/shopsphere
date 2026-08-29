@@ -1,0 +1,2 @@
+INFO     httpx:_client.py:1025 HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/admin/orders "HTTP/1.1 403 Forbidden"

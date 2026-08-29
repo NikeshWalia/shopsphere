@@ -1,0 +1,25 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 11.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:39 GMT",
+    "server": "uvicorn",
+    "content-length": "127",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "10.04",
+    "x-request-id": "bb3b8d8f4eb7410e9bf148d30856c535"
+  },
+  "body": {
+    "product_id": 113,
+    "sku": "TST-CF3CD0CEA5",
+    "name": "Test Fixture Product",
+    "quantity": 7,
+    "updated_at": "2026-08-29T04:41:40.225216Z"
+  }
+}

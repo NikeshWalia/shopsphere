@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?in_stock=true&page_size=100&sort=price_asc",
+  "params": {
+    "in_stock": true,
+    "page_size": 100,
+    "sort": "price_asc"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

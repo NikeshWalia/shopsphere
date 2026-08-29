@@ -1,0 +1,1 @@
+INFO     httpx:_client.py:1025 HTTP Request: GET http://127.0.0.1:8000/api/v1/products/%27%3B%20SELECT%20pg_sleep%285%29%3B%20-- "HTTP/1.1 422 Unprocessable Entity"

@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?category=%3Csvg%2Fonload%3Dalert%281%29%3E",
+  "params": {
+    "category": "<svg/onload=alert(1)>"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

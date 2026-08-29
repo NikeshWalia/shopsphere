@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/addresses",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "label": "Home",
+    "full_name": "javascript:alert(1)",
+    "line1": "javascript:alert(1)",
+    "city": "javascript:alert(1)",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US"
+  }
+}

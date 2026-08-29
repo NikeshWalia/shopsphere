@@ -1,0 +1,25 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 13.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:40:02 GMT",
+    "server": "uvicorn",
+    "content-length": "125",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "11.72",
+    "x-request-id": "240da3c7894d44c7ae2d78bca6b268af"
+  },
+  "body": {
+    "product_id": 71,
+    "sku": "TST-3A2077FD0E",
+    "name": "Test Product 024d22",
+    "quantity": 1,
+    "updated_at": "2026-08-29T04:40:02.518571Z"
+  }
+}

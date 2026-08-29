@@ -1,0 +1,12 @@
+{
+  "method": "PATCH",
+  "url": "http://127.0.0.1:8000/api/v1/admin/orders/43/status",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "status": "processing"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:31 GMT",
+    "server": "uvicorn",
+    "content-length": "998",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.17",
+    "x-request-id": "1c954d33577542999973b78efa3df8f4"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 22,
+        "order_number": "SS-20260829-G8R8XR",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T04:41:31.794822Z"
+      },
+      {
+        "id": 21,
+        "order_number": "SS-20260829-J4FW4B",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T04:41:31.269964Z"
+      },
+      {
+        "id": 20,
+        "order_number": "SS-20260829-JRAQDM",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T04:41:30.937377Z"
+      },
+      {
+        "id": 19,
+        "order_number": "SS-20260829-K64VQ4",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T04:41:30.747797Z"
+      },
+      {
+        "id": 18,
+        "order_number": "SS-20260829-NFY7ZD",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T04:41:30.312317Z"
+      }
+    ],
+    "total": 22,
+    "page": 1,
+    "page_size": 5,
+    "total_pages": 5,
+    "has_next": true,
+    "has_previous": false
+  }
+}

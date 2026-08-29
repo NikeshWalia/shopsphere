@@ -1,0 +1,31 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:33 GMT",
+    "server": "uvicorn",
+    "content-length": "220",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.81",
+    "x-request-id": "a7b48c0cd81c465bba4fdf4425f65891"
+  },
+  "body": {
+    "id": 37,
+    "label": "Home",
+    "full_name": "../../../../etc/passwd",
+    "line1": "../../../../etc/passwd",
+    "line2": null,
+    "city": "../../../../etc/passwd",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US",
+    "phone": null,
+    "is_default": true
+  }
+}

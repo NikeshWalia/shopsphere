@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:32 GMT",
+    "server": "uvicorn",
+    "content-length": "451",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.47",
+    "x-request-id": "39090538ee6941078959002c51a4f2ee"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 33,
+        "sku": "ACC-4006",
+        "name": "Sonaris Mechanical Keyboard 75",
+        "price": 159.0,
+        "brand": "Sonaris",
+        "rating": "4.7",
+        "image_url": "https://picsum.photos/seed/acc-4006/600/600",
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 29,
+        "category": {
+          "id": 4,
+          "name": "Accessories",
+          "slug": "accessories",
+          "description": "Cables, chargers, bags, docks and input devices."
+        }
+      }
+    ],
+    "total": 1,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 1,
+    "has_next": false,
+    "has_previous": false
+  }
+}

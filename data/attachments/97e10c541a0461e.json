@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/admin/orders?search=%27%3B+DROP+TABLE+products%3B+--",
+  "params": {
+    "search": "'; DROP TABLE products; --"
+  },
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": null
+}

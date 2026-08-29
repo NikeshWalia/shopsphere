@@ -1,0 +1,24 @@
+{
+  "status_code": 401,
+  "elapsed_ms": 5.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:29 GMT",
+    "server": "uvicorn",
+    "www-authenticate": "Bearer",
+    "content-length": "102",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.63",
+    "x-request-id": "28a6a399648a45d7a9115ec28ea3a399"
+  },
+  "body": {
+    "error": "INVALID_TOKEN",
+    "message": "The account this token belongs to no longer exists.",
+    "details": {}
+  }
+}

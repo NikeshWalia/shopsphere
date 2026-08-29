@@ -1,0 +1,12 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/admin/orders?search=javascript%3Aalert%281%29",
+  "params": {
+    "search": "javascript:alert(1)"
+  },
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": null
+}

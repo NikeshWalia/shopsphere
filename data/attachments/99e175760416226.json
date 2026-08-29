@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 9.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 04:41:39 GMT",
+    "server": "uvicorn",
+    "content-length": "143",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.08",
+    "x-request-id": "91596bdb9ee444c089dd4a5feb1f94f8"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "'Test Fixture Product' is out of stock.",
+    "details": {
+      "product_id": 113,
+      "requested": 1,
+      "available": 0
+    }
+  }
+}

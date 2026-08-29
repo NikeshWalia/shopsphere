@@ -1,0 +1,1536 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","21","test_hostile_admin_search_input_is_handled_safely[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","1","test_terminal_statuses_allow_nothing","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","6","test_a_hostile_password_never_authenticates[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/auth/me-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","1","test_the_card_last_four_survives_every_branch","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"","0","test_accepts_compliant_passwords[Abcdefg1]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"RFC 7235 defines the scheme as case-insensitive.","0","test_the_scheme_is_case_insensitive[BeArEr]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"RFC 7235 defines the scheme as case-insensitive.","1","test_the_scheme_is_case_insensitive[bearer]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","8","test_the_login_response_matches_its_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"","0","test_declined_via_402","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"One shape for every failure, from every layer.
+
+        FastAPI's own 422, Starlette's 404 and the application's business errors
+        would otherwise each have a different body, and a client would need
+        three parsers.
+        ","8","test_every_error_uses_the_same_envelope[conflict-409]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","26","test_foreign_key_and_delete_rule[users.role_id-to-roles-RESTRICT]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"Promotion tests need a valid, an expired and an inactive code to
+        exist. Without all three, the negative cases quietly stop testing
+        anything and every promo code looks acceptable.
+        ","1","test_seeded_promotion_exists[big-spender]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","5","test_query_path_is_indexed[products-btree (category_id)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"","0","test_out_of_stock_says_so","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[categories]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","0","test_unique_constraint_exists[orders-UNIQUE (user_id, idempotency_key)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"","1","test_tax_is_the_rate_applied_to_the_amount[1249.00-99.92]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"","9","test_hostile_search_terms_are_handled_as_text[null-byte]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","1","test_a_valid_promotion_reports_no_error","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","10","test_hostile_address_fields_are_handled_safely[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[GET-admin-orders]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","312","test_price_sorting_reorders_the_grid[price-ascending]","tests.ui.tests","Sat Aug 29 04:40:09 UTC 2026","passed","Sat Aug 29 04:40:10 UTC 2026","TestSorting","test_catalog_ui","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","19","test_foreign_key_and_delete_rule[carts.user_id-to-users-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","10","test_registration_with_a_hostile_name_never_500s[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"Reflecting any Origin would defeat the same-origin policy entirely.
+
+        With credentials enabled it would let any site read authenticated
+        responses on a visitor's behalf.
+        ","8","test_cors_does_not_reflect_an_arbitrary_origin","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","19","test_foreign_key_and_delete_rule[orders.shipping_address_id-to-addresses-SET NULL]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"","251","test_products_page_lists_the_catalogue","tests.ui.tests","Sat Aug 29 04:40:26 UTC 2026","passed","Sat Aug 29 04:40:26 UTC 2026","","test_framework_smoke","",""
+"A 409 the spec does not mention is a 409 no client is ready for.
+
+        Documenting only the happy path is the most common way an OpenAPI
+        document becomes misleading.
+        ","0","test_failure_responses_are_documented[/api/v1/cart/items-post-expected_codes1]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[order_items-btree (order_id)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"Reporting one failure at a time turns signup into a guessing game.","0","test_lists_every_problem_at_once","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","2","test_registration_with_a_hostile_name_never_500s[null-byte]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_subtotal_sums_every_line","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"","1903","test_a_customer_can_cancel_an_order_from_its_detail_page","tests.ui.tests","Sat Aug 29 04:40:22 UTC 2026","passed","Sat Aug 29 04:40:24 UTC 2026","","test_e2e_journeys","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","28","test_expected_table_exists[cart_items]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","31","test_foreign_key_and_delete_rule[order_items.product_id-to-products-RESTRICT]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"The flagship journey: no account at the start, a paid order at the end.
+
+    Deliberately starts from a signed-out browser and a brand-new address, so
+    nothing about it has been prepared in advance.
+    ","1867","test_a_new_customer_can_register_and_complete_a_purchase","tests.ui.tests","Sat Aug 29 04:40:14 UTC 2026","passed","Sat Aug 29 04:40:16 UTC 2026","","test_e2e_journeys","",""
+"","0","test_sensitive_keys_are_redacted[authorization]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","10","test_registration_with_a_hostile_name_never_500s[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Absent must never mean valid-by-default.","2","test_tokens_with_missing_or_wrong_claims_are_rejected[wrong-type-]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestTokenForgery","test_authorization","",""
+"","0","test_line_total_is_price_times_quantity[0.00-5-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"Order lines store their own ``unit_price`` for the same reason.
+
+        If the invoice read today's catalogue price, every price change would
+        rewrite history: past orders would stop matching what customers were
+        charged, refunds would be calculated against the wrong amount, and
+        revenue reports would move every time marketing ran a sale.
+        ","96","test_order_items_keep_the_price_charged_at_the_time","tests.database.tests","Sat Aug 29 04:41:22 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestOrderSnapshots","test_persistence","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[path-traversal]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","1","test_check_constraint_is_enforced[cart_items-quantity>0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"","0","test_malformed_tokens_are_rejected[]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"The idempotency guard must not over-collapse.
+
+    Two genuinely different purchases, submitted simultaneously with different
+    keys, must both go through - otherwise the fix for double-clicking would
+    break repeat buying.
+    ","190","test_distinct_keys_still_create_distinct_orders","tests.integration.tests","Sat Aug 29 04:41:38 UTC 2026","passed","Sat Aug 29 04:41:38 UTC 2026","","test_concurrency","",""
+"","28","test_hostile_filter_values_are_handled_safely[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","491","test_the_cart_stepper_stops_at_the_available_stock","tests.ui.tests","Sat Aug 29 04:40:00 UTC 2026","passed","Sat Aug 29 04:40:00 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","175","test_an_unknown_product_shows_a_not_found_state","tests.ui.tests","Sat Aug 29 04:40:13 UTC 2026","passed","Sat Aug 29 04:40:13 UTC 2026","TestProductDetail","test_catalog_ui","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[orders-btree (payment_status)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"The message must say what is wrong, so the UI can act on it.","1","test_rejects_and_explains[ALLUPPERCASE1-lowercase]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","1","test_valid_luhn_numbers_pass[4111111111111111]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","2","test_check_constraint_is_enforced[inventory-quantity>=0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[products-btree (rating)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[carts]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","0","test_percentage_discount_respects_its_cap","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","0","test_rounds_half_up_to_two_places[0.1-0.10]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"","0","test_accepts_quantities_within_the_limit[50]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","6","test_customers_are_refused_on_every_admin_endpoint[PATCH-admin-orders-1-status]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","7","test_categories_match_their_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"Distinguishes 'you asked for a nonsense amount' from 'we are short'.","1","test_zero_or_negative_requested_is_a_quantity_error","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"The cart has to outlive the request that created it.
+
+        A cart held only in the session would vanish on the next deploy or
+        whenever the customer switched device, and they would arrive at
+        checkout with an empty basket. These rows are what make it durable.
+        ","75","test_adding_to_cart_writes_a_cart_and_a_cart_item_row","tests.database.tests","Sat Aug 29 04:41:21 UTC 2026","passed","Sat Aug 29 04:41:21 UTC 2026","TestCartPersistence","test_persistence","",""
+"","6","test_a_token_signed_with_another_key_is_not_authentication","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestTokenForgery","test_authorization","",""
+"A 409 the spec does not mention is a 409 no client is ready for.
+
+        Documenting only the happy path is the most common way an OpenAPI
+        document becomes misleading.
+        ","1","test_failure_responses_are_documented[/api/v1/orders/{order_id}-get-expected_codes4]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_accepts_requests_within_stock[1-1]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","40","test_cart_line_money_is_a_number[line_total]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","75","test_order_money_is_a_number[shipping_fee]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/cart/items-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","0","test_check_constraint_is_enforced[orders-discount_total>=0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"StrEnum members must render as 'paid', not 'PaymentStatus.PAID'.","1","test_statuses_serialise_as_their_values","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPaymentStatus","test_order_rules","",""
+"A client cannot promote itself by asserting a role.
+
+        The extra `role` field is not part of the update schema, so it is
+        discarded rather than honoured - the request succeeds and changes only
+        what it was allowed to change.
+        ","28","test_the_admin_role_is_reported_but_not_granted_by_the_client","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","38","test_quote_money_is_a_number[tax]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","0","test_rejects_malformed_headers[Token abc]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","0","test_rejects_requests_above_stock[2-1]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","3","test_a_wrong_method_returns_405_in_the_standard_envelope","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"","1","test_nonsense_input_fails_safely[41111111111111111111111]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","0","test_rejects_non_integers[quantity3]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","10","test_registration_with_a_hostile_name_never_500s[sql-union]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[orders-btree (user_id, created_at)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"","3","test_a_hostile_path_segment_never_500s[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/orders-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_rejects_quantities_above_the_limit[100]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","0","test_nested_structures_are_redacted","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"A discount that drops the basket below the threshold reinstates shipping.
+
+        Charging against the pre-discount subtotal would give away free shipping
+        on an order the customer did not actually qualify for.
+        ","0","test_threshold_is_measured_after_discount","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"The message must be actionable, not just 'invalid'.","0","test_rejection_reason_names_the_code","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","3","test_protected_endpoints_reject_anonymous_callers[GET-auth-me]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","0","test_permitted_transitions[processing-shipped]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"Promotion tests need a valid, an expired and an inactive code to
+        exist. Without all three, the negative cases quietly stop testing
+        anything and every promo code looks acceptable.
+        ","0","test_seeded_promotion_exists[fixed-with-minimum]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"No caching between the admin console and the storefront.
+
+    A customer looking at a stale ""out of stock"" is a lost sale; one looking at
+    a stale ""in stock"" is an oversell.
+    ","73","test_an_admin_restock_is_immediately_visible_to_customers","tests.integration.tests","Sat Aug 29 04:41:40 UTC 2026","passed","Sat Aug 29 04:41:40 UTC 2026","","test_journeys","",""
+"Mass assignment.
+
+        Fields the schema does not declare must be dropped, not written through
+        to the model - otherwise a crafted body could set anything the ORM
+        exposes.
+        ","29","test_unexpected_fields_are_ignored_not_applied","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_free_at_or_above_the_threshold[50.00-9.99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","0","test_unique_constraint_exists[orders-UNIQUE (order_number)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"","11","test_hostile_address_fields_are_handled_safely[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[xss-svg]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_line_total_is_price_times_quantity[0.01-7-0.07]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"","8","test_a_union_probe_does_not_leak_extra_columns","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_sensitive_keys_are_redacted[access_token]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","3","test_a_tampered_payload_breaks_the_signature","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestTokenForgery","test_authorization","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","4","test_login_with_a_hostile_email_never_authenticates[sql-union]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_accepts_requests_within_stock[5-5]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"A double-clicked Pay button must not become a double charge.
+
+        The response body alone cannot prove this: an implementation that
+        created a second order and returned the first would look identical over
+        HTTP. Only the row count for the key, the payment count and the stock
+        level show whether the replay was genuinely a no-op.
+        ","88","test_idempotent_replay_leaves_exactly_one_order_row","tests.database.tests","Sat Aug 29 04:41:22 UTC 2026","passed","Sat Aug 29 04:41:22 UTC 2026","TestCheckoutPersistence","test_persistence","",""
+"An admin adjustment must not silently discard a concurrent decrement.
+
+    Both paths lock the inventory row, so whichever commits second sees the
+    other's result rather than overwriting a stale read.
+    ","130","test_simultaneous_admin_restock_and_customer_purchase_stay_consistent","tests.integration.tests","Sat Aug 29 04:41:39 UTC 2026","passed","Sat Aug 29 04:41:39 UTC 2026","","test_concurrency","",""
+"","0","test_rejects_requests_above_stock[6-5]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","41","test_cart_totals_are_numbers[tax]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","10","test_hostile_address_fields_are_handled_safely[sql-union]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"An empty result must look deliberate, not broken.","229","test_a_search_with_no_matches_shows_the_empty_state","tests.ui.tests","Sat Aug 29 04:40:05 UTC 2026","passed","Sat Aug 29 04:40:05 UTC 2026","TestSearch","test_catalog_ui","",""
+"","4","test_a_hostile_path_segment_never_500s[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_rejects_non_integers[2.5]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","0","test_forbidden_transitions[pending-shipped]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"Sweeps the main read surface for anything credential-shaped.
+
+        Serialising a whole ORM object by accident is the usual way a password
+        hash reaches a client, and it is invisible until somebody looks.
+        ","154","test_no_endpoint_returns_a_credential","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestDataExposure","test_exposure","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/orders-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[addresses]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"A stack trace in a response body is a map of the application.
+
+        It names files, line numbers, library versions and sometimes SQL - all
+        of which make the next attack cheaper.
+        ","6","test_errors_never_leak_internals[forbidden]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"A stack trace in a response body is a map of the application.
+
+        It names files, line numbers, library versions and sometimes SQL - all
+        of which make the next attack cheaper.
+        ","3","test_errors_never_leak_internals[validation]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/categories-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","41","test_hostile_search_terms_are_handled_as_text[sql-comment]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"The message must say what is wrong, so the UI can act on it.","0","test_rejects_and_explains[-at least 8]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"Each transition must be permitted only from the right previous state.","161","test_an_order_moves_through_its_lifecycle","tests.integration.tests","Sat Aug 29 04:41:48 UTC 2026","passed","Sat Aug 29 04:41:49 UTC 2026","","test_journeys","",""
+"","1","test_line_total_is_price_times_quantity[19.99-3-59.97]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"","0","test_rejects_zero_and_negative[0]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"``True`` is an ``int`` in Python and would otherwise pass as 1.
+
+        A JSON body of {""quantity"": true} must be a validation error, not a
+        silent purchase of one unit.
+        ","0","test_rejects_booleans","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/admin/products-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","7","test_a_hostile_password_never_authenticates[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","5","test_customers_are_refused_on_every_admin_endpoint[GET-admin-inventory]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","0","test_free_at_or_above_the_threshold[0.00-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"","4","test_protected_endpoints_reject_anonymous_callers[POST-cart-items]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","5","test_protected_endpoints_reject_anonymous_callers[POST-addresses]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","0","test_every_documented_endpoint_is_present[/health-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","40","test_cart_totals_are_numbers[shipping_fee]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","0","test_forbidden_transitions[delivered-shipped]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","19","test_hostile_filter_values_are_handled_safely[sql-comment]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","3","test_a_hostile_path_segment_never_500s[null-byte]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"An empty ``alembic_version`` means the tables were not created by a
+        migration - so the next ``alembic upgrade`` would try to create them
+        again and fail, and nobody could tell which schema is deployed.
+        ","1","test_alembic_version_table_exists_and_is_populated","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","0","test_nonsense_input_fails_safely[]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","1","test_permitted_transitions[pending-cancelled]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"Absent must never mean valid-by-default.","3","test_tokens_with_missing_or_wrong_claims_are_rejected[no-sub-]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestTokenForgery","test_authorization","",""
+"The message must say what is wrong, so the UI can act on it.","0","test_rejects_and_explains[Ab1-at least 8]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","1","test_unparseable_json_is_not_an_approval","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"","3","test_a_hostile_path_segment_never_500s[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","84","test_an_order_matches_its_schema","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"","1","test_rejects_malformed_headers[]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","1259","test_a_completed_order_appears_in_history_and_opens","tests.ui.tests","Sat Aug 29 04:40:18 UTC 2026","passed","Sat Aug 29 04:40:20 UTC 2026","","test_e2e_journeys","",""
+"A damaged row must produce a failed login, not a 500.","1","test_a_corrupt_hash_returns_false_rather_than_raising[]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"","10","test_registration_with_a_hostile_name_never_500s[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"bcrypt silently truncates at 72 bytes.
+
+        Accepting a longer password would mean everything past byte 72 is
+        ignored - two different passwords could then unlock the same account.
+        ","0","test_passwords_longer_than_bcrypts_limit_are_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","19","test_foreign_key_and_delete_rule[addresses.user_id-to-users-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"Guards against locking the last administrator out of the system.","17","test_an_admin_cannot_deactivate_themselves","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestAccountState","test_authorization","",""
+"","6","test_a_hostile_password_never_authenticates[xss-svg]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_accepts_valid_addresses[ada@example.com]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","27","test_foreign_key_and_delete_rule[cart_items.cart_id-to-carts-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","4","test_login_with_a_hostile_email_never_authenticates[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","41","test_cart_totals_are_numbers[discount_total]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"A NUL byte must be a 422, never an unhandled error.
+
+        PostgreSQL text columns cannot store 0x00, so before this was handled a
+        single character from any anonymous caller produced a 500 on the search
+        box, registration, addresses and the admin search alike - noisy, and a
+        cheap way to fill an error tracker. The rejection is deliberate: NUL is
+        not valid text, so there is nothing to preserve.
+
+        Note that JSON escapes NUL rather than transmitting it raw, so the body
+        case and the query case exercise genuinely different code paths.
+        ","1","test_a_nul_byte_is_refused_cleanly_rather_than_causing_a_500[query-string-query]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","1","test_brand_detection[378282246310005-amex]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"The schema must promise what the serialiser delivers.
+
+        Pydantic serialises Decimal as a string by default, and would also
+        declare it as one. A custom serialiser fixes the wire format; this
+        checks the document was not left describing the old behaviour.
+        ","0","test_money_is_declared_as_a_number_in_the_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"A timing oracle is enumeration by another route.
+
+        If a missing account short-circuited before password verification, it
+        would return measurably faster. The application verifies against a dummy
+        hash instead. The tolerance is wide because wall-clock timing on a
+        shared runner is noisy - this catches an order-of-magnitude gap, not a
+        microsecond one.
+        ","59","test_the_timing_of_the_two_failures_is_comparable","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestEnumeration","test_exposure","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[PATCH-admin-users-1-active]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","0","test_rejects_non_integers[2]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","6","test_a_hostile_product_id_is_rejected_not_executed[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","21","test_hostile_search_terms_are_handled_as_text[xss-svg]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","77","test_order_money_is_a_number[tax]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"A correctly signed token whose subject was deleted must not work.","6","test_a_token_for_a_nonexistent_account_is_rejected","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestTokenForgery","test_authorization","",""
+"","0","test_rejects_zero_and_negative[-99]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","0","test_rounds_half_up_to_two_places[10.005-10.01]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"The summary assertion for this whole file.
+
+        Sends every payload at every text surface, then verifies the schema and
+        the data are exactly as they were. A `DROP TABLE` that succeeded would
+        fail here loudly.
+        ","283","test_the_database_is_unchanged_after_every_payload","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestIntegrity","test_injection","",""
+"Asserted at the storage layer, not only at the API.
+
+        A response that happens to omit the number tells you nothing about what
+        was written to disk.
+        ","3","test_the_database_stores_no_more_than_four_card_digits","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestDataExposure","test_exposure","",""
+"The case where the correct answer is ""we do not know"".
+
+    A declined charge is known not to have taken money, so stock is returned. A
+    timeout carries no such knowledge: the charge may well have succeeded.
+    Marking it paid could ship goods for free; marking it failed and releasing
+    stock could take money for a cancelled order. So the order stays pending
+    with stock still held, and a human resolves it.
+
+    Marked slow because the eight-second wait is a genuine socket timeout - the
+    behaviour under test, not an arbitrary sleep.
+    ","8105","test_a_provider_timeout_leaves_the_order_pending_and_stock_reserved","tests.integration.tests","Sat Aug 29 04:41:40 UTC 2026","passed","Sat Aug 29 04:41:48 UTC 2026","","test_journeys","",""
+"The customer must be told, and must not be allowed to proceed.
+
+        A checkout button that is enabled but always fails is worse than one
+        that is honestly disabled.
+        ","653","test_a_cart_whose_stock_fell_short_blocks_checkout","tests.ui.tests","Sat Aug 29 04:40:01 UTC 2026","passed","Sat Aug 29 04:40:01 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","0","test_valid_luhn_numbers_pass[5555555555554444]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"Every admin-side test authenticates as this account. If it is missing
+        or deactivated, the whole admin suite reports authentication failures
+        instead of the real cause.
+        ","1","test_seeded_administrator_exists_and_is_active","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"","0","test_rejects_invalid_addresses[a@@b.com]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"Business rule 9, under the conditions that actually break it.
+
+    A sequential replay is easy: the second request finds the first order and
+    returns it. The hard case is five requests in flight together, none of which
+    can see the others' uncommitted work. The unique constraint on
+    ``(user_id, idempotency_key)`` is what lets exactly one commit, rolling the
+    losers back wholesale - including their stock decrements.
+    ","199","test_five_simultaneous_submissions_with_one_key_create_one_order","tests.integration.tests","Sat Aug 29 04:41:38 UTC 2026","passed","Sat Aug 29 04:41:38 UTC 2026","","test_concurrency","",""
+"","29","test_hostile_filter_values_are_handled_safely[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","7","test_every_api_response_carries_the_header[cache-control-no-store]","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","1","test_rejects_malformed_headers[Bearer a b c]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","0","test_sensitive_keys_are_redacted[cvv]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","80","test_a_customer_cannot_read_another_customers_order","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"","1","test_percentage_discount[100.00-0-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","4","test_login_with_a_hostile_email_never_authenticates[template-injection]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Promotion tests need a valid, an expired and an inactive code to
+        exist. Without all three, the negative cases quietly stop testing
+        anything and every promo code looks acceptable.
+        ","1","test_seeded_promotion_exists[inactive]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","5","test_customers_are_refused_on_every_admin_endpoint[GET-admin-orders]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[xss-svg]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","9","test_every_collection_uses_the_same_envelope[/orders]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestPaginationContract","test_openapi_contract","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","1","test_unique_constraint_exists[cart_items-UNIQUE (cart_id, product_id)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"The complete happy path, from having no account to owning an order.
+
+    Deliberately built from scratch rather than from fixtures: this is the one
+    test that proves a brand-new customer can get all the way through without
+    anything having been prepared for them.
+    ","154","test_register_search_buy_and_confirm","tests.integration.tests","Sat Aug 29 04:41:39 UTC 2026","passed","Sat Aug 29 04:41:39 UTC 2026","","test_journeys","",""
+"","3","test_protected_endpoints_reject_anonymous_callers[DELETE-cart]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","39","test_one_customers_cart_is_invisible_to_another","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/orders/{order_id}-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"Otherwise Ada@x.com and ada@x.com become two accounts.","0","test_normalisation_is_case_and_whitespace_insensitive[Ada@Example.COM-ada@example.com]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","0","test_rejects_invalid_addresses[]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"A 401 is exactly when a browser should not be relaxing its rules.","3","test_headers_are_present_on_error_responses_too","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","22","test_a_customer_cannot_touch_another_customers_address[GET]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"","3","test_admin_endpoints_reject_anonymous_callers[DELETE-admin-products-1]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","20","test_hostile_filter_values_are_handled_safely[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","220","test_the_previous_button_is_disabled_on_the_first_page","tests.ui.tests","Sat Aug 29 04:40:11 UTC 2026","passed","Sat Aug 29 04:40:12 UTC 2026","TestPagination","test_catalog_ui","",""
+"","5","test_admin_endpoints_reject_anonymous_callers[PATCH-admin-products-1]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","1","test_sensitive_keys_are_redacted[token]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","0","test_rejects_invalid_addresses[@nolocal.test]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[order_items]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","5","test_the_current_user_matches_its_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"Otherwise Ada@x.com and ada@x.com become two accounts.","0","test_normalisation_is_case_and_whitespace_insensitive[ada@example.com-ada@example.com]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","230","test_home_page_renders","tests.ui.tests","Sat Aug 29 04:40:26 UTC 2026","passed","Sat Aug 29 04:40:26 UTC 2026","","test_framework_smoke","",""
+"The negative tests above are only meaningful if the positive one works.","23","test_an_admin_can_reach_the_admin_area","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","75","test_order_money_is_a_number[total]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","0","test_percentage_discount[33.33-15-5.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","6","test_a_malformed_json_body_is_rejected_cleanly","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/checkout/quote-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_zero_and_negative_amounts_are_not_taxed","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","0","test_unique_constraint_exists[carts-UNIQUE (user_id)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"","42","test_quote_money_is_a_number[total]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[GET-admin-stats]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","0","test_forbidden_transitions[shipped-cancelled]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","0","test_format","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderNumber","test_order_rules","",""
+"A damaged row must produce a failed login, not a 500.","0","test_a_corrupt_hash_returns_false_rather_than_raising[$2b$12$tooshort]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"","9","test_hostile_address_fields_are_handled_safely[sql-comment]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[products-btree (price)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"","16","test_a_password_never_reaches_the_database_in_plaintext","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestDataExposure","test_exposure","",""
+"","0","test_rejects_quantities_above_the_limit[1000]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_no_secret_or_password_leaks_into_the_payload","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","0","test_is_satisfiable[1-1-True]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestStockRequest","test_inventory_rules","",""
+"An order marked paid with no successful payment row means goods ship
+        against money that was never captured - the most expensive
+        inconsistency this schema can hold.
+        ","1","test_every_paid_order_has_a_successful_payment","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestDataIntegrityInvariants","test_schema","",""
+"","22","test_hostile_search_terms_are_handled_as_text[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"","22","test_a_customer_cannot_touch_another_customers_address[DELETE]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"Guards against unbounded recursion on a pathological structure.","0","test_deep_nesting_terminates","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","345","test_a_duplicate_address_is_reported","tests.ui.tests","Sat Aug 29 04:39:52 UTC 2026","passed","Sat Aug 29 04:39:52 UTC 2026","TestRegistrationUI","test_auth_cart_ui","",""
+"","3","test_a_hostile_path_segment_never_500s[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_minimum_subtotal_is_enforced","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","0","test_tax_is_the_rate_applied_to_the_amount[100.00-8.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"Scoping matters as much as uniqueness.
+
+        A globally unique key would let one customer's key collide with
+        another's, and the replay path would then hand them somebody else's
+        order. Scoping to ``user_id`` makes that impossible.
+        ","1","test_idempotency_key_is_unique_per_user_not_globally","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"","0","test_a_satisfiable_basket_passes","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAll","test_inventory_rules","",""
+"","21","test_hostile_filter_values_are_handled_safely[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","2","test_a_hostile_product_id_is_rejected_not_executed[null-byte]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","0","test_expected_table_exists[promotions]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"RFC 7235 defines the scheme as case-insensitive.","0","test_the_scheme_is_case_insensitive[BEARER]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","10","test_addresses_match_their_schema","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"","1","test_rejects_invalid_addresses[no-at.test]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"Registration assigns the ``customer`` role by lookup. A missing role
+        row makes every signup fail with a foreign-key error.
+        ","1","test_both_roles_exist","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"","20","test_hostile_filter_values_are_handled_safely[xss-svg]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_free_at_or_above_the_threshold[100.00-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"","7","test_a_hostile_password_never_authenticates[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_is_satisfiable[5-4-False]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestStockRequest","test_inventory_rules","",""
+"","0","test_singular_and_plural_are_both_correct","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","15","test_hostile_admin_search_input_is_handled_safely[path-traversal]","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"Once it is on a van, cancellation is a returns problem, not a stock one.","0","test_shipped_orders_cannot_be_cancelled","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"Guards against a parser blowing the recursion limit.","8","test_a_deeply_nested_body_is_rejected_rather_than_crashing","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"`%` is a character to a shopper, and must be one to the query too.
+
+        Unescaped, a search for ""100%"" would return the whole catalogue.
+        ","7","test_like_wildcards_are_matched_literally[%%%]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","14","test_hostile_admin_search_input_is_handled_safely[sql-comment]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","23","test_hostile_search_terms_are_handled_as_text[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"An order line pointing at a deleted order is money that appears in
+        revenue aggregates but belongs to no customer.
+        ","1","test_no_order_items_are_orphaned","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestDataIntegrityInvariants","test_schema","",""
+"","0","test_accepts_requests_within_stock[3-10]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","1","test_large_quantity_does_not_lose_precision","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","2","test_login_with_a_hostile_email_never_authenticates[null-byte]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","10","test_registration_with_a_hostile_name_never_500s[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","88","test_order_history_never_includes_another_customers_orders","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"Enumeration defence.
+
+        If ""someone else's order"" and ""no such order"" gave different responses,
+        an attacker could walk the id space and learn exactly how many orders
+        the shop has taken and which ids are real.
+        ","89","test_an_unknown_id_and_a_forbidden_id_are_indistinguishable","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"","3","test_the_liveness_probe_needs_no_authentication","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestExposedSurface","test_exposure","",""
+"","3","test_validation_errors_name_the_offending_fields","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"A cancellation moves money and inventory in opposite directions.
+
+        The units have to go back on sale, and the refund has to exist as its
+        own payment row - overwriting the original ``paid`` row would destroy
+        the audit trail showing the customer was charged before being refunded,
+        which is exactly what a chargeback dispute turns on.
+        ","165","test_cancelling_a_paid_order_restores_stock_and_records_a_refund","tests.database.tests","Sat Aug 29 04:41:22 UTC 2026","passed","Sat Aug 29 04:41:22 UTC 2026","TestCheckoutPersistence","test_persistence","",""
+"Otherwise Ada@x.com and ada@x.com become two accounts.","0","test_normalisation_is_case_and_whitespace_insensitive[  ada@example.com  -ada@example.com]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/products/{product_id}-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","1","test_rounds_half_up_to_two_places[10.1-10.10]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"","0","test_the_spec_is_a_well_formed_openapi_document","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","390","test_filtering_to_in_stock_only","tests.ui.tests","Sat Aug 29 04:40:08 UTC 2026","passed","Sat Aug 29 04:40:08 UTC 2026","TestFiltering","test_catalog_ui","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","1","test_query_path_is_indexed[orders-btree (status)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"A stack trace in a response body is a map of the application.
+
+        It names files, line numbers, library versions and sometimes SQL - all
+        of which make the next attack cheaper.
+        ","3","test_errors_never_leak_internals[unauthorised]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","20","test_foreign_key_and_delete_rule[payments.order_id-to-orders-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"","7","test_every_api_response_carries_the_header[x-content-type-options-nosniff]","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[template-injection]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","4","test_hostile_address_fields_are_handled_safely[null-byte]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_percentage_discount[199.99-10-20.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","0","test_sensitive_keys_are_redacted[current_password]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","0","test_brand_detection[abcd-unknown]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[orders]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","3","test_a_hostile_path_segment_never_500s[sql-union]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_rejects_invalid_addresses[a@b]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","0","test_expired_promotion_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","9","test_a_hostile_product_id_is_rejected_not_executed[sql-union]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"This is why the shipping columns are copied onto the order rather
+        than joined from ``addresses``.
+
+        A customer who moves house and edits their saved address must not
+        retroactively rewrite where last month's parcel was sent - the record
+        of where goods were delivered is what disputes and returns depend on.
+        ","89","test_order_keeps_the_shipping_address_it_was_placed_with","tests.database.tests","Sat Aug 29 04:41:22 UTC 2026","passed","Sat Aug 29 04:41:22 UTC 2026","TestOrderSnapshots","test_persistence","",""
+"","0","test_valid_luhn_numbers_pass[4000000000000002]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","0","test_tax_is_the_rate_applied_to_the_amount[0.10-0.01]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"","0","test_one_short_line_fails_the_basket","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAll","test_inventory_rules","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","0","test_unique_constraint_exists[categories-UNIQUE (slug)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"","0","test_free_at_or_above_the_threshold[100.01-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"","0","test_redaction_is_case_insensitive","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","1","test_check_constraint_is_enforced[orders-subtotal>=0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"","1","test_rejects_quantities_above_the_limit[1000000]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"The gap between filling a cart and paying is where overselling lives.
+
+    The customer's cart is valid when built and invalid by the time they pay.
+    The cart must report it, and checkout must refuse.
+    ","136","test_stock_disappearing_mid_session_blocks_checkout","tests.integration.tests","Sat Aug 29 04:41:40 UTC 2026","passed","Sat Aug 29 04:41:40 UTC 2026","","test_journeys","",""
+"","0","test_an_empty_basket_is_vacuously_valid","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAll","test_inventory_rules","",""
+"","0","test_forbidden_transitions[cancelled-confirmed]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","90","test_a_customer_cannot_cancel_another_customers_order","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","18","test_hostile_admin_search_input_is_handled_safely[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"Negative stock means the shop has sold units it does not have, and
+        every downstream availability check becomes a lie.
+        ","1","test_no_inventory_row_is_negative","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestDataIntegrityInvariants","test_schema","",""
+"","7","test_every_api_response_carries_the_header[x-frame-options-DENY]","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","18","test_product_listing_items_match_their_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"","0","test_rejects_invalid_addresses[spaces in@x.test]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"Product search lower-cases the name, so a plain index on ``name``
+        could never be used for it. The expression index is the only thing
+        keeping catalogue search off a full table scan.
+        ","1","test_case_insensitive_name_search_is_indexed","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","0","test_check_constraint_is_enforced[orders-total>=0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"","0","test_line_total_is_price_times_quantity[1249.00-2-2498.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","7","test_expected_table_exists[roles]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_brand_detection[6011111111111117-discover]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","354","test_moving_between_pages_changes_the_products","tests.ui.tests","Sat Aug 29 04:40:11 UTC 2026","passed","Sat Aug 29 04:40:11 UTC 2026","TestPagination","test_catalog_ui","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[payments]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"Visibility rules are only testable when something is hidden. If every
+        seeded product were active, the ""customers cannot see deactivated
+        products"" tests would pass without exercising anything.
+        ","1","test_catalogue_contains_an_inactive_product","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"","617","test_going_forward_and_back_returns_the_same_products","tests.ui.tests","Sat Aug 29 04:40:12 UTC 2026","passed","Sat Aug 29 04:40:12 UTC 2026","TestPagination","test_catalog_ui","",""
+"A $20-off code on a $5 basket discounts $5, never $20.
+
+        Without the clamp the total would go negative, which downstream means
+        refunding a customer for shopping.
+        ","0","test_fixed_discount_is_capped_at_the_subtotal","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","40","test_quote_money_is_a_number[subtotal]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","5","test_customers_are_refused_on_every_admin_endpoint[GET-admin-stats]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","0","test_tax_is_the_rate_applied_to_the_amount[19.99-1.60]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"`%` is a character to a shopper, and must be one to the query too.
+
+        Unescaped, a search for ""100%"" would return the whole catalogue.
+        ","7","test_like_wildcards_are_matched_literally[\\%]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_line_total_is_price_times_quantity[33.33-3-99.99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"A stack trace in a response body is a map of the application.
+
+        It names files, line numbers, library versions and sometimes SQL - all
+        of which make the next attack cheaper.
+        ","10","test_errors_never_leak_internals[conflict]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[products-btree (lower(]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"One shape for every failure, from every layer.
+
+        FastAPI's own 422, Starlette's 404 and the application's business errors
+        would otherwise each have a different body, and a client would need
+        three parsers.
+        ","3","test_every_error_uses_the_same_envelope[unauthorised-401]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"","0","test_a_token_of_the_wrong_type_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","17","test_hostile_admin_search_input_is_handled_safely[xss-svg]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_tax_is_the_rate_applied_to_the_amount[0.06-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"The invariant that makes an invoice add up.
+
+        Whatever the inputs, total must equal subtotal - discount + tax +
+        shipping exactly. This is the property most likely to break if rounding
+        is ever moved or reordered.
+        ","0","test_total_always_equals_the_sum_of_its_parts[odd-price]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","7","test_every_api_response_carries_the_header[referrer-policy-no-referrer]","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","0","test_accepts_valid_addresses[a.b+tag@sub.example.co.uk]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","39","test_cart_totals_are_numbers[total]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","0","test_permitted_transitions[shipped-delivered]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","10","test_hostile_address_fields_are_handled_safely[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"The message must say what is wrong, so the UI can act on it.","0","test_rejects_and_explains[alllowercase1-uppercase]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","3","test_protected_endpoints_reject_anonymous_callers[GET-cart]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","15","test_hostile_admin_search_input_is_handled_safely[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_malformed_tokens_are_rejected[!!!.???.###]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","39","test_quote_money_is_a_number[shipping_fee]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","27","test_a_deactivated_account_cannot_log_in","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestAccountState","test_authorization","",""
+"","0","test_permitted_transitions[pending-confirmed]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","383","test_signing_out_clears_the_session","tests.ui.tests","Sat Aug 29 04:39:54 UTC 2026","passed","Sat Aug 29 04:39:54 UTC 2026","TestLoginUI","test_auth_cart_ui","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","1","test_unique_constraint_exists[users-UNIQUE (email)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"Promotion tests need a valid, an expired and an inactive code to
+        exist. Without all three, the negative cases quietly stop testing
+        anything and every promo code looks acceptable.
+        ","1","test_seeded_promotion_exists[percentage-capped]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"","0","test_rejects_invalid_addresses[plain]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"`%` is a character to a shopper, and must be one to the query too.
+
+        Unescaped, a search for ""100%"" would return the whole catalogue.
+        ","7","test_like_wildcards_are_matched_literally[_%_]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_nonsense_input_fails_safely[4111]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","77","test_only_the_last_four_card_digits_are_ever_returned","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestDataExposure","test_exposure","",""
+"A 409 the spec does not mention is a 409 no client is ready for.
+
+        Documenting only the happy path is the most common way an OpenAPI
+        document becomes misleading.
+        ","0","test_failure_responses_are_documented[/api/v1/orders-post-expected_codes0]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"The session fixture must produce a genuinely authenticated browser.","215","test_injected_session_is_recognised","tests.ui.tests","Sat Aug 29 04:40:27 UTC 2026","passed","Sat Aug 29 04:40:27 UTC 2026","","test_framework_smoke","",""
+"Two short lines must always report the same one.
+
+        Requests are checked in product-id order, so the error a customer sees
+        does not depend on dict iteration order. A message that varies between
+        runs makes for a test that fails intermittently on its assertion.
+        ","1","test_the_reported_failure_is_deterministic","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAll","test_inventory_rules","",""
+"0/O and 1/I are indistinguishable when read over the phone.","0","test_suffix_avoids_look_alike_characters","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderNumber","test_order_rules","",""
+"`%` is a character to a shopper, and must be one to the query too.
+
+        Unescaped, a search for ""100%"" would return the whole catalogue.
+        ","7","test_like_wildcards_are_matched_literally[%]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_rejects_zero_and_negative[-1000000]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","42","test_cart_line_money_is_a_number[unit_price]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","74","test_order_money_is_a_number[discount_total]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","5","test_protected_endpoints_reject_anonymous_callers[GET-orders-1]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","105","test_an_order_appears_in_history_and_opens_correctly","tests.integration.tests","Sat Aug 29 04:41:39 UTC 2026","passed","Sat Aug 29 04:41:39 UTC 2026","","test_journeys","",""
+"","411","test_a_category_tile_opens_a_filtered_listing","tests.ui.tests","Sat Aug 29 04:40:04 UTC 2026","passed","Sat Aug 29 04:40:04 UTC 2026","TestHomePage","test_catalog_ui","",""
+"","0","test_non_sensitive_values_are_untouched","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","6","test_protected_endpoints_reject_anonymous_callers[PATCH-auth-me]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","21","test_hostile_search_terms_are_handled_as_text[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_accepts_compliant_passwords[Test1234]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","15","test_hostile_admin_search_input_is_handled_safely[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","1","test_is_satisfiable[0-5-False]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestStockRequest","test_inventory_rules","",""
+"","0","test_rounds_half_up_to_two_places[10-10.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[users]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","1","test_order_above_the_threshold_ships_free","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","1","test_empty_basket_has_zero_subtotal","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"","3","test_a_hostile_path_segment_never_500s[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_free_at_or_above_the_threshold[99.99-9.99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"A damaged row must produce a failed login, not a 500.","1","test_a_corrupt_hash_returns_false_rather_than_raising[not-a-hash]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"","273","test_the_home_page_shows_categories_and_products","tests.ui.tests","Sat Aug 29 04:40:03 UTC 2026","passed","Sat Aug 29 04:40:04 UTC 2026","TestHomePage","test_catalog_ui","",""
+"","5","test_admin_endpoints_reject_anonymous_callers[GET-admin-orders-1]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","1","test_forbidden_transitions[pending-delivered]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","467","test_filtering_by_price_range","tests.ui.tests","Sat Aug 29 04:40:07 UTC 2026","passed","Sat Aug 29 04:40:07 UTC 2026","TestFiltering","test_catalog_ui","",""
+"","0","test_forbidden_transitions[confirmed-delivered]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","0","test_permitted_transitions[confirmed-cancelled]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"Totals must be recomputed at every step, not cached from the first read.
+
+    A stale total is how a customer ends up charged for a quantity they changed.
+    ","171","test_totals_track_every_cart_change","tests.integration.tests","Sat Aug 29 04:41:39 UTC 2026","passed","Sat Aug 29 04:41:39 UTC 2026","","test_journeys","",""
+"Absent must never mean valid-by-default.","3","test_tokens_with_missing_or_wrong_claims_are_rejected[non-numeric-sub-]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestTokenForgery","test_authorization","",""
+"","2","test_a_hostile_path_segment_never_500s[path-traversal]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_free_at_or_above_the_threshold[5000.00-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"The message must say what to fix, not just that it failed.","355","test_a_weak_password_shows_the_policy","tests.ui.tests","Sat Aug 29 04:39:52 UTC 2026","passed","Sat Aug 29 04:39:53 UTC 2026","TestRegistrationUI","test_auth_cart_ui","",""
+"Business rule 5, from the customer's seat.
+
+    The screen must say what went wrong, the customer must stay where they can
+    retry, and nothing anywhere may be marked paid.
+    ","1484","test_a_declined_card_shows_an_error_and_creates_no_paid_order","tests.ui.tests","Sat Aug 29 04:40:20 UTC 2026","passed","Sat Aug 29 04:40:21 UTC 2026","","test_e2e_journeys","",""
+"","501","test_a_cart_line_shows_the_right_quantity_and_totals","tests.ui.tests","Sat Aug 29 04:39:56 UTC 2026","passed","Sat Aug 29 04:39:57 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"This one *must* disclose existence - a signup form cannot work
+        otherwise - but it must disclose nothing further.
+        ","4","test_registration_reveals_only_that_the_address_is_taken","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestEnumeration","test_exposure","",""
+"A leaked database must not be a leaked password list.
+
+        Customers reuse passwords across sites, so plaintext (or a fast digest)
+        in ``users`` turns one breach of this shop into account takeovers
+        everywhere else. The scan covers every column of the row, not just
+        ``password_hash``, because the realistic regression is a debug field or
+        an audit column quietly capturing the submitted value.
+        ","35","test_password_is_stored_as_a_bcrypt_hash_and_never_in_plaintext","tests.database.tests","Sat Aug 29 04:41:21 UTC 2026","passed","Sat Aug 29 04:41:21 UTC 2026","TestRegistrationPersistence","test_persistence","",""
+"","0","test_future_promotion_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","294","test_name_sorting_is_alphabetical","tests.ui.tests","Sat Aug 29 04:40:11 UTC 2026","passed","Sat Aug 29 04:40:11 UTC 2026","TestSorting","test_catalog_ui","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","1","test_check_constraint_is_enforced[products-rating>=0andrating<=5]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"The UI guard is convenience; the API refuses regardless.
+
+    Asserted here because a customer who reaches an admin screen - even a broken
+    one - is a bug worth catching at the layer they actually experience.
+    ","133","test_a_customer_visiting_the_admin_area_is_refused","tests.ui.tests","Sat Aug 29 04:40:25 UTC 2026","passed","Sat Aug 29 04:40:25 UTC 2026","","test_e2e_journeys","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[sql-comment]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Absent must not mean valid-by-default.","1","test_a_token_missing_required_claims_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[payments-btree (order_id)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"A NUL byte must be a 422, never an unhandled error.
+
+        PostgreSQL text columns cannot store 0x00, so before this was handled a
+        single character from any anonymous caller produced a 500 on the search
+        box, registration, addresses and the admin search alike - noisy, and a
+        cheap way to fill an error tracker. The rejection is deliberate: NUL is
+        not valid text, so there is nothing to preserve.
+
+        Note that JSON escapes NUL rather than transmitting it raw, so the body
+        case and the query case exercise genuinely different code paths.
+        ","2","test_a_nul_byte_is_refused_cleanly_rather_than_causing_a_500[json-body-body]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","19","test_hostile_filter_values_are_handled_safely[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","312","test_filtering_by_category","tests.ui.tests","Sat Aug 29 04:40:06 UTC 2026","passed","Sat Aug 29 04:40:06 UTC 2026","TestFiltering","test_catalog_ui","",""
+"","6","test_a_hostile_password_never_authenticates[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","10","test_registration_with_a_hostile_name_never_500s[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","8","test_the_server_does_not_advertise_its_version","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","24","test_a_customer_cannot_touch_another_customers_address[PATCH]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestObjectLevelAccess","test_authorization","",""
+"Absent must never mean valid-by-default.","3","test_tokens_with_missing_or_wrong_claims_are_rejected[no-type-]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestTokenForgery","test_authorization","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/auth/register-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/products-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_is_satisfiable[4-5-True]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestStockRequest","test_inventory_rules","",""
+"","6","test_a_hostile_password_never_authenticates[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","19","test_foreign_key_and_delete_rule[order_items.order_id-to-orders-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"","8","test_product_detail_matches_its_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"A sequential counter would publish how many orders the shop takes.","1","test_numbers_are_not_sequential","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderNumber","test_order_rules","",""
+"","0","test_brand_detection[9999999999999999-unknown]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"Each control must further restrict, never widen.","443","test_combining_filters_narrows_the_results","tests.ui.tests","Sat Aug 29 04:40:08 UTC 2026","passed","Sat Aug 29 04:40:08 UTC 2026","TestFiltering","test_catalog_ui","",""
+"","0","test_accepts_requests_within_stock[1-100]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"A stray table is usually a hand-made backup or a half-reverted
+        migration. Either way the deployed schema no longer matches source
+        control, and the next migration is likely to fail on it.
+        ","1","test_schema_holds_no_unexpected_extra_tables","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","407","test_adding_a_product_updates_the_header_badge","tests.ui.tests","Sat Aug 29 04:39:55 UTC 2026","passed","Sat Aug 29 04:39:55 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","3","test_admin_endpoints_reject_anonymous_callers[GET-admin-inventory]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"Stock is reserved *before* the card is charged, so a decline has to
+        give it back.
+
+        Without the unwind, every declined checkout would permanently remove
+        units from the shop - a customer whose card fails three times could
+        take the last item off sale for everybody. The failed payment row also
+        has to survive: support cannot explain a decline they cannot see.
+        ","73","test_declined_payment_fails_the_payment_row_and_restores_stock","tests.database.tests","Sat Aug 29 04:41:22 UTC 2026","passed","Sat Aug 29 04:41:22 UTC 2026","TestCheckoutPersistence","test_persistence","",""
+"Storing a full PAN is a PCI-DSS violation and turns any future
+        database leak into a card-fraud incident. Four digits is the maximum
+        that may ever be persisted.
+        ","1","test_no_payment_row_stores_more_than_four_card_digits","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestDataIntegrityInvariants","test_schema","",""
+"","3","test_a_hostile_path_segment_never_500s[template-injection]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_nonsense_input_fails_safely[abc]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","440","test_removing_a_line_empties_the_cart","tests.ui.tests","Sat Aug 29 04:39:58 UTC 2026","passed","Sat Aug 29 04:39:58 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","1","test_usage_limit_is_enforced","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","3","test_a_hostile_path_segment_never_500s[xss-svg]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"The invariant that makes an invoice add up.
+
+        Whatever the inputs, total must equal subtotal - discount + tax +
+        shipping exactly. This is the property most likely to break if rounding
+        is ever moved or reordered.
+        ","0","test_total_always_equals_the_sum_of_its_parts[expensive-mixed]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","3","test_protected_endpoints_reject_anonymous_callers[POST-checkout-quote]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","0","test_sensitive_keys_are_redacted[password]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","263","test_mismatched_passwords_are_reported_before_submitting","tests.ui.tests","Sat Aug 29 04:39:52 UTC 2026","passed","Sat Aug 29 04:39:52 UTC 2026","TestRegistrationUI","test_auth_cart_ui","",""
+"The test that justifies ``SELECT ... FOR UPDATE``.
+
+    Six customers each hold one unit of a three-unit product and all press
+    ""Place order"" at the same instant. Without row locking, several would read
+    ""3 available"", all pass validation, and all decrement - overselling the
+    product and possibly driving stock negative.
+
+    Exactly three must succeed. Not ""about three"", and never four.
+    ","569","test_six_simultaneous_buyers_cannot_oversell_three_units","tests.integration.tests","Sat Aug 29 04:41:37 UTC 2026","passed","Sat Aug 29 04:41:38 UTC 2026","","test_concurrency","",""
+"A deliberate decision, recorded rather than left implicit.
+
+        `/docs` and `/openapi.json` are public here because this is a portfolio
+        application whose API is meant to be explored, and because the contract
+        suite validates against the live spec. A real deployment would put both
+        behind authentication or strip them in production - noted in the
+        README's ""Known limitations"".
+        ","16","test_the_interactive_docs_are_reachable_by_design","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestExposedSurface","test_exposure","",""
+"","0","test_rejects_malformed_headers[Bearer ]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","9","test_registration_with_a_hostile_name_never_500s[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","420","test_clearing_filters_restores_the_full_catalogue","tests.ui.tests","Sat Aug 29 04:40:09 UTC 2026","passed","Sat Aug 29 04:40:09 UTC 2026","TestFiltering","test_catalog_ui","",""
+"","11","test_hostile_address_fields_are_handled_safely[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"An undocumented operation is one nobody can use without reading the source.","0","test_operations_carry_a_summary","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_permitted_transitions[processing-cancelled]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","1","test_malformed_tokens_are_rejected[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"Stock is read through a join. A product with no inventory row reads
+        as permanently unavailable - listed in the catalogue, impossible to
+        buy. That is lost revenue nobody gets an alert about.
+        ","0","test_every_product_has_an_inventory_row","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestDataIntegrityInvariants","test_schema","",""
+"The most important test in this file.
+
+        This token is signed with the real key and verifies perfectly - it
+        simply claims `role: admin` for an account that is a customer. It is
+        refused because authority is read from the user record on every request,
+        never from the token body. A server that trusted the claim would hand
+        admin to anyone who could obtain a token.
+        ","14","test_a_correctly_signed_token_claiming_admin_is_still_refused","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestTokenForgery","test_authorization","",""
+"","0","test_malformed_tokens_are_rejected[header.payload]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","21","test_hostile_search_terms_are_handled_as_text[path-traversal]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","21","test_hostile_search_terms_are_handled_as_text[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"","21","test_hostile_search_terms_are_handled_as_text[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","367","test_rating_sorting_reorders_the_grid","tests.ui.tests","Sat Aug 29 04:40:10 UTC 2026","passed","Sat Aug 29 04:40:11 UTC 2026","TestSorting","test_catalog_ui","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","1","test_check_constraint_is_enforced[order_items-quantity>0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"","11","test_hostile_address_fields_are_handled_safely[path-traversal]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","19","test_hostile_filter_values_are_handled_safely[path-traversal]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","1","test_accepts_compliant_passwords[aA1aaaaa]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","19","test_hostile_filter_values_are_handled_safely[sql-union]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","6","test_a_hostile_product_id_is_rejected_not_executed[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_malformed_tokens_are_rejected[not-a-token]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","0","test_rejects_malformed_headers[Basic abc]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","6","test_a_hostile_product_id_is_rejected_not_executed[unicode-rtl-override]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","1","test_no_transition_targets_a_status_that_does_not_exist","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","9","test_registration_with_a_hostile_name_never_500s[xss-svg]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","333","test_an_invalid_password_keeps_the_customer_on_the_form","tests.ui.tests","Sat Aug 29 04:39:53 UTC 2026","passed","Sat Aug 29 04:39:54 UTC 2026","TestLoginUI","test_auth_cart_ui","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","25","test_foreign_key_and_delete_rule[cart_items.product_id-to-products-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"","1","test_rejects_requests_above_stock[1000-1]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","1","test_permitted_transitions[confirmed-processing]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","0","test_accepts_quantities_within_the_limit[99]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","7","test_a_hostile_password_never_authenticates[path-traversal]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","21","test_hostile_filter_values_are_handled_safely[template-injection]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_rejects_malformed_headers[None]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","0","test_is_satisfiable[-1-5-False]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestStockRequest","test_inventory_rules","",""
+"","10","test_registration_with_a_hostile_name_never_500s[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","580","test_changing_the_quantity_updates_the_totals","tests.ui.tests","Sat Aug 29 04:39:57 UTC 2026","passed","Sat Aug 29 04:39:58 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","0","test_accepts_quantities_within_the_limit[1]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","3","test_verification_is_case_sensitive","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"","20","test_hostile_filter_values_are_handled_safely[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_free_at_or_above_the_threshold[0.01-9.99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestShipping","test_pricing","",""
+"Even an administrator has no business seeing password hashes.","11","test_the_admin_user_list_does_not_expose_hashes","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestDataExposure","test_exposure","",""
+"","7","test_a_hostile_password_never_authenticates[template-injection]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"A 409 the spec does not mention is a 409 no client is ready for.
+
+        Documenting only the happy path is the most common way an OpenAPI
+        document becomes misleading.
+        ","0","test_failure_responses_are_documented[/api/v1/auth/register-post-expected_codes2]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","3","test_a_hostile_path_segment_never_500s[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","21","test_hostile_search_terms_are_handled_as_text[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"One shape for every failure, from every layer.
+
+        FastAPI's own 422, Starlette's 404 and the application's business errors
+        would otherwise each have a different body, and a client would need
+        three parsers.
+        ","5","test_every_error_uses_the_same_envelope[not-found-404]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"A readiness probe must say ready or not ready, not why in detail.
+
+        Connection strings, hostnames and versions in a public probe are free
+        reconnaissance.
+        ","24","test_the_health_probes_reveal_no_internals","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestExposedSurface","test_exposure","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","18","test_hostile_admin_search_input_is_handled_safely[sql-union]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_the_token_payload_carries_no_secret","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestDataExposure","test_exposure","",""
+"Category filters are asserted against a known taxonomy; a missing
+        category silently shrinks the space those tests cover.
+        ","0","test_all_seven_categories_are_seeded","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"","10","test_hostile_address_fields_are_handled_safely[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","25","test_foreign_key_and_delete_rule[products.category_id-to-categories-RESTRICT]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","1","test_expected_table_exists[products]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"The two must stay distinguishable.
+
+        Returning 401 to a signed-in customer would make clients try to
+        re-authenticate in a loop that can never succeed.
+        ","7","test_an_authenticated_customer_gets_403_not_401","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","3","test_a_hostile_path_segment_never_500s[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_tax_is_the_rate_applied_to_the_amount[50.00-4.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"","1","test_is_satisfiable[1-0-False]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestStockRequest","test_inventory_rules","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","16","test_hostile_admin_search_input_is_handled_safely[template-injection]","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"","1","test_accepts_compliant_passwords[P@ssw0rd123]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","0","test_fixed_discount","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[products-btree (created_at)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"Stored XSS: the API must return data, not markup.
+
+        The value is preserved exactly as typed (a customer might legitimately
+        have angle brackets in a name), but the response is JSON with a JSON
+        content type, so a browser parses it as data. Escaping at the API layer
+        would corrupt the name; the defence is the content type plus the
+        client's own rendering.
+        ","14","test_a_script_payload_in_a_name_is_stored_and_returned_inert","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_every_amount_has_exactly_two_decimal_places","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","0","test_invalid_luhn_numbers_fail[1234567812345678]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"These are the columns the API filters, sorts and joins on.
+
+        Without the index the query still returns the right answer, which is
+        exactly why no functional test catches its loss - the failure arrives
+        much later, as a timeout under production data volumes.
+        ","2","test_query_path_is_indexed[products-btree (brand)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestIndexes","test_schema","",""
+"A stack trace in a response body is a map of the application.
+
+        It names files, line numbers, library versions and sometimes SQL - all
+        of which make the next attack cheaper.
+        ","5","test_errors_never_leak_internals[not-found]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","7","test_customers_are_refused_on_every_admin_endpoint[DELETE-admin-products-1]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","13","test_login_does_not_reveal_whether_an_address_is_registered","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestEnumeration","test_exposure","",""
+"","0","test_all_documented_statuses_exist","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPaymentStatus","test_order_rules","",""
+"","0","test_sensitive_keys_are_redacted[card_number]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","8","test_a_hostile_password_never_authenticates[sql-comment]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Each line is rounded as it is produced.
+
+        Rounding once at the end would let sub-cent error accumulate and produce
+        a subtotal that does not equal the sum of the line totals shown to the
+        customer - a discrepancy that is very hard to explain on an invoice.
+        ","0","test_rounds_per_line_not_only_at_the_end","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"","0","test_empty_basket_is_entirely_zero","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","1","test_a_token_signed_with_another_key_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","3","test_protected_endpoints_reject_anonymous_callers[GET-orders]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"A missing table means this environment runs an older schema.
+
+        Every request touching it would return a 500, so this is the first
+        thing worth knowing when a freshly deployed environment misbehaves.
+        ","2","test_expected_table_exists[inventory]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestTablesAndMigrations","test_schema","",""
+"","11","test_hostile_address_fields_are_handled_safely[template-injection]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","9","test_registration_with_a_hostile_name_never_500s[path-traversal]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_tax_is_not_charged_on_shipping","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"`%` is a character to a shopper, and must be one to the query too.
+
+        Unescaped, a search for ""100%"" would return the whole catalogue.
+        ","8","test_like_wildcards_are_matched_literally[_]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","11","test_hostile_address_fields_are_handled_safely[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_every_documented_endpoint_is_present[/health/ready-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"Promotion tests need a valid, an expired and an inactive code to
+        exist. Without all three, the negative cases quietly stop testing
+        anything and every promo code looks acceptable.
+        ","1","test_seeded_promotion_exists[expired]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"The cart lives on the server, so a refresh must not lose it.","656","test_the_cart_survives_a_page_reload","tests.ui.tests","Sat Aug 29 04:40:03 UTC 2026","passed","Sat Aug 29 04:40:03 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"A shared or bookmarked search link must restore its own term.","229","test_the_search_box_reflects_the_term_in_the_url","tests.ui.tests","Sat Aug 29 04:40:05 UTC 2026","passed","Sat Aug 29 04:40:06 UTC 2026","TestSearch","test_catalog_ui","",""
+"The classic JWT downgrade attack.
+
+        Blocked because the decoder pins an explicit algorithm allow-list rather
+        than trusting the algorithm named in the token's own header.
+        ","7","test_an_unsigned_alg_none_token_is_rejected","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestTokenForgery","test_authorization","",""
+"","42","test_a_quote_matches_its_schema","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"A 409 the spec does not mention is a 409 no client is ready for.
+
+        Documenting only the happy path is the most common way an OpenAPI
+        document becomes misleading.
+        ","0","test_failure_responses_are_documented[/api/v1/auth/login-post-expected_codes3]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_rejects_non_integers[quantity4]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","1","test_invalid_luhn_numbers_fail[0000000000000001]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","364","test_filtering_by_brand","tests.ui.tests","Sat Aug 29 04:40:06 UTC 2026","passed","Sat Aug 29 04:40:06 UTC 2026","TestFiltering","test_catalog_ui","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","25","test_foreign_key_and_delete_rule[orders.user_id-to-users-RESTRICT]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","4","test_hostile_admin_search_input_is_handled_safely[null-byte]","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"One shape for every failure, from every layer.
+
+        FastAPI's own 422, Starlette's 404 and the application's business errors
+        would otherwise each have a different body, and a client would need
+        three parsers.
+        ","3","test_every_error_uses_the_same_envelope[validation-422]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"The URL is the state, which is what makes a filtered view shareable.","335","test_a_filter_combination_can_be_reached_directly_by_url","tests.ui.tests","Sat Aug 29 04:40:09 UTC 2026","passed","Sat Aug 29 04:40:09 UTC 2026","TestFiltering","test_catalog_ui","",""
+"","0","test_rejects_malformed_headers[abc.def.ghi]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","0","test_provider_400_is_an_invalid_request","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"","0","test_rounds_half_up_to_two_places[0.125-0.13]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"","21","test_hostile_search_terms_are_handled_as_text[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","432","test_searching_from_the_header_finds_products","tests.ui.tests","Sat Aug 29 04:40:05 UTC 2026","passed","Sat Aug 29 04:40:05 UTC 2026","TestSearch","test_catalog_ui","",""
+"","0","test_rounds_half_up_to_two_places[0-0.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"The customer must never be charged more than the screen promised.
+
+    A basket edited several times is where a cached total would surface.
+    ","1443","test_the_total_shown_at_checkout_is_the_total_charged","tests.ui.tests","Sat Aug 29 04:40:17 UTC 2026","passed","Sat Aug 29 04:40:18 UTC 2026","","test_e2e_journeys","",""
+"","0","test_invalid_luhn_numbers_fail[4111111111111112]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","5","test_customers_are_refused_on_every_admin_endpoint[PUT-admin-products-1-stock]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","1","test_line_total_is_price_times_quantity[19.99-1-19.99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestSubtotal","test_pricing","",""
+"Search, filtering, sorting and pagination tests all need a catalogue
+        with real volume; against a handful of rows they would pass vacuously.
+        ","0","test_catalogue_is_seeded_with_enough_volume","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestSeededData","test_schema","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","6","test_customers_are_refused_on_every_admin_endpoint[GET-admin-users]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"The invariant that makes an invoice add up.
+
+        Whatever the inputs, total must equal subtotal - discount + tax +
+        shipping exactly. This is the property most likely to break if rounding
+        is ever moved or reordered.
+        ","0","test_total_always_equals_the_sum_of_its_parts[one-cent]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","0","test_zero_rate_produces_no_tax","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestTax","test_pricing","",""
+"","0","test_valid_luhn_numbers_pass[378282246310005]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","330","test_valid_credentials_sign_the_customer_in","tests.ui.tests","Sat Aug 29 04:39:53 UTC 2026","passed","Sat Aug 29 04:39:53 UTC 2026","TestLoginUI","test_auth_cart_ui","",""
+"","1","test_accepts_quantities_within_the_limit[2]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","6","test_a_hostile_password_never_authenticates[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_percentage_discount[100.00-10-10.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","481","test_emptying_the_cart_shows_the_empty_state","tests.ui.tests","Sat Aug 29 04:39:59 UTC 2026","passed","Sat Aug 29 04:39:59 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","0","test_no_promotion_means_no_discount","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","0","test_rejects_malformed_headers[Bearer]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","21","test_hostile_search_terms_are_handled_as_text[sql-union]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"","1","test_percentage_discount[100.00-100-100.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","0","test_sensitive_keys_are_redacted[new_password]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"","207","test_the_detail_page_shows_every_attribute","tests.ui.tests","Sat Aug 29 04:40:12 UTC 2026","passed","Sat Aug 29 04:40:13 UTC 2026","TestProductDetail","test_catalog_ui","",""
+"","19","test_hostile_filter_values_are_handled_safely[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"The sharpest version of the race: two buyers, one unit.
+
+    Any locking bug shows up here as either two winners (oversold) or none
+    (a deadlock or a lost update).
+    ","183","test_the_last_unit_goes_to_exactly_one_of_two_buyers","tests.integration.tests","Sat Aug 29 04:41:38 UTC 2026","passed","Sat Aug 29 04:41:38 UTC 2026","","test_concurrency","",""
+"A stack trace in a response body is a map of the application.
+
+        It names files, line numbers, library versions and sometimes SQL - all
+        of which make the next attack cheaper.
+        ","2","test_errors_never_leak_internals[bad-route]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestErrorDisclosure","test_exposure","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/cart-get]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","0","test_provider_500_is_a_provider_error","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"Each of these prevents a duplication the application cannot prevent
+        alone under concurrency: two signups for one email, two carts for one
+        user, two lines for one product in a cart, or - most expensively - two
+        orders charged for one Idempotency-Key when a customer double-clicks
+        Pay.
+        ","1","test_unique_constraint_exists[products-UNIQUE (sku)]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestUniqueConstraints","test_schema","",""
+"","0","test_single_item_below_the_free_shipping_threshold","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","444","test_registering_signs_the_customer_in","tests.ui.tests","Sat Aug 29 04:39:51 UTC 2026","passed","Sat Aug 29 04:39:52 UTC 2026","TestRegistrationUI","test_auth_cart_ui","",""
+"","4","test_an_extremely_long_search_term_is_bounded","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","25","test_hostile_search_terms_are_handled_as_text[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:32 UTC 2026","passed","Sat Aug 29 04:41:32 UTC 2026","TestSearchInput","test_injection","",""
+"Absence is a meaningful assertion; ""0"" would be noise in the UI.","155","test_the_badge_is_absent_rather_than_zero_for_an_empty_cart","tests.ui.tests","Sat Aug 29 04:39:56 UTC 2026","passed","Sat Aug 29 04:39:56 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"","43","test_the_cart_matches_its_schema","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestResponseConformance","test_openapi_contract","",""
+"","0","test_the_error_schema_is_declared_in_the_spec","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"","9","test_registration_with_a_hostile_name_never_500s[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_brand_detection[5555555555554444-mastercard]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","0","test_accepts_int_and_float_inputs","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"","0","test_rounds_half_up_to_two_places[2.675-2.68]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"Minted already-expired, so this takes microseconds rather than an hour.","1","test_an_expired_token_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","2","test_protected_endpoints_reject_anonymous_callers[GET-addresses]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"`' OR '1'='1` must not be a valid login.
+
+        In a string-concatenated query it would be. Here it is either rejected
+        as a malformed address or looked up as a literal value that matches
+        nothing.
+        ","3","test_login_with_a_hostile_email_never_authenticates[sql-time-based]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","7","test_a_hostile_password_never_authenticates[sql-union]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","9","test_every_collection_uses_the_same_envelope[/products]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestPaginationContract","test_openapi_contract","",""
+"","0","test_multiple_lines_with_a_percentage_promotion","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"Uniqueness is enforced by a plain UNIQUE index on ``email``.
+
+        If the stored value kept its original casing, ``Alice@x.test`` and
+        ``alice@x.test`` would be two accounts for one mailbox - and login,
+        which looks up the normalised form, would find neither reliably.
+        ","12","test_email_is_stored_lower_cased","tests.database.tests","Sat Aug 29 04:41:21 UTC 2026","passed","Sat Aug 29 04:41:21 UTC 2026","TestRegistrationPersistence","test_persistence","",""
+"The customer must be told what to do, not merely that it failed.","0","test_message_names_the_product_and_the_number_available","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","0","test_invalid_luhn_numbers_fail[411111111111111]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"`jti` makes a token identifiable in logs without logging the token.","0","test_every_token_has_a_unique_id","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","40","test_cart_totals_are_numbers[subtotal]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","1","test_malformed_tokens_are_rejected[a.b.c]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"","191","test_the_quantity_stepper_cannot_go_below_one","tests.ui.tests","Sat Aug 29 04:40:14 UTC 2026","passed","Sat Aug 29 04:40:14 UTC 2026","TestProductDetail","test_catalog_ui","",""
+"","0","test_accepts_requests_within_stock[99-99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"One shape for every failure, from every layer.
+
+        FastAPI's own 422, Starlette's 404 and the application's business errors
+        would otherwise each have a different body, and a client would need
+        three parsers.
+        ","4","test_every_error_uses_the_same_envelope[method-not-allowed-405]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"","1","test_approved","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","15","test_hostile_admin_search_input_is_handled_safely[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_discount_is_never_negative","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[PATCH-admin-orders-1-status]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","0","test_sensitive_keys_are_redacted[secret_key]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestLogRedaction","test_order_rules","",""
+"The ceiling comes from the server's stock figure, not a guess.","289","test_the_quantity_stepper_cannot_exceed_available_stock","tests.ui.tests","Sat Aug 29 04:40:14 UTC 2026","passed","Sat Aug 29 04:40:14 UTC 2026","TestProductDetail","test_catalog_ui","",""
+"","3","test_hash_then_verify_round_trips","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"Revocation without a token denylist.
+
+        The user record is re-read on every authenticated request, so a
+        deactivated account stops working on the very next call rather than
+        whenever its token happens to expire. That costs one indexed lookup and
+        is what makes stateless tokens acceptable here.
+        ","40","test_deactivating_an_account_takes_effect_immediately","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestAccountState","test_authorization","",""
+"Otherwise Ada@x.com and ada@x.com become two accounts.","0","test_normalisation_is_case_and_whitespace_insensitive[ADA@EXAMPLE.COM-ada@example.com]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","6","test_a_content_security_policy_is_set","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"","1","test_a_200_with_an_empty_body_is_not_an_approval","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"","0","test_extracts_the_token","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestBearerExtraction","test_security_helpers","",""
+"","0","test_total_never_goes_below_zero","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestDiscount","test_pricing","",""
+"The classic JWT downgrade attack.
+
+        Blocked because the decoder pins an explicit algorithm allow-list
+        instead of trusting the token's own header.
+        ","0","test_an_unsigned_alg_none_token_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"``times_used`` is what enforces a promotion's usage limit.
+
+        If checkout applied the discount without incrementing the counter, a
+        capped campaign could be redeemed without limit - the discount would
+        keep working long after the budget for it was exhausted, and nobody
+        would notice until the finance reconciliation.
+
+        The assertion is ""at least one more"" rather than ""exactly one more""
+        because the promotions table is shared seed data: another test running
+        in parallel may legitimately redeem the same code.
+        ","87","test_using_a_promotion_increments_its_usage_counter","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestPromotionPersistence","test_persistence","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[PUT-admin-products-1-stock]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","6","test_a_hostile_password_never_authenticates[sql-drop-table]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","12","test_an_expired_token_is_rejected_everywhere","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestTokenForgery","test_authorization","",""
+"","3","test_wrong_password_does_not_verify","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"The invariant that makes an invoice add up.
+
+        Whatever the inputs, total must equal subtotal - discount + tax +
+        shipping exactly. This is the property most likely to break if rounding
+        is ever moved or reordered.
+        ","0","test_total_always_equals_the_sum_of_its_parts[repeating-decimals]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"","98","test_cancelling_a_paid_order_refunds_and_restocks","tests.integration.tests","Sat Aug 29 04:41:48 UTC 2026","passed","Sat Aug 29 04:41:48 UTC 2026","","test_journeys","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","15","test_customers_are_refused_on_every_admin_endpoint[PATCH-admin-products-1]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"Interleaved sessions must stay completely separate.
+
+    Run as one test rather than two so the operations genuinely interleave -
+    the failure mode being guarded against is state leaking between concurrent
+    sessions, which sequential tests would never expose.
+    ","273","test_two_customers_shopping_at_once_never_see_each_other","tests.integration.tests","Sat Aug 29 04:41:49 UTC 2026","passed","Sat Aug 29 04:41:49 UTC 2026","","test_journeys","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","19","test_hostile_admin_search_input_is_handled_safely[like-wildcards]","tests.security.tests","Sat Aug 29 04:41:36 UTC 2026","passed","Sat Aug 29 04:41:36 UTC 2026","TestBodyInput","test_injection","",""
+"","682","test_reducing_the_quantity_re_enables_checkout","tests.ui.tests","Sat Aug 29 04:40:02 UTC 2026","passed","Sat Aug 29 04:40:02 UTC 2026","TestCartUI","test_auth_cart_ui","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","17","test_hostile_admin_search_input_is_handled_safely[xss-img-onerror]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_accepts_valid_addresses[user@shopsphere.test]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestEmail","test_security_helpers","",""
+"","0","test_rejects_non_integers[None]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","0","test_brand_detection[2221000000000009-mastercard]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"`pg_sleep` must not run.
+
+        A blind SQL injection is often detected by timing rather than output.
+        If the payload executed, this request would take at least five seconds;
+        the bound is deliberately generous so a slow machine cannot fail it,
+        while an executed sleep still would.
+        ","7","test_a_time_based_probe_does_not_delay_the_response","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","0","test_rounds_half_up_to_two_places[999999.999-1000000.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"","1","test_a_minted_token_decodes_to_its_claims","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"The attempted destination must survive the detour.
+
+        Dropping the customer on the home page after login is the small kind of
+        rudeness that loses a sale.
+        ","345","test_a_protected_page_redirects_to_login_and_then_returns","tests.ui.tests","Sat Aug 29 04:39:54 UTC 2026","passed","Sat Aug 29 04:39:55 UTC 2026","TestLoginUI","test_auth_cart_ui","",""
+"Simultaneous edits must not duplicate a line or corrupt a quantity.
+
+    The UNIQUE (cart_id, product_id) constraint is what guarantees the first;
+    the last writer wins on the second, which is acceptable for a cart as long
+    as the result is one of the values actually submitted.
+    ","262","test_concurrent_cart_updates_leave_a_coherent_cart","tests.integration.tests","Sat Aug 29 04:41:38 UTC 2026","passed","Sat Aug 29 04:41:39 UTC 2026","","test_concurrency","",""
+"","9","test_hostile_address_fields_are_handled_safely[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","171","test_a_signed_out_visitor_is_sent_to_login_before_the_cart","tests.ui.tests","Sat Aug 29 04:40:25 UTC 2026","passed","Sat Aug 29 04:40:26 UTC 2026","","test_e2e_journeys","",""
+"One shape for every failure, from every layer.
+
+        FastAPI's own 422, Starlette's 404 and the application's business errors
+        would otherwise each have a different body, and a client would need
+        three parsers.
+        ","3","test_every_error_uses_the_same_envelope[route-not-found-404]","tests.contract.tests","Sat Aug 29 04:41:27 UTC 2026","passed","Sat Aug 29 04:41:27 UTC 2026","TestErrorEnvelope","test_openapi_contract","",""
+"","0","test_forbidden_transitions[delivered-cancelled]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","7","test_a_hostile_password_never_authenticates[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"","10","test_registration_with_a_hostile_name_never_500s[template-injection]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","1","test_brand_detection[4111111111111111-visa]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestCardHelpers","test_order_rules","",""
+"","78","test_hostile_search_terms_are_handled_as_text[template-injection]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"","298","test_price_sorting_reorders_the_grid[price-descending]","tests.ui.tests","Sat Aug 29 04:40:10 UTC 2026","passed","Sat Aug 29 04:40:10 UTC 2026","TestSorting","test_catalog_ui","",""
+"","0","test_accepts_compliant_passwords[Str0ngPass]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","6","test_a_hostile_product_id_is_rejected_not_executed[path-traversal]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"Correlates a client-side failure with a server log line.","17","test_a_request_id_is_returned_and_echoed","tests.security.tests","Sat Aug 29 04:41:31 UTC 2026","passed","Sat Aug 29 04:41:31 UTC 2026","TestSecurityHeaders","test_exposure","",""
+"A status with no entry would raise a KeyError at runtime.","0","test_every_status_has_a_transition_rule","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"","9","test_product_money_is_a_number[price]","tests.contract.tests","Sat Aug 29 04:41:25 UTC 2026","passed","Sat Aug 29 04:41:25 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","366","test_filtering_by_minimum_rating","tests.ui.tests","Sat Aug 29 04:40:07 UTC 2026","passed","Sat Aug 29 04:40:07 UTC 2026","TestFiltering","test_catalog_ui","",""
+"","12","test_hostile_address_fields_are_handled_safely[xss-svg]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"Two roles, two browser contexts, one product.
+
+    ``second_admin_page`` has a context of its own. Using the ordinary
+    ``admin_page`` fixture here would sign the *same* browser in as the admin,
+    so the ""customer"" and the ""admin"" would be one session and the test would
+    prove nothing about visibility across users.
+    ","957","test_an_admin_restock_is_visible_to_a_customer","tests.ui.tests","Sat Aug 29 04:40:24 UTC 2026","passed","Sat Aug 29 04:40:25 UTC 2026","","test_e2e_journeys","",""
+"","0","test_rejects_requests_above_stock[100-99]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"","0","test_rounds_half_up_to_two_places[10.004-10.00]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestQuantizeMoney","test_pricing","",""
+"","3","test_a_hostile_path_segment_never_500s[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"The message must say what is wrong, so the UI can act on it.","0","test_rejects_and_explains[NoDigitsHere-digit]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordPolicy","test_security_helpers","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/orders/{order_id}/cancel-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","304","test_the_hero_button_reaches_the_catalogue","tests.ui.tests","Sat Aug 29 04:40:04 UTC 2026","passed","Sat Aug 29 04:40:05 UTC 2026","TestHomePage","test_catalog_ui","",""
+"","2","test_a_hostile_password_never_authenticates[null-byte]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestAuthInput","test_injection","",""
+"Buying the last unit must succeed.
+
+        An off-by-one here would leave stock permanently unsellable.
+        ","0","test_exactly_all_remaining_stock_is_allowed","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestValidateAvailability","test_inventory_rules","",""
+"A damaged row must produce a failed login, not a 500.","0","test_a_corrupt_hash_returns_false_rather_than_raising[null]","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","7","test_customers_are_refused_on_every_admin_endpoint[PATCH-admin-users-1-active]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","1","test_order_status_enums_match_the_documented_values","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"Business rule 5, asserted in the API *and* the database.
+
+    The single most damaging failure this application could have is an order
+    recorded as paid when no money moved. Checking only the HTTP response would
+    miss a bug that writes the wrong row.
+    ","83","test_a_failed_payment_leaves_nothing_marked_paid","tests.integration.tests","Sat Aug 29 04:41:39 UTC 2026","passed","Sat Aug 29 04:41:39 UTC 2026","","test_journeys","",""
+"Absent must never mean valid-by-default.","3","test_tokens_with_missing_or_wrong_claims_are_rejected[no-exp-]","tests.security.tests","Sat Aug 29 04:41:30 UTC 2026","passed","Sat Aug 29 04:41:30 UTC 2026","TestTokenForgery","test_authorization","",""
+"","19","test_hostile_filter_values_are_handled_safely[xss-javascript-uri]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""
+"The service layer already refuses these values - but only on the
+        paths it controls. A concurrency bug, a future endpoint or a manual
+        ``UPDATE`` can each produce negative stock; the CHECK cannot be
+        bypassed by any of them.
+        ","1","test_check_constraint_is_enforced[products-price>=0]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestCheckConstraints","test_schema","",""
+"","1","test_the_hash_is_not_the_password","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"Checkout is the one place where money, stock and history all change
+        at once, and all four writes have to land together.
+
+        If the order row is written but stock is not decremented, the shop
+        oversells. If stock moves but no payment row is written, revenue
+        reconciliation silently loses a transaction. Asserting stock before and
+        after pins the decrement to the exact quantity ordered rather than
+        merely ""it went down"".
+        ","102","test_paid_checkout_writes_order_items_payment_and_decrements_stock","tests.database.tests","Sat Aug 29 04:41:22 UTC 2026","passed","Sat Aug 29 04:41:22 UTC 2026","TestCheckoutPersistence","test_persistence","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[POST-admin-products]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","5","test_customers_are_refused_on_every_admin_endpoint[GET-admin-orders-1]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"Admin endpoints get the same treatment - a compromised admin session
+        must not become a database console.","19","test_hostile_admin_search_input_is_handled_safely[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","0","test_every_documented_endpoint_is_present[/api/v1/auth/login-post]","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"The JWT spec requires `sub` to be a string.
+
+        Some libraries reject an integer subject outright, so emitting one would
+        make tokens unusable by other clients.
+        ","0","test_subject_is_a_string","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestAccessTokens","test_security_helpers","",""
+"The button must be disabled, not merely fail on click.","184","test_an_out_of_stock_product_cannot_be_added","tests.ui.tests","Sat Aug 29 04:40:13 UTC 2026","passed","Sat Aug 29 04:40:14 UTC 2026","TestProductDetail","test_catalog_ui","",""
+"","75","test_order_money_is_a_number[subtotal]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"Filtered to a brand this test owns.
+
+        Clicking ""the first card"" in the unfiltered catalogue reads the id from
+        one render and asserts on the next, which another worker's product can
+        change in between.
+        ","376","test_a_product_can_be_opened_from_the_listing","tests.ui.tests","Sat Aug 29 04:40:13 UTC 2026","passed","Sat Aug 29 04:40:13 UTC 2026","TestProductDetail","test_catalog_ui","",""
+"Proves these tests can fail.
+
+        A validator misconfigured so that $ref never resolves would silently
+        accept anything, and every test in this file would pass while checking
+        nothing. This asserts the mechanism has teeth before relying on it.
+        ","1","test_the_validator_actually_rejects_a_mismatch","tests.contract.tests","Sat Aug 29 04:41:24 UTC 2026","passed","Sat Aug 29 04:41:24 UTC 2026","TestSpecification","test_openapi_contract","",""
+"","10","test_registration_with_a_hostile_name_never_500s[sql-comment]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestAuthInput","test_injection","",""
+"","0","test_promotion_below_its_usage_limit_is_accepted","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","0","test_inactive_promotion_is_rejected","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPromotionValidity","test_pricing","",""
+"","3","test_a_hostile_path_segment_never_500s[sql-comment]","tests.security.tests","Sat Aug 29 04:41:35 UTC 2026","passed","Sat Aug 29 04:41:35 UTC 2026","TestBodyInput","test_injection","",""
+"","4","test_protected_endpoints_reject_anonymous_callers[POST-auth-logout]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","1","test_rejects_zero_and_negative[-1]","backend.tests.unit","Sat Aug 29 04:38:28 UTC 2026","passed","Sat Aug 29 04:38:28 UTC 2026","TestValidateQuantity","test_inventory_rules","",""
+"","6","test_a_hostile_product_id_is_rejected_not_executed[sql-comment]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"Business rule 3.
+
+        The whole admin surface, not a sample: a route added without the
+        dependency would be caught here rather than in production.
+        ","6","test_customers_are_refused_on_every_admin_endpoint[POST-admin-products]","tests.security.tests","Sat Aug 29 04:41:29 UTC 2026","passed","Sat Aug 29 04:41:29 UTC 2026","TestRoleEnforcement","test_authorization","",""
+"","2","test_unicode_passwords_work","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"``cart_items`` is unique on (cart_id, product_id).
+
+        Writing a second row instead of merging would either violate that
+        constraint - a 500 for the customer - or, without it, show the same
+        product twice in the basket and charge for both lines.
+        ","56","test_re_adding_the_same_product_updates_the_existing_row","tests.database.tests","Sat Aug 29 04:41:21 UTC 2026","passed","Sat Aug 29 04:41:21 UTC 2026","TestCartPersistence","test_persistence","",""
+"","4","test_admin_endpoints_reject_anonymous_callers[GET-admin-users]","tests.security.tests","Sat Aug 29 04:41:28 UTC 2026","passed","Sat Aug 29 04:41:28 UTC 2026","TestAnonymousAccess","test_authorization","",""
+"","10","test_hostile_address_fields_are_handled_safely[sql-or-true]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","7","test_a_hostile_product_id_is_rejected_not_executed[xss-script-tag]","tests.security.tests","Sat Aug 29 04:41:34 UTC 2026","passed","Sat Aug 29 04:41:34 UTC 2026","TestBodyInput","test_injection","",""
+"","40","test_quote_money_is_a_number[discount_total]","tests.contract.tests","Sat Aug 29 04:41:26 UTC 2026","passed","Sat Aug 29 04:41:26 UTC 2026","TestMoneyContract","test_openapi_contract","",""
+"","0","test_cancellable_statuses_are_exactly_the_pre_shipping_ones","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderStatusTransitions","test_order_rules","",""
+"The most dangerous failure mode.
+
+        If the provider changed its response shape, treating ""not obviously a
+        decline"" as success would hand out free goods. Anything unrecognised is
+        classified as a failure.
+        ","0","test_a_200_with_an_unrecognised_body_is_not_an_approval","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestChargeInterpretation","test_order_rules","",""
+"","0","test_currency_is_carried_through","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestComputeTotals","test_pricing","",""
+"Per-hash salting.
+
+        Identical hashes for identical passwords would let anyone who saw the
+        table find every account sharing a password.
+        ","2","test_the_same_password_hashes_differently_each_time","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestPasswordHashing","test_security_helpers","",""
+"","65","test_numbers_are_unique","backend.tests.unit","Sat Aug 29 04:38:29 UTC 2026","passed","Sat Aug 29 04:38:29 UTC 2026","TestOrderNumber","test_order_rules","",""
+"The same requests, three identities, three different outcomes.","143","test_a_customer_is_refused_everywhere_an_admin_is_allowed","tests.integration.tests","Sat Aug 29 04:41:40 UTC 2026","passed","Sat Aug 29 04:41:40 UTC 2026","","test_journeys","",""
+"Delete rules decide what happens to data nobody is looking at.
+
+        Getting one wrong stays invisible until the day a product is deleted
+        and years of order history vanish with it - by which point the backup
+        window has usually closed.
+        ","19","test_foreign_key_and_delete_rule[inventory.product_id-to-products-CASCADE]","tests.database.tests","Sat Aug 29 04:41:23 UTC 2026","passed","Sat Aug 29 04:41:23 UTC 2026","TestForeignKeys","test_schema","",""
+"","10","test_hostile_filter_values_are_handled_safely[null-byte]","tests.security.tests","Sat Aug 29 04:41:33 UTC 2026","passed","Sat Aug 29 04:41:33 UTC 2026","TestSearchInput","test_injection","",""

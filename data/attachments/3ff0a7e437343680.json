@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/admin/products",
+  "params": {},
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": {
+    "sku": "HACK-1",
+    "name": "Hacked",
+    "price": 1,
+    "category_id": 1,
+    "brand": "X"
+  }
+}
