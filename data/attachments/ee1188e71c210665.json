@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 34.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:36 GMT",
+    "server": "uvicorn",
+    "content-length": "930",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "33.29",
+    "x-request-id": "9a0db63d96ac49b7bca28c1db52a1898"
+  },
+  "body": {
+    "id": 51,
+    "order_number": "SS-20260829-XGTPD8",
+    "user_id": 150,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 49.99,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.98,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 53,
+        "product_id": 206,
+        "product_name": "Test Product e1e160",
+        "sku": "TST-A008850E35",
+        "unit_price": 49.99,
+        "quantity": 1,
+        "line_total": 49.99
+      }
+    ],
+    "payments": [
+      {
+        "id": 54,
+        "provider_reference": "txn_d99dff6f2c9f4a26a7a8",
+        "amount": 63.98,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T06:45:37.062194Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T06:45:37.053449Z",
+    "updated_at": "2026-08-29T06:45:37.062194Z"
+  }
+}

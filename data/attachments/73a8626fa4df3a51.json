@@ -1,0 +1,31 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 7.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:30 GMT",
+    "server": "uvicorn",
+    "content-length": "199",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "6.15",
+    "x-request-id": "aba353baa43b4f8cb50516355ab31d81"
+  },
+  "body": {
+    "id": 48,
+    "label": "Home",
+    "full_name": "Test Customer",
+    "line1": "1 Integration Way",
+    "line2": null,
+    "city": "Austin",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US",
+    "phone": "+1-555-0123",
+    "is_default": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 12.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:21 GMT",
+    "server": "uvicorn",
+    "content-length": "418",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "11.97",
+    "x-request-id": "665b7a4f1f9549bba07fca1a7c8c9400"
+  },
+  "body": {
+    "id": 5,
+    "items": [
+      {
+        "product_id": 68,
+        "sku": "TST-4894DC3EBE",
+        "name": "Test Product eddc60",
+        "image_url": null,
+        "unit_price": 100.0,
+        "quantity": 1,
+        "line_total": 100.0,
+        "available_stock": 3,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 1,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 100.0,
+      "discount_total": 0.0,
+      "tax": 8.0,
+      "shipping_fee": 0.0,
+      "total": 108.0,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status_code": 404,
+  "elapsed_ms": 2.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:25 GMT",
+    "server": "uvicorn",
+    "content-length": "89",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.16",
+    "x-request-id": "6ccc8bbfcc21448a840c91dba6cc7714"
+  },
+  "body": {
+    "error": "PRODUCT_NOT_FOUND",
+    "message": "Product not found.",
+    "details": {
+      "product_id": 125
+    }
+  }
+}

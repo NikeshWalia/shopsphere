@@ -1,0 +1,28 @@
+{
+  "status_code": 504,
+  "elapsed_ms": 8074.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:47 GMT",
+    "server": "uvicorn",
+    "content-length": "244",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8073.33",
+    "x-request-id": "a26cbd5bbe62478cab62a6ecb21896de"
+  },
+  "body": {
+    "error": "PAYMENT_PROVIDER_TIMEOUT",
+    "message": "The payment provider did not respond in time. Your order is pending confirmation.",
+    "details": {
+      "order_id": 79,
+      "order_number": "SS-20260829-F8LZ3B",
+      "order_status": "pending",
+      "payment_status": "pending"
+    }
+  }
+}

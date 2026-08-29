@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 7.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:38 GMT",
+    "server": "uvicorn",
+    "content-length": "545",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "6.25",
+    "x-request-id": "796e7c8a3bbe461c91d571ec134ffe94"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 183,
+      "email": "user_492036580754@shopsphere.test",
+      "full_name": "Kristina Garcia",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T06:45:39.679092Z"
+    }
+  }
+}

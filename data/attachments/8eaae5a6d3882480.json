@@ -1,0 +1,100 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 6.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:24 GMT",
+    "server": "uvicorn",
+    "content-length": "1349",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "5.57",
+    "x-request-id": "5bb06dfa36474c249282f71dd21245d9"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 107,
+        "sku": "TST-E45D65A956",
+        "name": "Tied Product 00",
+        "price": 42.0,
+        "brand": "PageBrandf077183667",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 108,
+        "sku": "TST-5E26996171",
+        "name": "Tied Product 01",
+        "price": 42.0,
+        "brand": "PageBrandf077183667",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 109,
+        "sku": "TST-510C0EA50B",
+        "name": "Tied Product 02",
+        "price": 42.0,
+        "brand": "PageBrandf077183667",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 110,
+        "sku": "TST-F591C4A163",
+        "name": "Tied Product 03",
+        "price": 42.0,
+        "brand": "PageBrandf077183667",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 9,
+    "page": 1,
+    "page_size": 4,
+    "total_pages": 3,
+    "has_next": true,
+    "has_previous": false
+  }
+}

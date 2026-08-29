@@ -1,0 +1,17 @@
+{
+  "status_code": 500,
+  "elapsed_ms": 56.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:45 GMT",
+    "server": "uvicorn",
+    "content-length": "128",
+    "content-type": "application/json"
+  },
+  "body": {
+    "error": "INTERNAL_ERROR",
+    "message": "An unexpected error occurred.",
+    "details": {
+      "request_id": "f2df2531d78247269975778f3f95e387"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 9.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:32 GMT",
+    "server": "uvicorn",
+    "content-length": "445",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.21",
+    "x-request-id": "5f5464b08f3946ce8eefc24af1305a7d"
+  },
+  "body": {
+    "id": 186,
+    "sku": "TST-FEDC36472F",
+    "name": "Test Product 2b72a3",
+    "price": 49.99,
+    "brand": "TestBrand",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": true,
+    "in_stock": true,
+    "stock_quantity": 6,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T06:45:33.816007Z",
+    "updated_at": "2026-08-29T06:45:33.816007Z"
+  }
+}

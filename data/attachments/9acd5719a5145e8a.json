@@ -1,0 +1,29 @@
+{
+  "status_code": 402,
+  "elapsed_ms": 31.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:27 GMT",
+    "server": "uvicorn",
+    "content-length": "211",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "30.74",
+    "x-request-id": "683af6324b0645c797ba59a2f3fa95a2"
+  },
+  "body": {
+    "error": "PAYMENT_DECLINED",
+    "message": "Insufficient funds.",
+    "details": {
+      "order_id": 15,
+      "order_number": "SS-20260829-V7RDZA",
+      "order_status": "cancelled",
+      "payment_status": "failed",
+      "failure_code": "insufficient_funds"
+    }
+  }
+}

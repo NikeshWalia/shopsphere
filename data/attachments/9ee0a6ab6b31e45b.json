@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 47.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:46 GMT",
+    "server": "uvicorn",
+    "content-length": "929",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "46.76",
+    "x-request-id": "d82ae5e60efc4e37a84a098fe389cb88"
+  },
+  "body": {
+    "id": 76,
+    "order_number": "SS-20260829-VGV8MP",
+    "user_id": 290,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 66.0,
+    "discount_total": 0.0,
+    "tax": 5.28,
+    "shipping_fee": 9.99,
+    "total": 81.27,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 74,
+        "product_id": 228,
+        "product_name": "Test Fixture Product",
+        "sku": "TST-F94305471B",
+        "unit_price": 33.0,
+        "quantity": 2,
+        "line_total": 66.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 75,
+        "provider_reference": "txn_76d594b0ec464837ba0c",
+        "amount": 81.27,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T06:45:47.308418Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T06:45:47.299380Z",
+    "updated_at": "2026-08-29T06:45:47.308418Z"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 10.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:41 GMT",
+    "server": "uvicorn",
+    "content-length": "542",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "9.08",
+    "x-request-id": "d56822f499304e11bd573f42af5bba90"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 230,
+      "email": "user_d70f6c7a7217@shopsphere.test",
+      "full_name": "Meagan Lewis",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T06:45:42.665242Z"
+    }
+  }
+}

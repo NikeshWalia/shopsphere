@@ -1,0 +1,82 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 5.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:23 GMT",
+    "server": "uvicorn",
+    "content-length": "1050",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.08",
+    "x-request-id": "f2a469f83b8c41f9b067257f79e4e6a3"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 95,
+        "sku": "TST-5AF57A52C5",
+        "name": "Test Product c999da",
+        "price": 49.99,
+        "brand": "SlugBrande2e3b83816",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 94,
+        "sku": "TST-D8C6F5F05A",
+        "name": "Test Product 391643",
+        "price": 49.99,
+        "brand": "SlugBrande2e3b83816",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      },
+      {
+        "id": 93,
+        "sku": "TST-603524780F",
+        "name": "Test Product 9a4cc9",
+        "price": 49.99,
+        "brand": "SlugBrande2e3b83816",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 3,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 1,
+    "has_next": false,
+    "has_previous": false
+  }
+}

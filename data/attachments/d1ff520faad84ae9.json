@@ -1,0 +1,24 @@
+{
+  "status_code": 401,
+  "elapsed_ms": 1.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:21 GMT",
+    "server": "uvicorn",
+    "www-authenticate": "Bearer",
+    "content-length": "92",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "0.73",
+    "x-request-id": "c3586d7ef1bf4160b6703a86c0c7752e"
+  },
+  "body": {
+    "error": "INVALID_TOKEN",
+    "message": "The access token is missing or malformed.",
+    "details": {}
+  }
+}

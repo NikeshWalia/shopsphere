@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 3.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:28 GMT",
+    "server": "uvicorn",
+    "content-length": "215",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.72",
+    "x-request-id": "05797963247d4dfaaa7c67169f52a320"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be less than or equal to 12",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.expiry_month",
+          "message": "Input should be less than or equal to 12",
+          "type": "less_than_equal"
+        }
+      ]
+    }
+  }
+}

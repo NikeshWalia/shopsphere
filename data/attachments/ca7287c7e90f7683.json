@@ -1,0 +1,69 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 3.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:40 GMT",
+    "server": "uvicorn",
+    "content-length": "864",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.16",
+    "x-request-id": "403cd6e6e6cd4c36a082e86df34a0157"
+  },
+  "body": [
+    {
+      "id": 4,
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Cables, chargers, bags, docks and input devices.",
+      "product_count": 12
+    },
+    {
+      "id": 7,
+      "name": "Books",
+      "slug": "books",
+      "description": "Technical and general-interest titles.",
+      "product_count": 7
+    },
+    {
+      "id": 6,
+      "name": "Clothing",
+      "slug": "clothing",
+      "description": "Everyday apparel and outerwear.",
+      "product_count": 7
+    },
+    {
+      "id": 3,
+      "name": "Electronics",
+      "slug": "electronics",
+      "description": "Audio, wearables, cameras and smart home devices.",
+      "product_count": 12
+    },
+    {
+      "id": 5,
+      "name": "Home",
+      "slug": "home",
+      "description": "Kitchen, lighting and small appliances.",
+      "product_count": 9
+    },
+    {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations.",
+      "product_count": 9
+    },
+    {
+      "id": 2,
+      "name": "Phones",
+      "slug": "phones",
+      "description": "Smartphones across the budget and flagship range.",
+      "product_count": 7
+    }
+  ]
+}

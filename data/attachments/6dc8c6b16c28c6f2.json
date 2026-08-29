@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 4.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:25 GMT",
+    "server": "uvicorn",
+    "content-length": "439",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.98",
+    "x-request-id": "f7f158f148fe476ba51e7c2ec4e5b24a"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 27,
+        "sku": "ELE-3012",
+        "name": "Corvid Drone Scout",
+        "price": 799.0,
+        "brand": "Corvid",
+        "rating": "4.1",
+        "image_url": "https://picsum.photos/seed/ele-3012/600/600",
+        "is_active": true,
+        "in_stock": false,
+        "stock_quantity": 0,
+        "category": {
+          "id": 3,
+          "name": "Electronics",
+          "slug": "electronics",
+          "description": "Audio, wearables, cameras and smart home devices."
+        }
+      }
+    ],
+    "total": 12,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 12,
+    "has_next": true,
+    "has_previous": false
+  }
+}

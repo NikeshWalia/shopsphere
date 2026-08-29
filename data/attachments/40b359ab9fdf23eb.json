@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:8000/api/v1/products?include_inactive=true&page_size=100&q=TST-182684A8FA",
+  "params": {
+    "include_inactive": true,
+    "page_size": 100,
+    "q": "TST-182684A8FA"
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "body": null
+}

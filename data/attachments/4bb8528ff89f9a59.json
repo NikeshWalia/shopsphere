@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 32.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:41 GMT",
+    "server": "uvicorn",
+    "content-length": "539",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "31.29",
+    "x-request-id": "92788ef733ee4d068e2a8f5f8b660411"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 221,
+      "email": "user_3627e72810ed@shopsphere.test",
+      "full_name": "Tracy Day",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T06:45:42.476639Z"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status_code": 401,
+  "elapsed_ms": 1.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:37 GMT",
+    "server": "uvicorn",
+    "www-authenticate": "Bearer",
+    "content-length": "83",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.04",
+    "x-request-id": "5dd17bf3393c4848b599387bc46d4b83"
+  },
+  "body": {
+    "error": "INVALID_TOKEN",
+    "message": "Authorization header is missing.",
+    "details": {}
+  }
+}

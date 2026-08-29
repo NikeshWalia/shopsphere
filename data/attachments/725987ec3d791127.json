@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 3.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:45:28 GMT",
+    "server": "uvicorn",
+    "content-length": "222",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "2.76",
+    "x-request-id": "1aaba4840e7c4291818c00997c38892b"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Input should be greater than or equal to 1",
+    "details": {
+      "fields": [
+        {
+          "field": "payment.expiry_month",
+          "message": "Input should be greater than or equal to 1",
+          "type": "greater_than_equal"
+        }
+      ]
+    }
+  }
+}
