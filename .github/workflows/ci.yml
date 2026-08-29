@@ -1,0 +1,533 @@
+name: CI
+
+# Runs on every push and pull request to the main branches, and can be started
+# by hand for a full run including the browser matrix.
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+  workflow_dispatch:
+    inputs:
+      full_browser_matrix:
+        description: "Run UI tests on Firefox and WebKit as well as Chromium"
+        type: boolean
+        default: false
+
+# A new push supersedes an in-flight run for the same branch. Keeps the queue
+# short and stops two runs of the same branch racing for the same resources.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12"
+  NODE_VERSION: "22"
+  # Every job that starts the stack uses these, so there is one definition.
+  DATABASE_URL: postgresql+psycopg://shopsphere:shopsphere@localhost:5432/shopsphere
+  TEST_DATABASE_URL: postgresql://shopsphere:shopsphere@localhost:5432/shopsphere
+  API_BASE_URL: http://127.0.0.1:8000
+  UI_BASE_URL: http://127.0.0.1:5173
+  PAYMENT_MOCK_URL: http://127.0.0.1:9100
+  PAYMENT_SERVICE_URL: http://127.0.0.1:9100
+  SECRET_KEY: ci-only-secret-not-used-anywhere-real
+  TEST_JWT_SECRET: ci-only-secret-not-used-anywhere-real
+  ENVIRONMENT: ci
+  LOG_FORMAT: json
+  # bcrypt's cost is deliberate CPU burn. 12 rounds is right in production; in
+  # CI, where hundreds of tests register a user, it is the single largest cost
+  # in the run. 4 rounds keeps the same code path and cuts minutes off the job.
+  BCRYPT_ROUNDS: "4"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. Lint - fastest feedback, so it runs first and gates nothing behind it.
+  # ---------------------------------------------------------------------------
+  lint:
+    name: Lint and type-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt -r requirements-test.txt -r backend/requirements.txt
+
+      - name: Ruff
+        run: ruff check . --output-format=github
+
+      - name: Black
+        run: black --check --diff .
+
+      - name: MyPy
+        # Advisory rather than blocking: the codebase is typed, but a new
+        # third-party stub regression should not stop a correct change landing.
+        run: mypy backend/app || echo "::warning::mypy reported issues"
+
+  frontend-checks:
+    name: Frontend lint, types and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install
+        working-directory: frontend
+        run: npm ci --no-audit --no-fund
+
+      - name: ESLint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: TypeScript
+        working-directory: frontend
+        run: npm run typecheck
+
+      - name: Build
+        working-directory: frontend
+        run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: frontend/dist
+          retention-days: 3
+
+  # ---------------------------------------------------------------------------
+  # 2. Unit tests - no database, no HTTP, no browser. Seconds, not minutes.
+  # ---------------------------------------------------------------------------
+  unit-tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt -r requirements-test.txt
+
+      - name: Run unit tests
+        run: |
+          python -m pytest backend/tests \
+            --alluredir=allure-results \
+            --cov --cov-report=xml --cov-report=term \
+            -q
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-unit
+          path: allure-results
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-xml
+          path: coverage.xml
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # 3. Everything that needs the running stack.
+  #
+  #    API, database, integration, contract and security suites all need the
+  #    same environment, so they share one job and one stack rather than paying
+  #    the startup cost five times. They are run as separate pytest invocations
+  #    so a failure names the suite it came from.
+  # ---------------------------------------------------------------------------
+  service-tests:
+    name: API, DB, integration, contract and security tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: [lint]
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: shopsphere
+          POSTGRES_PASSWORD: shopsphere
+          POSTGRES_DB: shopsphere
+        ports: ["5432:5432"]
+        # The job does not start until Postgres genuinely accepts connections,
+        # which removes any need for a sleep in the steps below.
+        options: >-
+          --health-cmd "pg_isready -U shopsphere -d shopsphere"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt -r payment-mock/requirements.txt -r requirements-test.txt
+
+      - name: Apply migrations
+        working-directory: backend
+        run: PYTHONPATH=. python -m alembic upgrade head
+
+      - name: Seed the database
+        working-directory: backend
+        run: PYTHONPATH=. python -m app.seed.seed --reset
+
+      - name: Start the payment provider
+        run: |
+          cd payment-mock
+          nohup python -m uvicorn app.main:app --host 127.0.0.1 --port 9100 > ../payment-mock.log 2>&1 &
+
+      - name: Start the API
+        run: |
+          cd backend
+          PYTHONPATH=. nohup python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 > ../backend.log 2>&1 &
+
+      - name: Wait for readiness
+        run: python scripts/wait_for_stack.py --timeout 120
+
+      - name: API tests
+        run: python -m pytest tests/api -q --alluredir=allure-results
+
+      - name: Database tests
+        if: always()
+        run: python -m pytest tests/database -q --alluredir=allure-results
+
+      - name: Contract tests
+        if: always()
+        run: python -m pytest tests/contract -q --alluredir=allure-results
+
+      - name: Security tests
+        if: always()
+        run: python -m pytest tests/security -q --alluredir=allure-results
+
+      - name: Integration tests
+        if: always()
+        # Concurrency tests are marked `serial` because they measure what
+        # happens when several requests race; running them under xdist would
+        # add a second, uncontrolled source of concurrency.
+        run: python -m pytest tests/integration -q --alluredir=allure-results
+
+      - name: Upload service logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: service-logs
+          path: |
+            backend.log
+            payment-mock.log
+          retention-days: 7
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-service
+          path: allure-results
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # 4. UI tests - the slowest and most expensive, so they run last and only
+  #    after the cheaper suites have had a chance to fail.
+  # ---------------------------------------------------------------------------
+  ui-tests:
+    name: UI tests (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    needs: [unit-tests, frontend-checks]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # Chromium always; the other engines only on an explicit full run, so
+        # ordinary pull requests are not slowed by a three-browser matrix.
+        browser: ${{ github.event.inputs.full_browser_matrix == 'true' && fromJSON('["chromium","firefox","webkit"]') || fromJSON('["chromium"]') }}
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: shopsphere
+          POSTGRES_PASSWORD: shopsphere
+          POSTGRES_DB: shopsphere
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U shopsphere -d shopsphere"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+
+    env:
+      BROWSER: ${{ matrix.browser }}
+      HEADLESS: "true"
+      CAPTURE_TRACE: retain-on-failure
+      CAPTURE_VIDEO: retain-on-failure
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt -r payment-mock/requirements.txt \
+                      -r requirements-test.txt -r requirements-ui.txt
+
+      # Browser binaries are ~400 MB. Keyed on the Playwright version so a
+      # dependency bump invalidates the cache instead of using stale browsers.
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('requirements-ui.txt') }}
+
+      - name: Install browsers
+        run: python -m playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci --no-audit --no-fund
+
+      - name: Migrate and seed
+        working-directory: backend
+        run: |
+          PYTHONPATH=. python -m alembic upgrade head
+          PYTHONPATH=. python -m app.seed.seed --reset
+
+      - name: Start the stack
+        run: |
+          cd payment-mock && nohup python -m uvicorn app.main:app --host 127.0.0.1 --port 9100 > ../payment-mock.log 2>&1 &
+          cd backend && PYTHONPATH=. nohup python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 > ../backend.log 2>&1 &
+          cd frontend && nohup npm run dev > ../frontend.log 2>&1 &
+
+      - name: Wait for readiness
+        run: python scripts/wait_for_stack.py --timeout 180 --ui http://127.0.0.1:5173
+
+      - name: Run UI tests
+        run: python -m pytest tests/ui -q --alluredir=allure-results
+
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-artifacts-${{ matrix.browser }}
+          path: |
+            artifacts/ui/screenshots
+            artifacts/ui/traces
+            artifacts/ui/videos
+            backend.log
+            frontend.log
+            payment-mock.log
+          retention-days: 14
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-ui-${{ matrix.browser }}
+          path: allure-results
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # 5. Build validation - proves the images actually build and the stack comes
+  #    up from nothing but `docker compose up`.
+  # ---------------------------------------------------------------------------
+  docker-build:
+    name: Docker build and stack validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    needs: [lint]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build all images
+        run: docker compose build
+
+      - name: Start the stack
+        run: docker compose up -d
+
+      - name: Wait for readiness
+        run: |
+          python -m pip install --quiet --upgrade pip
+          python scripts/wait_for_stack.py --timeout 240 --ui http://localhost:3000
+
+      - name: Verify the running stack
+        # A smoke check against the composed stack, not the dev stack: proves
+        # migrations ran, seeding ran, and the nginx proxy routes /api.
+        run: |
+          set -euo pipefail
+          curl -fsS http://localhost:8000/health/ready | tee /dev/stderr | grep -q '"database":"ok"'
+          curl -fsS "http://localhost:8000/api/v1/products?page_size=1" | grep -q '"total"'
+          curl -fsS http://localhost:9100/health | grep -q '"status":"ok"'
+          curl -fsS http://localhost:3000/ | grep -q '<div id="root">'
+          curl -fsS "http://localhost:3000/api/v1/products?page_size=1" | grep -q '"items"'
+          echo "Composed stack verified."
+
+      - name: Dump logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v
+
+  # ---------------------------------------------------------------------------
+  # 6. Reporting - merges every suite's results into one Allure report.
+  # ---------------------------------------------------------------------------
+  report:
+    name: Allure report
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [unit-tests, service-tests, ui-tests]
+    # `always()` so a report is still produced for a failing run - that is
+    # precisely when somebody needs to look at it.
+    if: always()
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download every suite's results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: allure-results-*
+          path: downloaded
+          merge-multiple: true
+
+      - name: Collect
+        run: |
+          mkdir -p allure-results
+          find downloaded -type f -exec cp {} allure-results/ \; 2>/dev/null || true
+          echo "Collected $(ls allure-results | wc -l) result files"
+
+      # Restoring the previous run's history is what gives the report trend
+      # graphs; without it every report looks like the first one ever produced.
+      - name: Restore Allure history
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Merge history
+        run: |
+          if [ -d gh-pages/history ]; then
+            cp -r gh-pages/history allure-results/
+            echo "Restored previous history"
+          fi
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Generate the report
+        run: |
+          ALLURE_VERSION=2.34.1
+          curl -sL -o allure.tgz \
+            "https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz"
+          tar -xzf allure.tgz
+          ./allure-${ALLURE_VERSION}/bin/allure generate allure-results --clean -o allure-report
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          retention-days: 30
+
+      - name: Publish to GitHub Pages
+        # Only from the default branch: a pull request must not overwrite the
+        # published report or the history it depends on.
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+          keep_files: false
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Test results"
+            echo ""
+            echo "| Suite | Result |"
+            echo "| --- | --- |"
+            echo "| Unit | ${{ needs.unit-tests.result }} |"
+            echo "| API, DB, contract, security, integration | ${{ needs.service-tests.result }} |"
+            echo "| UI | ${{ needs.ui-tests.result }} |"
+            echo ""
+            echo "The full Allure report is attached to this run as an artifact."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ---------------------------------------------------------------------------
+  # 7. The gate. A single required check that fails when any critical suite
+  #    failed - so branch protection needs one rule rather than seven.
+  # ---------------------------------------------------------------------------
+  ci-passed:
+    name: CI passed
+    runs-on: ubuntu-latest
+    needs: [lint, frontend-checks, unit-tests, service-tests, ui-tests, docker-build]
+    if: always()
+    steps:
+      - name: Fail if any required job failed
+        run: |
+          results=(
+            "lint:${{ needs.lint.result }}"
+            "frontend-checks:${{ needs.frontend-checks.result }}"
+            "unit-tests:${{ needs.unit-tests.result }}"
+            "service-tests:${{ needs.service-tests.result }}"
+            "ui-tests:${{ needs.ui-tests.result }}"
+            "docker-build:${{ needs.docker-build.result }}"
+          )
+          failed=0
+          for entry in "${results[@]}"; do
+            name="${entry%%:*}"
+            result="${entry##*:}"
+            printf '  %-18s %s\n' "$name" "$result"
+            if [ "$result" != "success" ] && [ "$result" != "skipped" ]; then
+              failed=1
+            fi
+          done
+          if [ "$failed" -eq 1 ]; then
+            echo "::error::One or more required jobs failed."
+            exit 1
+          fi
+          echo "All required jobs passed."

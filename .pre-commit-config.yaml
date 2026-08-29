@@ -1,0 +1,47 @@
+# Pre-commit hooks.
+#
+#   pip install pre-commit && pre-commit install
+#
+# These are the checks the `lint` CI job runs, moved to commit time so a
+# formatting-only failure is caught in seconds rather than after a push.
+# Tests are deliberately NOT hooked: a hook slow enough to be annoying is a hook
+# people start bypassing with --no-verify.
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-toml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+
+  - repo: local
+    hooks:
+      # A committed .env would leak whatever the developer had configured.
+      # .gitignore already covers it; this is the backstop that fails loudly.
+      - id: no-committed-env
+        name: refuse to commit a .env file
+        entry: bash -c 'if git diff --cached --name-only | grep -qE "(^|/)\.env$"; then echo "Refusing to commit .env"; exit 1; fi'
+        language: system
+        pass_filenames: false

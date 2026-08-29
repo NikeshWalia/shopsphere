@@ -1,0 +1,12 @@
+# Browser automation.
+#
+# Playwright is pinned to >=1.55 deliberately: earlier releases pin
+# `greenlet==3.1.1` exactly, which is mutually exclusive with the
+# `greenlet>=3.2.2` that Locust's gevent requires. Anything from 1.55 onward
+# uses a range, so the UI and performance suites can share one virtualenv
+# instead of forcing contributors to maintain two.
+#
+# Browsers are a separate download; after installing, run:
+#   python -m playwright install --with-deps chromium firefox webkit
+playwright==1.55.0
+pytest-playwright==0.7.0

@@ -1,0 +1,23 @@
+# Quality-engineering platform dependencies (tests/ and backend/tests/).
+#
+# Kept separate from the application requirements so the backend and
+# payment-mock Docker images never ship test tooling. Install with:
+#   pip install -r requirements-test.txt
+pytest==8.3.4
+pytest-xdist==3.6.1
+pytest-cov==6.0.0
+pytest-rerunfailures==15.0
+pytest-timeout==2.3.1
+allure-pytest==2.13.5
+httpx==0.28.1
+psycopg[binary]==3.2.3
+SQLAlchemy==2.0.36
+pydantic==2.10.4
+pydantic-settings==2.7.0
+PyJWT==2.10.1
+Faker==33.1.0
+jsonschema==4.23.0
+# Imported directly by the contract suite to resolve $ref against the live
+# OpenAPI document; pinned rather than relied on as a jsonschema transitive.
+referencing==0.36.2
+python-dotenv==1.0.1

@@ -1,0 +1,158 @@
+[project]
+name = "shopsphere-quality-platform"
+version = "1.0.0"
+description = "ShopSphere - an e-commerce application and the quality engineering platform that tests it"
+requires-python = ">=3.11"
+readme = "README.md"
+
+# Intentionally no `dependencies` here.
+#
+# This repository is a workspace of two deployable services plus a test
+# platform, not a distributable library, so nothing is ever `pip install`ed
+# from it. Dependencies live in purpose-scoped requirements files instead:
+#
+#   backend/requirements.txt       backend service runtime (its Docker image)
+#   payment-mock/requirements.txt  mock provider runtime (its Docker image)
+#   requirements-test.txt          pytest, httpx, psycopg, Allure, Faker
+#   requirements-ui.txt            Playwright
+#   requirements-perf.txt          Locust
+#   requirements-dev.txt           Ruff, Black, MyPy, pre-commit
+#
+# The payoff is that the application images carry no test tooling, and CI jobs
+# install only what their stage actually needs.
+#
+# This file remains the single home for tool configuration below.
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["backend/tests", "tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--tb=short",
+    "--import-mode=importlib",
+]
+# A hung request must fail the test rather than stall the pipeline.
+timeout = 180
+timeout_method = "thread"
+markers = [
+    "unit: fast, isolated business-logic tests with no I/O",
+    "api: HTTP-level tests against the running backend",
+    "ui: browser tests driven by Playwright",
+    "database: tests that assert directly against PostgreSQL state",
+    "integration: multi-component tests (API + DB + payment provider)",
+    "contract: response/OpenAPI schema conformance tests",
+    "security: authentication, authorisation and input-handling tests",
+    "e2e: full business journeys through the browser",
+    "smoke: minimal critical-path subset used as a pipeline gate",
+    "slow: tests that intentionally take several seconds (timeouts, concurrency)",
+    "serial: must not run under pytest-xdist parallelism",
+]
+filterwarnings = [
+    "error::DeprecationWarning:app.*",
+    "ignore::DeprecationWarning",
+]
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s %(levelname)-8s %(name)s %(message)s"
+
+# ---------------------------------------------------------------------------
+# Ruff
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "migrations/versions", "frontend", "allure-results", "allure-report"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "UP",   # pyupgrade
+    "N",    # pep8-naming
+    "SIM",  # flake8-simplify
+    "RET",  # flake8-return
+    "ARG",  # unused arguments
+    "PTH",  # prefer pathlib
+    "S",    # flake8-bandit (security)
+    "T20",  # no print statements
+    "RUF",
+]
+ignore = [
+    "E501",    # line length is enforced by the formatter
+    "B008",    # FastAPI Depends() in defaults is idiomatic
+    "RUF012",  # ClassVar annotations not required on Page Object locators
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests legitimately use asserts, hardcoded demo credentials and fixture args.
+"tests/**" = ["S101", "S105", "S106", "S311", "ARG001", "ARG002"]
+"backend/tests/**" = ["S101", "S105", "S106", "ARG001", "ARG002"]
+# `admin: CurrentAdmin` looks unused to a linter, but declaring it is exactly
+# what applies the authorisation dependency to the endpoint. Removing it to
+# satisfy ARG001 would silently make the route public.
+"backend/app/api/v1/admin.py" = ["ARG001"]
+# FastAPI fixes the signatures of lifespan handlers and exception handlers; the
+# unused parameters are required by the framework, not by this code.
+"backend/app/main.py" = ["ARG001"]
+"backend/app/seed/**" = ["S311", "T20"]          # seed data uses non-crypto randomness + CLI output
+"scripts/**" = ["T20", "S603", "S607"]
+"backend/migrations/**" = ["I001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "tests"]
+
+# ---------------------------------------------------------------------------
+# Black
+# ---------------------------------------------------------------------------
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+extend-exclude = '/(\.venv|frontend|allure-results|allure-report)/'
+
+# ---------------------------------------------------------------------------
+# MyPy
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_optional = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+show_error_codes = true
+pretty = true
+exclude = ['\.venv', 'frontend', 'backend/migrations/versions', 'allure-']
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+# The test platform is typed where it helps readability, but pytest fixtures
+# and Playwright's dynamic API make full strictness counter-productive.
+module = ["tests.*", "backend.tests.*"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[[tool.mypy.overrides]]
+module = ["allure.*", "locust.*", "jsonschema.*"]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["backend/app"]
+omit = ["*/migrations/*", "*/seed/*", "*/__init__.py"]
+
+[tool.coverage.report]
+skip_empty = true
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:", "raise NotImplementedError"]

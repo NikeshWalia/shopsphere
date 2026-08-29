@@ -1,0 +1,35 @@
+# Keeps the build context small and prevents secrets or host-specific state
+# from being copied into an image.
+.git/
+.github/
+.venv/
+venv/
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+allure-results/
+allure-report/
+artifacts/
+test-results/
+
+# The test platform is never installed into a runtime image.
+tests/
+backend/tests/
+docs/
+scripts/
+*.md
+!README.md
+Makefile

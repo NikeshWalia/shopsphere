@@ -1,0 +1,3 @@
+# Load testing. Isolated because Locust pulls in gevent and a web UI that
+# nothing else in the project needs.
+locust==2.32.5

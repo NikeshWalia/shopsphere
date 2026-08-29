@@ -1,0 +1,111 @@
+# ShopSphere - the complete stack.
+#
+#   docker compose up --build
+#
+# Brings up PostgreSQL, the API (migrated and seeded), the mock payment provider
+# and the storefront. Nothing else is required.
+#
+#   Storefront    http://localhost:3000
+#   API docs      http://localhost:8000/docs
+#   Payment mock  http://localhost:9100/docs
+#
+# Every service declares a healthcheck, and every dependency uses
+# `condition: service_healthy`. That is what removes the need for sleeps or
+# retry loops at startup: the API does not begin until PostgreSQL is genuinely
+# accepting connections, and the frontend does not start until the API is
+# actually able to serve traffic.
+
+name: shopsphere
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: shopsphere-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-shopsphere}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-shopsphere}
+      POSTGRES_DB: ${POSTGRES_DB:-shopsphere}
+      # Deterministic collation, so ORDER BY on text behaves identically here
+      # and in CI regardless of the host's locale.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      # -U and -d are required: without them pg_isready checks the wrong role
+      # and reports healthy while the application database is still starting.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-shopsphere} -d ${POSTGRES_DB:-shopsphere}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
+  payment-mock:
+    build:
+      context: .
+      dockerfile: docker/payment-mock.Dockerfile
+    container_name: shopsphere-payment-mock
+    environment:
+      # The global failure switch. `card` lets each request's card number decide
+      # the outcome, which is what the test suites rely on. See
+      # docs/failure-simulation.md.
+      PAYMENT_MODE: ${PAYMENT_MODE:-card}
+      PAYMENT_MOCK_TIMEOUT_DELAY_SECONDS: ${PAYMENT_MOCK_TIMEOUT_DELAY_SECONDS:-30}
+      PAYMENT_MOCK_LATENCY_MS: ${PAYMENT_MOCK_LATENCY_MS:-0}
+    ports:
+      - "${PAYMENT_MOCK_PORT:-9100}:9100"
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    container_name: shopsphere-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      payment-mock:
+        condition: service_started
+    environment:
+      ENVIRONMENT: ${ENVIRONMENT:-local}
+      DEBUG: ${DEBUG:-false}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      LOG_FORMAT: ${LOG_FORMAT:-json}
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-shopsphere}:${POSTGRES_PASSWORD:-shopsphere}@postgres:5432/${POSTGRES_DB:-shopsphere}
+      # Compose resolves service names, so the backend reaches the provider by
+      # container name rather than by a host port.
+      PAYMENT_SERVICE_URL: http://payment-mock:9100
+      PAYMENT_TIMEOUT_SECONDS: ${PAYMENT_TIMEOUT_SECONDS:-8.0}
+      PAYMENT_MODE: ${PAYMENT_MODE:-card}
+      SECRET_KEY: ${SECRET_KEY:-dev-only-insecure-secret-change-me}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-60}
+      BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-12}
+      TAX_RATE: ${TAX_RATE:-0.08}
+      SHIPPING_FLAT_FEE: ${SHIPPING_FLAT_FEE:-9.99}
+      FREE_SHIPPING_THRESHOLD: ${FREE_SHIPPING_THRESHOLD:-100.00}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:5173}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@shopsphere.test}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-AdminPass123!}
+      SEED_CUSTOMER_PASSWORD: ${SEED_CUSTOMER_PASSWORD:-CustomerPass123!}
+      SEED_ON_START: ${SEED_ON_START:-true}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    container_name: shopsphere-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+    name: shopsphere-postgres-data
