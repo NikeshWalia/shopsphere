@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:25 GMT",
+    "server": "uvicorn",
+    "content-length": "444",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.04",
+    "x-request-id": "573776974a4b4a03809076a59b483779"
+  },
+  "body": {
+    "id": 64,
+    "sku": "TST-A0F8AB24B8",
+    "name": "Test Product 59d264",
+    "price": 25.0,
+    "brand": "TestBrand",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": false,
+    "in_stock": true,
+    "stock_quantity": 5,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T06:22:26.395559Z",
+    "updated_at": "2026-08-29T06:22:26.458689Z"
+  }
+}

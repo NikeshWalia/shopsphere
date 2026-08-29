@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 42.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:23:06 GMT",
+    "server": "uvicorn",
+    "content-length": "907",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "41.54",
+    "x-request-id": "4f628a53b7a1471ca8bd562bae11c2b4"
+  },
+  "body": {
+    "id": 82,
+    "order_number": "SS-20260829-6UW89N",
+    "user_id": 298,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 75.0,
+    "discount_total": 0.0,
+    "tax": 6.0,
+    "shipping_fee": 9.99,
+    "total": 90.99,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 80,
+        "product_id": 235,
+        "product_name": "Test Fixture Product",
+        "sku": "TST-240422FD63",
+        "unit_price": 25.0,
+        "quantity": 3,
+        "line_total": 75.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 82,
+        "provider_reference": "txn_3453875a383346f18292",
+        "amount": 90.99,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T06:23:06.533420Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Kenneth Walsh",
+      "line1": "1 Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": null
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T06:23:06.522725Z",
+    "updated_at": "2026-08-29T06:23:06.533420Z"
+  }
+}

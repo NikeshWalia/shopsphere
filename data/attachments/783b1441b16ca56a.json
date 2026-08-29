@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:24 GMT",
+    "server": "uvicorn",
+    "content-length": "205",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.41",
+    "x-request-id": "4bd812ae7e864666bcc466ee4f7db7fc"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, Password must contain a digit.",
+    "details": {
+      "fields": [
+        {
+          "field": "password",
+          "message": "Value error, Password must contain a digit.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

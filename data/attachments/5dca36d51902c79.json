@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:24 GMT",
+    "server": "uvicorn",
+    "content-length": "227",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.58",
+    "x-request-id": "3eb85ca2c34343578d3a024a361bc43d"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, Password must contain a lowercase letter.",
+    "details": {
+      "fields": [
+        {
+          "field": "password",
+          "message": "Value error, Password must contain a lowercase letter.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

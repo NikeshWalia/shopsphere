@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 4.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:25 GMT",
+    "server": "uvicorn",
+    "content-length": "213",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "3.29",
+    "x-request-id": "1e84f064a8b244c2a1f3e7e284b040d4"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, Provide at least one field to update",
+    "details": {
+      "fields": [
+        {
+          "field": "body",
+          "message": "Value error, Provide at least one field to update",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

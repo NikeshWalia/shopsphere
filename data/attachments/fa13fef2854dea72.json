@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 45.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:48 GMT",
+    "server": "uvicorn",
+    "content-length": "930",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "44.19",
+    "x-request-id": "822faffc784d4135aa0e669ebd2c6f7f"
+  },
+  "body": {
+    "id": 61,
+    "order_number": "SS-20260829-73DTJA",
+    "user_id": 205,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 49.99,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.98,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 63,
+        "product_id": 217,
+        "product_name": "Test Product 6b1020",
+        "sku": "TST-DAF0736141",
+        "unit_price": 49.99,
+        "quantity": 1,
+        "line_total": 49.99
+      }
+    ],
+    "payments": [
+      {
+        "id": 64,
+        "provider_reference": "txn_32a513b244624815a862",
+        "amount": 63.98,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T06:22:49.725632Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T06:22:49.714367Z",
+    "updated_at": "2026-08-29T06:22:49.725632Z"
+  }
+}

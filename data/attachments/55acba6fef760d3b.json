@@ -1,0 +1,27 @@
+{
+  "status_code": 405,
+  "elapsed_ms": 1.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:49 GMT",
+    "server": "uvicorn",
+    "allow": "GET",
+    "content-length": "138",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "0.49",
+    "x-request-id": "e7e8d579086347639912f2c665fdcbb8"
+  },
+  "body": {
+    "error": "METHOD_NOT_ALLOWED",
+    "message": "DELETE is not allowed on this endpoint.",
+    "details": {
+      "path": "/api/v1/products",
+      "method": "DELETE"
+    }
+  }
+}

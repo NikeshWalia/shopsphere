@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:50 GMT",
+    "server": "uvicorn",
+    "content-length": "216",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.51",
+    "x-request-id": "5166e4ea568240b8a4ca6818c4321be7"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, An email address must have an @-sign.",
+    "details": {
+      "fields": [
+        {
+          "field": "email",
+          "message": "Value error, An email address must have an @-sign.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

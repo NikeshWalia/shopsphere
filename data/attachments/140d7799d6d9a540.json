@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 8.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:55 GMT",
+    "server": "uvicorn",
+    "content-length": "400",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.31",
+    "x-request-id": "17d745c31aa74126a8d54852effaea60"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 225,
+        "sku": "TST-52753A1F58",
+        "name": "Journey Widget",
+        "price": 45.0,
+        "brand": "TestBrand",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 8,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 1,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 1,
+    "has_next": false,
+    "has_previous": false
+  }
+}

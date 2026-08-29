@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 61.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:31 GMT",
+    "server": "uvicorn",
+    "content-length": "923",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "60.54",
+    "x-request-id": "59e627fba240494ea144b085d6ddff7d"
+  },
+  "body": {
+    "id": 5,
+    "order_number": "SS-20260829-D9LPJS",
+    "user_id": 65,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 50.0,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.99,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 7,
+        "product_id": 135,
+        "product_name": "Test Product 2ad269",
+        "sku": "TST-96621CA6A5",
+        "unit_price": 25.0,
+        "quantity": 2,
+        "line_total": 50.0
+      }
+    ],
+    "payments": [
+      {
+        "id": 5,
+        "provider_reference": "txn_e0bb1bc5d83840949f2a",
+        "amount": 63.99,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T06:22:31.879556Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T06:22:31.859194Z",
+    "updated_at": "2026-08-29T06:22:31.879556Z"
+  }
+}

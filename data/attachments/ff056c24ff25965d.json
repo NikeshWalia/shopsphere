@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 5.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:50 GMT",
+    "server": "uvicorn",
+    "content-length": "433",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.41",
+    "x-request-id": "22da9ec07a8f4e91a9d5b7740ef76715"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 62,
+        "sku": "BOK-7007",
+        "name": "Legacy Systems Field Guide",
+        "price": 44.0,
+        "brand": "Quillstone Press",
+        "rating": "3.8",
+        "image_url": "https://picsum.photos/seed/bok-7007/600/600",
+        "is_active": true,
+        "in_stock": false,
+        "stock_quantity": 0,
+        "category": {
+          "id": 7,
+          "name": "Books",
+          "slug": "books",
+          "description": "Technical and general-interest titles."
+        }
+      }
+    ],
+    "total": 62,
+    "page": 1,
+    "page_size": 1,
+    "total_pages": 62,
+    "has_next": true,
+    "has_previous": false
+  }
+}

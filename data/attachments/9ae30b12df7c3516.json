@@ -1,0 +1,33 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 9.6,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:30 GMT",
+    "server": "uvicorn",
+    "content-length": "257",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.16",
+    "x-request-id": "56f9b3620bf34424bec6d3edec7d9e54"
+  },
+  "body": {
+    "subtotal": 50.0,
+    "discount_total": 0.0,
+    "tax": 4.0,
+    "shipping_fee": 9.99,
+    "total": 63.99,
+    "currency": "USD",
+    "promo_code": null,
+    "promo_description": null,
+    "item_count": 2,
+    "issues": [
+      "Promotion code SAVE15 requires a minimum subtotal of 150.00."
+    ],
+    "is_checkout_ready": false
+  }
+}

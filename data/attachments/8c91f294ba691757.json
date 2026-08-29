@@ -1,0 +1,228 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 8.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:52 GMT",
+    "server": "uvicorn",
+    "content-length": "3713",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.2",
+    "x-request-id": "09ab0a12a54844b39a7fbd2e7103c28b"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 61,
+        "order_number": "SS-20260829-73DTJA",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:49.714367Z"
+      },
+      {
+        "id": 60,
+        "order_number": "SS-20260829-4TXW7N",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:49.495197Z"
+      },
+      {
+        "id": 59,
+        "order_number": "SS-20260829-RYWLDK",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:48.972807Z"
+      },
+      {
+        "id": 58,
+        "order_number": "SS-20260829-MNPZ2G",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:48.671563Z"
+      },
+      {
+        "id": 57,
+        "order_number": "SS-20260829-GZE39V",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:48.488105Z"
+      },
+      {
+        "id": 56,
+        "order_number": "SS-20260829-3PP8U8",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:48.074754Z"
+      },
+      {
+        "id": 55,
+        "order_number": "SS-20260829-ZVUZL9",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:45.040791Z"
+      },
+      {
+        "id": 54,
+        "order_number": "SS-20260829-UP9L62",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:44.900453Z"
+      },
+      {
+        "id": 53,
+        "order_number": "SS-20260829-CEL9AZ",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:44.755488Z"
+      },
+      {
+        "id": 52,
+        "order_number": "SS-20260829-6ZPSC9",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:44.611792Z"
+      },
+      {
+        "id": 51,
+        "order_number": "SS-20260829-8S5PTN",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:44.463121Z"
+      },
+      {
+        "id": 50,
+        "order_number": "SS-20260829-V484GE",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:43.086996Z"
+      },
+      {
+        "id": 49,
+        "order_number": "SS-20260829-UG8P34",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 145.77,
+        "currency": "USD",
+        "item_count": 3,
+        "created_at": "2026-08-29T06:22:41.192765Z"
+      },
+      {
+        "id": 48,
+        "order_number": "SS-20260829-CT69W3",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 117.97,
+        "currency": "USD",
+        "item_count": 2,
+        "created_at": "2026-08-29T06:22:41.018708Z"
+      },
+      {
+        "id": 47,
+        "order_number": "SS-20260829-KYD72Q",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 63.98,
+        "currency": "USD",
+        "item_count": 1,
+        "created_at": "2026-08-29T06:22:40.863033Z"
+      },
+      {
+        "id": 46,
+        "order_number": "SS-20260829-XBP8HX",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 117.97,
+        "currency": "USD",
+        "item_count": 2,
+        "created_at": "2026-08-29T06:22:40.708233Z"
+      },
+      {
+        "id": 45,
+        "order_number": "SS-20260829-GF8JHN",
+        "status": "cancelled",
+        "payment_status": "refunded",
+        "total": 117.97,
+        "currency": "USD",
+        "item_count": 2,
+        "created_at": "2026-08-29T06:22:40.545007Z"
+      },
+      {
+        "id": 44,
+        "order_number": "SS-20260829-HNRVE2",
+        "status": "cancelled",
+        "payment_status": "failed",
+        "total": 117.97,
+        "currency": "USD",
+        "item_count": 2,
+        "created_at": "2026-08-29T06:22:40.403420Z"
+      },
+      {
+        "id": 43,
+        "order_number": "SS-20260829-4TS9WQ",
+        "status": "confirmed",
+        "payment_status": "paid",
+        "total": 161.97,
+        "currency": "USD",
+        "item_count": 3,
+        "created_at": "2026-08-29T06:22:40.254591Z"
+      },
+      {
+        "id": 42,
+        "order_number": "SS-20260829-NP2JYT",
+        "status": "cancelled",
+        "payment_status": "failed",
+        "total": 63.99,
+        "currency": "USD",
+        "item_count": 2,
+        "created_at": "2026-08-29T06:22:38.924651Z"
+      }
+    ],
+    "total": 61,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 4,
+    "has_next": true,
+    "has_previous": false
+  }
+}

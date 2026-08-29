@@ -1,0 +1,20 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/admin/products",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "sku": "TST-0ED2DC109D",
+    "name": "Tied Product 02",
+    "description": "Created by the automated test suite.",
+    "price": 42.0,
+    "category_id": 1,
+    "brand": "PageBrand12d2d8e9b9",
+    "rating": 4.0,
+    "stock_quantity": 25,
+    "is_active": true
+  }
+}

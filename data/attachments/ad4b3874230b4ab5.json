@@ -1,0 +1,48 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 8.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:23:06 GMT",
+    "server": "uvicorn",
+    "content-length": "423",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.1",
+    "x-request-id": "fa8cb5708e544be492b611aff7e16c6e"
+  },
+  "body": {
+    "id": 138,
+    "items": [
+      {
+        "product_id": 235,
+        "sku": "TST-240422FD63",
+        "name": "Test Fixture Product",
+        "image_url": null,
+        "unit_price": 25.0,
+        "quantity": 5,
+        "line_total": 125.0,
+        "available_stock": 20,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 5,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 125.0,
+      "discount_total": 0.0,
+      "tax": 10.0,
+      "shipping_fee": 0.0,
+      "total": 135.0,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

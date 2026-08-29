@@ -1,0 +1,46 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 5.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:29 GMT",
+    "server": "uvicorn",
+    "content-length": "410",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "4.61",
+    "x-request-id": "e95bb8dedbb144e0a2faace3d26191f7"
+  },
+  "body": {
+    "items": [
+      {
+        "id": 115,
+        "sku": "TST-685DECCA94",
+        "name": "Tied Product 08",
+        "price": 42.0,
+        "brand": "PageBrand14c5af7b15",
+        "rating": "4.0",
+        "image_url": null,
+        "is_active": true,
+        "in_stock": true,
+        "stock_quantity": 25,
+        "category": {
+          "id": 1,
+          "name": "Laptops",
+          "slug": "laptops",
+          "description": "Ultrabooks, creator machines and portable workstations."
+        }
+      }
+    ],
+    "total": 9,
+    "page": 3,
+    "page_size": 4,
+    "total_pages": 3,
+    "has_next": false,
+    "has_previous": true
+  }
+}

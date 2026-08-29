@@ -1,0 +1,48 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 17.4,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:37 GMT",
+    "server": "uvicorn",
+    "content-length": "419",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "15.89",
+    "x-request-id": "d1a8ff301d9a4927a75f1881acb08e2e"
+  },
+  "body": {
+    "id": 69,
+    "items": [
+      {
+        "product_id": 177,
+        "sku": "TST-2CD3B579F6",
+        "name": "Test Product 70e200",
+        "image_url": null,
+        "unit_price": 25.0,
+        "quantity": 2,
+        "line_total": 50.0,
+        "available_stock": 10,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 2,
+    "distinct_item_count": 1,
+    "totals": {
+      "subtotal": 50.0,
+      "discount_total": 0.0,
+      "tax": 4.0,
+      "shipping_fee": 9.99,
+      "total": 63.99,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

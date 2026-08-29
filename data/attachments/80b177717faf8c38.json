@@ -1,0 +1,27 @@
+{
+  "status_code": 409,
+  "elapsed_ms": 8.9,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:27 GMT",
+    "server": "uvicorn",
+    "content-length": "141",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.61",
+    "x-request-id": "315c7543d5794f8fb00bb3d9bea772ef"
+  },
+  "body": {
+    "error": "INSUFFICIENT_INVENTORY",
+    "message": "'Test Product ff6206' is out of stock.",
+    "details": {
+      "product_id": 88,
+      "requested": 1,
+      "available": 0
+    }
+  }
+}

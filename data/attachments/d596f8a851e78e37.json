@@ -1,0 +1,20 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:8000/api/v1/admin/products",
+  "params": {},
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "***redacted***"
+  },
+  "body": {
+    "sku": "TST-BB002866F1",
+    "name": "Test Product 83ce90",
+    "description": "Created by the automated test suite.",
+    "price": 49.99,
+    "category_id": 1,
+    "brand": "TestBrand",
+    "rating": 4.0,
+    "stock_quantity": 10,
+    "is_active": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status_code": 422,
+  "elapsed_ms": 2.2,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:24 GMT",
+    "server": "uvicorn",
+    "content-length": "260",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "1.24",
+    "x-request-id": "f12970db18554c248b4c21dc2fe2ec10"
+  },
+  "body": {
+    "error": "VALIDATION_ERROR",
+    "message": "Value error, The part after the @-sign contains invalid characters: '@'.",
+    "details": {
+      "fields": [
+        {
+          "field": "email",
+          "message": "Value error, The part after the @-sign contains invalid characters: '@'.",
+          "type": "value_error"
+        }
+      ]
+    }
+  }
+}

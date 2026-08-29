@@ -1,0 +1,25 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 18.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:52 GMT",
+    "server": "uvicorn",
+    "content-length": "125",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "16.53",
+    "x-request-id": "17d7cdc93d4a402f926a79e75f6b4b83"
+  },
+  "body": {
+    "product_id": 71,
+    "sku": "TST-775A36435D",
+    "name": "Test Product 9cd359",
+    "quantity": 1,
+    "updated_at": "2026-08-29T06:22:52.862435Z"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 9.3,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:55 GMT",
+    "server": "uvicorn",
+    "content-length": "185",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.08",
+    "x-request-id": "9e5ec94b31ab48e88728ba1dc3b1986e"
+  },
+  "body": {
+    "id": 100,
+    "label": "Home",
+    "full_name": "Journey One",
+    "line1": "1 Journey Way",
+    "line2": null,
+    "city": "Austin",
+    "state": "TX",
+    "postal_code": "73301",
+    "country": "US",
+    "phone": null,
+    "is_default": true
+  }
+}

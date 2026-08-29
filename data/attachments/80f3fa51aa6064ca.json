@@ -1,0 +1,25 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 14.5,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:36 GMT",
+    "server": "uvicorn",
+    "content-length": "126",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "13.31",
+    "x-request-id": "8d646c6f4d0f4018874b075113d569b7"
+  },
+  "body": {
+    "product_id": 171,
+    "sku": "TST-E6DDBE9197",
+    "name": "Test Product 3d3d3e",
+    "quantity": 1,
+    "updated_at": "2026-08-29T06:22:36.974357Z"
+  }
+}

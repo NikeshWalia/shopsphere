@@ -1,0 +1,60 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 18.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:55 GMT",
+    "server": "uvicorn",
+    "content-length": "600",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "17.25",
+    "x-request-id": "16f4321c906e4d078fea95f554788d75"
+  },
+  "body": {
+    "id": 128,
+    "items": [
+      {
+        "product_id": 226,
+        "sku": "TST-4EA73231D2",
+        "name": "Cheap Item",
+        "image_url": null,
+        "unit_price": 10.0,
+        "quantity": 5,
+        "line_total": 50.0,
+        "available_stock": 20,
+        "exceeds_stock": false,
+        "is_active": true
+      },
+      {
+        "product_id": 227,
+        "sku": "TST-8E50390BD6",
+        "name": "Pricey Item",
+        "image_url": null,
+        "unit_price": 60.0,
+        "quantity": 1,
+        "line_total": 60.0,
+        "available_stock": 20,
+        "exceeds_stock": false,
+        "is_active": true
+      }
+    ],
+    "item_count": 6,
+    "distinct_item_count": 2,
+    "totals": {
+      "subtotal": 110.0,
+      "discount_total": 0.0,
+      "tax": 8.8,
+      "shipping_fee": 0.0,
+      "total": 118.8,
+      "currency": "USD"
+    },
+    "promo_code": null,
+    "issues": [],
+    "is_checkout_ready": true
+  }
+}

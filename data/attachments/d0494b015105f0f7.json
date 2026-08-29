@@ -1,0 +1,39 @@
+{
+  "status_code": 200,
+  "elapsed_ms": 10.0,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:54 GMT",
+    "server": "uvicorn",
+    "content-length": "446",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.72",
+    "x-request-id": "219b0bd2a8774ac28eba7350dc934b7e"
+  },
+  "body": {
+    "id": 72,
+    "sku": "TST-6A44B3079C",
+    "name": "Test Product db7aac",
+    "price": 49.99,
+    "brand": "TestBrand",
+    "rating": "4.0",
+    "image_url": null,
+    "is_active": false,
+    "in_stock": true,
+    "stock_quantity": 10,
+    "category": {
+      "id": 1,
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Ultrabooks, creator machines and portable workstations."
+    },
+    "description": "Created by the automated test suite.",
+    "created_at": "2026-08-29T06:22:53.771975Z",
+    "updated_at": "2026-08-29T06:22:54.734798Z"
+  }
+}

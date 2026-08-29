@@ -1,0 +1,32 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 8.7,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:50 GMT",
+    "server": "uvicorn",
+    "content-length": "542",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "7.5",
+    "x-request-id": "3e2ac70dff554857a13b3d1a4bed95f9"
+  },
+  "body": {
+    "access_token": "***redacted***",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+      "id": 248,
+      "email": "user_1d8a535554ad@shopsphere.test",
+      "full_name": "Karen Taylor",
+      "phone": null,
+      "role": "customer",
+      "is_active": true,
+      "created_at": "2026-08-29T06:22:51.854335Z"
+    }
+  }
+}

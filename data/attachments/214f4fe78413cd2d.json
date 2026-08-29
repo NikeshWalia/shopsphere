@@ -1,0 +1,29 @@
+{
+  "status_code": 402,
+  "elapsed_ms": 39.1,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:32 GMT",
+    "server": "uvicorn",
+    "content-length": "217",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "37.93",
+    "x-request-id": "59e9869a71dd45eb8ab8ac7836a23fd4"
+  },
+  "body": {
+    "error": "PAYMENT_DECLINED",
+    "message": "The issuer declined the charge.",
+    "details": {
+      "order_id": 18,
+      "order_number": "SS-20260829-6GSMVC",
+      "order_status": "cancelled",
+      "payment_status": "failed",
+      "failure_code": "do_not_honor"
+    }
+  }
+}

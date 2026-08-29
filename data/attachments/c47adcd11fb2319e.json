@@ -1,0 +1,72 @@
+{
+  "status_code": 201,
+  "elapsed_ms": 9.8,
+  "headers": {
+    "date": "Sat, 29 Aug 2026 06:22:39 GMT",
+    "server": "uvicorn",
+    "content-length": "932",
+    "content-type": "application/json",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "cache-control": "no-store",
+    "x-response-time-ms": "8.62",
+    "x-request-id": "3fedde93c9fb42e3af6f8ee8bd6f503e"
+  },
+  "body": {
+    "id": 46,
+    "order_number": "SS-20260829-XBP8HX",
+    "user_id": 128,
+    "status": "confirmed",
+    "payment_status": "paid",
+    "subtotal": 99.98,
+    "discount_total": 0.0,
+    "tax": 8.0,
+    "shipping_fee": 9.99,
+    "total": 117.97,
+    "currency": "USD",
+    "promo_code": null,
+    "items": [
+      {
+        "id": 48,
+        "product_id": 187,
+        "product_name": "Test Product 787550",
+        "sku": "TST-5F0DEA867D",
+        "unit_price": 49.99,
+        "quantity": 2,
+        "line_total": 99.98
+      }
+    ],
+    "payments": [
+      {
+        "id": 49,
+        "provider_reference": "txn_9723563a58d1418b99a6",
+        "amount": 117.97,
+        "currency": "USD",
+        "status": "paid",
+        "method": "card",
+        "card_last4": "1111",
+        "card_brand": "visa",
+        "failure_code": null,
+        "failure_message": null,
+        "attempt": 1,
+        "created_at": "2026-08-29T06:22:40.719179Z"
+      }
+    ],
+    "shipping_address": {
+      "full_name": "Test Customer",
+      "line1": "1 Integration Way",
+      "line2": null,
+      "city": "Austin",
+      "state": "TX",
+      "postal_code": "73301",
+      "country": "US",
+      "phone": "+1-555-0123"
+    },
+    "cancelled_reason": null,
+    "created_at": "2026-08-29T06:22:40.708233Z",
+    "updated_at": "2026-08-29T06:22:40.719179Z"
+  }
+}
